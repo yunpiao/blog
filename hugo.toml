@@ -1,5 +1,96 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
-theme = 'zozo'
+baseURL = '/'
+languageCode = "zh-CN"
+title = '😄 yunpiao 的 Blog'
+theme = 'hello-friend'
+subtitle = "悟已往不谏，知来者可追"
+hasCJKLanguage = true
+# 每页显示的文章数量用于分页
+paginate =  20
 
+
+# rss 输出数量
+rssLimit = 5
+timeout = '10m'
+ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
+
+[Author]
+  name = "云飘"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 1
+
+[params]
+bannerFont = "fonts/exampleFont" 
+description = "😎 最近的博文"
+defaultTheme = "dark"
+showMenuItems = 6
+# Enable to show reading time in minutes for posts
+showReadingTime = false
+logoText = "hello friend"
+
+MenuMore = "更多"
+DateFormatList = "2006-01-02 15:04:05"
+DateFormatSingle = "2006-01-02 15:04:05"
+ReadMore = "阅读全文"
+
+env = "production" # for Google Analytics and DISQUS.
+favicon = "img/favicon-32x32.png" 
+fuse = true # for searchbox. "JSON" must added to output contents. See [outputs].
+math = true # for introducing $KaTeX$
+useChineseFonts = true 
+postDateFormat = "2006-1-2"
+
+[menu]
+# Shown in the side menu.
+[[menu.main]]
+identifier = "post"
+name = "Posts"
+url = "/post/"
+weight = 1
+[[menu.main]]
+name = "Tags"
+url = "/tags/"
+weight = 2
+
+[[menu.main]]
+name = "Categories"
+url = "/categories/"
+weight = 2
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about/"
+weight = 3
+
+[taxonomies]
+category = "categories"
+series = "series"
+tag = "tags"
+[social]
+bilibili = "http://example.com/"
+github = "https://github.com/"
+gitlab = "https://gitlab.com/"
+instagram = "http://example.com/"
+mail = "mailto:anon@example.com"
+twitter = "https://twitter.com/"
+weibo = "http://example.com/"
+youtube = "https://youtube.com/"
+zhihu = "http://example.com/"
+# any icon in layouts/partials/svg can be used by the name without the "-line.svg"
+
+[outputs]
+  home = ["HTML","Atom","JSON"] # <domain>/atom.xml
+  page = ["HTML"]
+[outputFormats.Atom]
+  mediatype = "application/rss"
+  baseName = "atom"
+
+[params.twikoo]
+	enable = true
