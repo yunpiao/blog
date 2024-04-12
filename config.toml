@@ -1,0 +1,3 @@
+baseURL = 'http://example.org/'
+languageCode = 'cn'
+title = '云飘 Blog'
