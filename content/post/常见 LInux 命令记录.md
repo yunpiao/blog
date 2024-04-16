@@ -9,10 +9,7 @@ draft: false
 hideInList: false
 isTop: false
 toc: true
-cover:
-  image: https://cdn.sspai.com/2021/07/10/4924403d889cd827d6637a5efb6c5ce2.png?imageMogr2/auto-orient/quality/95/thumbnail/!1420x708r/gravity/Center/crop/1420x708/interlace/1
 slug: 20240416155742
-feature:
 ---
 
 <!--more-->
