@@ -92,4 +92,5 @@ zhihu = "http://example.com/"
   baseName = "atom"
 
 [params.twikoo]
-	enable = true
+  enable = true
+  visitor = true
