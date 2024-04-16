@@ -33,9 +33,8 @@ showMenuItems = 6
 # Enable to show reading time in minutes for posts
 showReadingTime = false
 logoText = "hello friend"
-
 MenuMore = "更多"
-DateFormatList = "2006-01-02 15:04:05"
+DateFormatList = "2006-01-02"
 DateFormatSingle = "2006-01-02 15:04:05"
 ReadMore = "阅读全文"
 
