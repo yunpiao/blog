@@ -5,9 +5,6 @@
 
 {{$totalWord := $scratch.Get "total" }}
 
-<div id="tcomment" class="tcomment">
-  <div id="waline" class="center-vertical"></div>
-</div>
 
 
 {{ $wowWord := div $totalWord 10000}}
@@ -66,15 +63,6 @@
   });
 </script>
 
-
-<script type="module">
-  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-
-  init({
-    el: '#waline',
-    serverURL: 'https://vercel-ent3f8ukw-yunpiaos-projects.vercel.app',
-  });
-</script>
 
 {{ if .IsHome }}
   <script>

@@ -90,7 +90,19 @@ zhihu = "http://example.com/"
 [outputFormats.Atom]
   mediatype = "application/rss"
   baseName = "atom"
-
-[params.twikoo]
-  enable = true
-  visitor = true
+[article]
+	showComments = true
+[waline]
+  serverURL = "https://<PUT_YOUR_OWN_HERE>.vercel.app/}"
+  # lang = zh-CN
+  # visitor = true
+  # avatar:
+  # emoji:
+  #     - https://cdn.jsdelivr.net/gh/walinejs/emojis/qq
+  # requiredMeta:
+  #     - name
+  #     - email
+  #     - url
+  # placeholder:
+  # locale:
+  #     admin: Admin

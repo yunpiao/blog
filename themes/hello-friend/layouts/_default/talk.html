@@ -10,9 +10,6 @@
   <style>
 a {color: inherit;}
 body{background: #2f2f2f;color: #f5f5f5;font-family: source-han-serif-sc, -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;font-size: 1rem;font-weight: 400;line-height: 2.2;}
-#twikoo,.post-title {max-width:500px !important;margin:0 auto;}
-/* twikoo 评论样式 */
-.twikoo{overflow: visible !important;}
 .tk-extras,.tk-row.actions .tk-action-icon.__markdown,.tk-preview,.tk-content p a.at,.tk-tag.tk-tag-green{display: none !important;}
 .tk-content{margin-top:0px !important;}
 .tk-content span:first-child{float:left;}
@@ -75,36 +72,5 @@ body{background: #2f2f2f;color: #f5f5f5;font-family: source-han-serif-sc, -apple
   </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:500&display=swap" media="print" onload="this.media='all'">
 </head>
-<body>
-  <h2 class="post-title">你言我语<sup>By Twikoo</sup></h2>
-  <div id="tcomment"></div>
-  <script type="text/javascript" src="/twikoo167.js"></script>
-  <script>
-    twikoo.init({
-      envId: 'https://tk.edui.fun/',
-      el: '#tcomment',
-      path: '/talk/',
-      onCommentLoaded: function () {
-        var myShow = document.getElementsByClassName('tk-icon'),mySubmit = document.querySelector('.tk-submit')
-        var myLength= 1;
-        for (i = 0; i < myShow.length;i++) {myLength += myLength + i};
-        if(myLength > 1){mySubmit.style.setProperty('display','block','important')}else{mySubmit.remove}
-        var tkMain = document.getElementsByClassName('tk-main'),tkReplies = document.getElementsByClassName('tk-replies');
-        for (var i=0;i<tkMain.length;i++){
-          tkMain[i].index=i;tkMain[i].onclick = function () {tkReplies[this.index].classList.add("tk-replies-height");}
-        }
-      }
-    })
-  </script>
-  <script>
-    (function(d) {
-      var config = {
-        kitId: 'gqa4aic',
-        scriptTimeout: 3000,
-        async: true
-      },
-      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-    })(document);
-  </script>
-</body>
+
 </html>

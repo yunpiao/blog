@@ -1,8 +1,8 @@
-.tcomment{
+/* .tcomment{
 	display: table;
 	margin-left: 300px;
 	margin-right: 300px;
-}
+} */
 :root {
 	--light-background: #fff;
 	--light-background-secondary: #eaeaea;
