@@ -23,7 +23,7 @@ categories:
 执行某一个函数测试
 `./xx.test -test.run "TestUnitReport$" -test.v`
 
-#### 意义
+## 意义
 提前发现问题
 边界问题
 方便在代码出现 bug 时及时调试
@@ -34,10 +34,10 @@ categories:
 测试数据需要频繁维护
 一般研发人员不喜欢单测
 
-#### 单测在 golang 中的地位
+## 单测在 golang 中的地位
 Go语言在工具链和标准库中提供对测试的原生支持，
 TestMain函数包含了测试用例的初始化和主函数的测试逻辑。
-#### 最简单示例-如何写单测
+## 最简单示例-如何写单测
 
 文件目录结构
 ```bash
@@ -64,7 +64,7 @@ func In(item string, array []string) bool {
 > 手动执行命令为 go test -v -run ^TestIn$
 
 
-###### 自动生成方法 - goland
+### 自动生成方法 - goland
 
 使用 goland 的生成功能， 生成单测函数
 ![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230706114853.png)
@@ -77,7 +77,7 @@ func In(item string, array []string) bool {
 
 
 
-###### 常用的 testing 函数
+### 常用的 testing 函数
 
 ```python
 Fail : 测试失败，测试继续，也就是之后的代码依然会执行
@@ -93,7 +93,7 @@ Fatal : 相当于 Log + FailNow
 Fatalf : 相当于 Logf + FailNow
 ```
 
-###### 单测形式
+### 单测形式
 ```go
 TestXxxx(t *testing.T)    // 基本测试用例 以验证某个功能是否正常工作。该函数通常包含一个或多个测试用例，用于测试代码的不同方面。测试用例可以使用断言检查程序的预期输出是否与实际输出一致。
 BenchmarkXxxx(b *testing.B) // 压力测试的测试用例,验证代码在高负载下的性能表现。压力测试可以使用不同的测试负载来测试代码在不同负载下的响应时间、吞吐量和资源使用情况等
@@ -102,7 +102,7 @@ TestMain(m *testing.M) // 测试 Main 函数 TestMain函数包含了测试用例
 ```
 
 
-###### 其他测试形式
+### 其他测试形式
 - 包外测试
 与包内测试本质是面向实现的白盒测试不同，包外测试的本质是一种面向接口的黑盒测试
 Go标准库中包内测试和包外测试的使用情况
@@ -123,7 +123,7 @@ Go标准库中包内测试和包外测试的使用情况
 
 
 
-###### 单测组织结构
+### 单测组织结构
 
 1. 平铺
 	简单 
@@ -132,12 +132,12 @@ Go标准库中包内测试和包外测试的使用情况
 2. 基于测试套件和测试用例的xUnit实践模式进行组织
 ![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230705155338.png)
 
-######## 对比
+#### 对比
 
 ![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230705155359.png)
 
 
-###### 测试数据准备
+### 测试数据准备
 
 测试固件是指一个人造的、确定性的环境，一个测试用例或一个测试套件（下的一组测试用例）在这个环境中进行测试，其测试结果是可重复的（多次测试运行的结果是相同的）。我们一般使用setUp和tearDown来代表测试固件的创建/设置与拆除/销毁的动作
 
@@ -175,6 +175,6 @@ testdata 文件夹用于存放测试需要的数据
 
 单测要做的事就是针对各个函数，构造好运行环境、输入数据、依赖的api、断言好结果
 
-######## 构造运行环境
+#### 构造运行环境
 
 依赖的redis、api 这些，可以直接通过 测试配置文件 的形式 启动起来，在开发机上搭建好redis、api服务，从真实服务上获取数据，也可以mock掉返回结果
