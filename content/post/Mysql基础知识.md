@@ -11,7 +11,7 @@ isTop: false
 toc: true
 slug: 20240416155743
 ---
-![](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/blog/202404172143494.png)
+![](https://img.yunpiao.site/blog/202404172143494.png)
 
 # 存储引擎
 

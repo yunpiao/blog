@@ -59,7 +59,7 @@ func In(item string, array []string) bool {
 	return false
 }
 ```
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/202404181708718.png)
+![image.png](https://img.yunpiao.site/ob/202404181708718.png)
 
 > 手动执行命令为 go test -v -run ^TestIn$
 
@@ -67,13 +67,13 @@ func In(item string, array []string) bool {
 ### 自动生成方法 - goland
 
 使用 goland 的生成功能， 生成单测函数
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230706114853.png)
+![image.png](https://img.yunpiao.site/ob/20230706114853.png)
 模式模板为表驱动测试方式
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230706114933.png)
+![image.png](https://img.yunpiao.site/ob/20230706114933.png)
 
 >表驱动测试
 表驱动测试本身是编程语言无关的。Go核心团队和Go早期开发者在实践过程中发现表驱动测试十分适合Go代码测试并在标准库和第三方项目中大量使用此种测试设计，这样表驱动测试也就逐渐成为Go的一个惯用法。就像我们从上面的示例中看到的那样，表驱动测试有着诸多优点
-![](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230705181049.png)
+![](https://img.yunpiao.site/ob/20230705181049.png)
 
 
 
@@ -130,11 +130,11 @@ Go标准库中包内测试和包外测试的使用情况
 	独立
 	
 2. 基于测试套件和测试用例的xUnit实践模式进行组织
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230705155338.png)
+![image.png](https://img.yunpiao.site/ob/20230705155338.png)
 
 #### 对比
 
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230705155359.png)
+![image.png](https://img.yunpiao.site/ob/20230705155359.png)
 
 
 ### 测试数据准备
@@ -145,11 +145,11 @@ Go标准库中包内测试和包外测试的使用情况
 ◦  将一组已知的特定数据加载到数据库中，测试结束后清除这些数据；
 ◦  复制一组特定的已知文件，测试结束后清除这些文件；
 ◦  创建伪对象（fake object）或模拟对象（mock object），并为这些对象设定测试时所需的特定数据和期望结果。
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230705160127.png)
+![image.png](https://img.yunpiao.site/ob/20230705160127.png)
 
 
 testdata 文件夹用于存放测试需要的数据
->![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230707095813.png)
+>![image.png](https://img.yunpiao.site/ob/20230707095813.png)
 
 
 测试代码对外部文件数据的依赖之外，还会经常面对被测代码对外部业务组件或服务的依赖。此外，越是接近业务层，被测代码对外部组件或服务依赖的可能性越大。
@@ -163,11 +163,11 @@ testdata 文件夹用于存放测试需要的数据
 ◦  被测代码需与外部数据库建立连接并进行数据操作；
 ◦  被测代码使用了某个外部RESTful服务。
 
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230705181409.png)
+![image.png](https://img.yunpiao.site/ob/20230705181409.png)
 替身概念
 在GitHub上有一个名为gostub（https://github.com/prashantv/gostub）的第三方包可以用于简化stub替身的管理和编写。以上面的例子为例，如果改写为使用gostub的测试，代码如下
 
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/20230705182354.png)
+![image.png](https://img.yunpiao.site/ob/20230705182354.png)
 
 模糊测试 go-fuzz
 

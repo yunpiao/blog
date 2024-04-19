@@ -18,10 +18,10 @@ hugo 主题相关问题
 <!--more-->
 # 1. 现象
 网页刚打开时候的现象
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/202404161513483.png)
+![image.png](https://img.yunpiao.site/ob/202404161513483.png)
 等待几秒后, 突然变化了, 自动加了空格, 这种变化很是恼人
 
-![image.png](https://yunpiao-images.oss-cn-beijing.aliyuncs.com/ob/202404161512326.png)
+![image.png](https://img.yunpiao.site/ob/202404161512326.png)
 
 
 # 2. 分析
