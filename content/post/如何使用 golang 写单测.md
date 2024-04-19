@@ -1,5 +1,5 @@
 ---
-title: 如何使用 golang 写单测呢?
+title: 如何使用 golang 写单测
 tags:
   - 编程经验
 date: 2024-04-18T17:09:27+08:00
