@@ -1,11 +1,13 @@
 ---
 title: mongo 在线调整缓存大小
-tags: []
+tags:
+  - 编程经验
+  - 线上实战
 date: 2024-04-18T18:18:03+08:00
 draft: false
 toc: true
 slug: 20240418181803
-feature: 
+feature:
 ---
 记录线上解决 oom 问题
 <!--more-->
@@ -23,4 +25,8 @@ db.serverStatus().wiredTiger.cache['maximum bytes configured']/1024/1024/1024
 db.adminCommand( { "setParameter": 1, "wiredTigerEngineRuntimeConfig": "cache_size=8G"})
 
 
-由于直接更改这个参数,并不能减少当前节点的内存占用, 
+由于直接更改这个参数,并不能减少当前节点的内存占用, 这里还是需要重启节点, 好在这一节点是副本节点, 所以使用了最简单粗暴的方法
+
+`kubectl delete pods mongodb-2`
+
+重启后内存降低, 再看内存, 已经不会再涨了

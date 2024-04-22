@@ -1,8 +1,12 @@
 ---
-title: k8s 使用
+title: mac air 体验 k3s
 date: 2022-04-12T10:39:46+08:00
 draft: false
 toc: true
+tags:
+  - 运维
+categories:
+  - 杂技浅尝
 ---
 <!--more-->
 ```bash

@@ -14,7 +14,24 @@
 	--phoneWidth: (max-width:684px);
 	--tabletWidth: (max-width:900px)
 }
-
+.highlight-copy-btn {
+	position: absolute;
+	top: 7px;
+	right: 7px;
+	border: 0;
+	border-radius: 4px;
+	padding: 1px;
+	font-size: 0.8em;
+	line-height: 1.8;
+	color: #fff;
+	background-color: #777;
+	min-width: 55px;
+	text-align: center;
+  }
+  .highlight-copy-btn:hover {
+	background-color: #666;
+  }
+  
 .button-container {
 	display: table;
 	margin-left: auto;
