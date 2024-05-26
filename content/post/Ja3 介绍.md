@@ -36,7 +36,7 @@ ja3 算法[https://xz.aliyun.com/t/3889](https://xz.aliyun.com/t/3889)
 
 bfe 读取 clienthello
 
-local ngx_lua_ffi_ssl_get_client_hello_extffi.cdef[[int ngx_http_lua_ffi_ssl_get_client_hello_ext1(ngx_http_request_t *r,unsigned int type, const unsigned char **out, size_t *outlen,char **err);]]
+`local ngx_lua_ffi_ssl_get_client_hello_extffi.cdef[[int ngx_http_lua_ffi_ssl_get_client_hello_ext1(ngx_http_request_t *r,unsigned int type, const unsigned char **out, size_t *outlen,char **err);]]`
 
 ngx_lua_ffi_ssl_get_client_hello_ext = C.ngx_http_lua_ffi_ssl_get_client_hello_ext1
 

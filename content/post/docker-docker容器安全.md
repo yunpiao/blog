@@ -93,9 +93,11 @@ $ docker run --rm -ti --read-only ubuntu bash
 
 Capabilities 链接 https://wiki.archlinux.org/index.php/Capabilities_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
 
+
 从2.2版开始，Linux有了capability的概念，它打破了Linux操作系统中超级用户/普通用户的概念，让普通用户也可以做只有超级用户才能完成的工作。capability可以作用在进程上，也可以作用在程序文件上。它与sudo不同，sudo可以配置某个用户可以执行某个命令或更改某个文件，而capability则是让程序拥有某种能力。
 
-每个进程有三个和能力有关的位图：Inheritable(I)\Permitted(P)\Effective(E)，我们可以通过/proc/<PID>/status来查看进程的capability。
+
+`每个进程有三个和能力有关的位图：Inheritable(I)\Permitted(P)\Effective(E)，我们可以通过/proc/<PID>/status来查看进程的capability。`
 
 ```bash
 命令：cat /proc/$$/status | grep Cap
@@ -106,7 +108,6 @@ CapInh: 0000000000000000
 CapPrm: ffffffffffffffff
 # 当一个进程要进行某个特权操作时，操作系统会检查CapEff的对应位是否有效，而不再是检查进程的有效UID是否为0。
 CapEff: ffffffffffffffff
-
 ```
 
 Docker启动容器的时候，会通过白名单的方式来设置传递给容器的capability，默认情况下，这个白名单只包含CAP_CHOWN等少数的能力。用户可以通过 -–cap-add 和 -–cap-drop 这两个参数来修改这个白名单。
@@ -151,9 +152,7 @@ Seccomp的使用
 ### 13. grsecurity
 
 grsecurity提供了一个系统的内核patch，使Linux内核的安全性大大增强，并且它提供了一些工具让用户配置、使用这些安全特性。grsecurity可以用来控制资源访问权限。下面是一张关于grsecurity、SELinux和AppArmor的对比图。
-![对比图][1]
 
-[1]: ./images/1477379689943.jpg "1477379689943.jpg"
 
 # 相关安全项目
 
