@@ -17,6 +17,10 @@ ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
   name = "云飘"
 
 [markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      hardWraps = true
+
   [markup.highlight]
     anchorLineNos = true
     codeFences = true
