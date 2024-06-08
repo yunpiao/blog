@@ -26,13 +26,16 @@ feature:
 ### 3.1 查看 cf 的 r2 中的跨域配置
 ![image.png](https://img.yunpiao.site/2024/04/9df0b0b58b834e213daee6055bac28ee.png)
 默认是空的, 我在里面添加了如上的策略配置, curl 了下, 发现返回的 header 中已经有了 
+
 ![image.png](https://img.yunpiao.site/2024/04/607e982348c1fe9442dcdfe7d0c208cc.png)
 ### 3.2 接下来再复制的时候, 发现问题还是存在
 于是开始查看了下请求, 发现没有红框中的这一条, 于是猜想, 可能是之前的请求已经缓存到磁盘了, 这些请求是没有 Access 的请求字段的
 ![image.png](https://img.yunpiao.site/2024/04/1eb84c60af397aeca64fe33691e9e654.png)
 
 **解决办法也是很简单的, 勾选上停用缓存, 之后直接复制是可以的**
+
 ![image.png](https://img.yunpiao.site/2024/04/a6645c8b320ad4c1332d01a5b239a624.png)
+
 网上也有一些骚操作, 在 url 下加 get 的, 不过不太体面, 我 blog 中太多 url, 还得一个一个改
 
 
