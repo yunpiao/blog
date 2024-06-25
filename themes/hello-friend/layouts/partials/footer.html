@@ -48,6 +48,8 @@
         <span>© {{ now.Year }} Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a> Theme by <a href="https://github.com/lmm214/immmmm/tree/master/themes/hello-friend" target="_blank" rel="noopener">immmmm</a></span>
       </div>
     {{end}}
+    {{- /* busuanzi plugin */ -}}
+    {{- partial "plugin/busuanzi.html" (dict "params" .Site.Params.busuanzi "bsz_type" "footer") -}}
   </div>
 </footer>
 <!-- Google tag (gtag.js) -->
@@ -100,4 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
   },2000)
 });
   </script>
+
+  
 {{ end }}
