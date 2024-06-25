@@ -11,7 +11,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Visit {
-  id        Int      @id @default(autoincrement())
-  visitTime DateTime @default(now())
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
 }
