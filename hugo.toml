@@ -1,5 +1,6 @@
 baseURL = '/'
 languageCode = "zh-CN"
+Language = "zh-CN"
 title = '😄 yunpiao 的 Blog'
 theme = 'hello-friend'
 subtitle = "悟已往不谏，知来者可追"
@@ -9,7 +10,7 @@ paginate =  20
 
 
 # rss 输出数量
-rssLimit = 5
+rssLimit = 10
 timeout = '10m'
 ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
 
