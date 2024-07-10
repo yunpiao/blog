@@ -1,13 +1,13 @@
 ---
 title: blog-Obsidian 使用 obsidian-copy-url-in-preview 插件时, CF R2 提示 CORS 错误
-tags: cloudFlare,r2,图片复制
+tags:
+  - 开源工具
+  - blog
 date: 2024-04-29T14:37:07+08:00
+draft: false
 toc: true
-slug: blog-obsidian-obsidian-copy-url-in-preview-plugin-cf-r2-cors-error
-feature: 
-datetime: 2024-07-03 20:46
-summary: cloudFlare r2图床存在无法复制图片到剪切板的问题，尝试了两个插件都没有解决，最后发现是缓存问题，禁用缓存后解决。
-cover_image_url: ""
+slug: 20240429143707
+feature:
 ---
 
 <!--more-->
