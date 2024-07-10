@@ -1,14 +1,14 @@
 ---
 title: 实战-线上 golang windows 下的内存泄露
-tags:
-  - 线上实战
-  - go
-  - cgo
+tags: 内存泄漏, Windows Server, golang
 date: 2024-04-25T15:28:36+08:00
 draft: false
 toc: true
-slug: 20240425152836
-feature:
+slug: practical-online-golang-windows-memory-leak
+feature: 
+datetime: 2024-07-03 20:48
+summary: 程序运行在Windows Server上，使用golang编译成exe后发现占用的内存越来越多，经过排查发现是某个函数导致内存泄漏。通过逐步尝试定位到问题点，恢复内存泄漏函数的调用。可以使用Windows自带的性能监视器或使用Windows Exporter查看进程状态来观测内存情况。
+cover_image_url: ""
 ---
 
 <!--more-->

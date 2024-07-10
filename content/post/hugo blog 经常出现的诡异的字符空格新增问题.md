@@ -1,9 +1,6 @@
 ---
 title: hugo blog 经常出现的诡异的字符空格新增问题
-tags:
-  - hugo
-  - blog
-  - 杂
+tags: hugo主题, 字间空格, 解决办法
 date: 2024-04-16T15:10:29+08:00
 draft: false
 hideInList: false
@@ -11,8 +8,11 @@ isTop: false
 toc: true
 cover:
   image: https://cdn.sspai.com/2021/07/10/4924403d889cd827d6637a5efb6c5ce2.png?imageMogr2/auto-orient/quality/95/thumbnail/!1420x708r/gravity/Center/crop/1420x708/interlace/1
-slug: 20240416151029
-feature:
+slug: hugo-blog-
+feature: 
+datetime: 2024-07-03 20:52
+summary: 删除网页中引入的自动化工具pangu.min.js以解决网页自动加入空格的问题
+cover_image_url: ""
 ---
 hugo 主题相关问题
 <!--more-->

@@ -3,6 +3,11 @@ title: 集群-ntp时间同步服务
 date: 2022-04-12T10:39:46+08:00
 draft: false
 toc: true
+slug: cluster-ntp-time-synchronization-service
+datetime: 2024-07-03 20:53
+summary: 在分布式集群中，由于不同主机的时区和时间不同，会导致hive或者hbase时间同步错误。为了解决这个问题，可以手动设置时间或使用NTP服务进行同步。
+tags: 时间同步, 分布式集群, NTP服务
+cover_image_url: ""
 ---
 > 本不想做运维的 奈何现在项目缺人手， 不仅需求多， 而且还需要教学弟， 这篇文章主要是记录在分布式集群中出现的hive或者hbase时间同步错误。
 <!--more-->

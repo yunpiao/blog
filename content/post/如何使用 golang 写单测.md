@@ -1,14 +1,16 @@
 ---
 title: 如何使用 golang 写单测
-tags:
-  - 编程经验
+tags: 单测, Golang, 测试
 date: 2024-04-18T17:09:27+08:00
 draft: false
 toc: true
-slug: 20240418170927
+slug: how-to-write-unit-tests-with-golang
 feature: 
 categories:
   - 杂技浅尝
+datetime: 2024-07-03 20:46
+summary: 很多程序员写了几年的代码, 连最基本的单测都不会写, 属实有点说不过去
+cover_image_url: ""
 ---
 很多程序员写了几年的代码, 连最基本的单测都不会写, 属实有点说不过去
 <!--more-->

@@ -1,14 +1,14 @@
 ---
 title: epub书籍导入微信读书无法显示图片
-tags:
-  - 杂
-  - 小说
-  - blog
+tags: mac脚本, HTML属性, 微信读书bug
 date: 2024-06-05T11:28:41+08:00
 draft: false
 toc: true
-slug: 20240605112841
-feature:
+slug: epub-books-imported-to-wechat-readings-fail-to-display-images
+feature: 
+datetime: 2024-07-03 20:51
+summary: mac 执行脚本删除 HTML 文件中的 'data-savepage-src' 属性，解决微信读书导入 epub 后无法正常显示图片的问题。究其原因是微信读书没有正确解析该属性，属于微信读书的 bug。
+cover_image_url: ""
 ---
 
 <!--more-->

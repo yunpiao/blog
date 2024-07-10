@@ -2,12 +2,14 @@
 title: ML-k近邻最近邻
 date: 2022-04-12T10:39:46+08:00
 draft: false
-tags:
-  - 机器学习
+tags: KNN, 距离度量, KD树
 categories:
   - 杂技浅尝
 toc: true
-summary: 这是文章的摘要部分
+summary: KNN是一种基于样本的模型，根据距离最相近的K个样本的类别归类新样本。常见的距离度量方法有欧氏距离、曼哈顿距离、切比雪夫距离和余弦夹角。选择合适的K值和实现KD树的算法可以改进KNN的性能。
+slug: ml-k-nearest-neighbor
+datetime: 2024-07-03 20:45
+cover_image_url: ""
 ---
 #1.KNN介绍
 #1.KNN介绍
