@@ -28,7 +28,7 @@ mongodb-0 mongodb-2 由于各种原因, 已经不可正常服务
     
 - Mongo 卸载后, 重新安装时候先启动 mongo 0, 但是 mongo 0 一直在 oplog 修复数据
     
-- Mongo 重新安装, mongo 0 的 pvc 删除后, mongo 0 优先启动, mongo 0 自己选举自己为了 maste 节点, 后续启动节点与 mongo 0 分裂为了两个集群
+- Mongo 重新安装, mongo 0 的 pvc 删除后, mongo 0 优先启动, mongo 0 自己选举自己为了 master 节点, 后续启动节点与 mongo 0 分裂为了两个集群
     
 
   
