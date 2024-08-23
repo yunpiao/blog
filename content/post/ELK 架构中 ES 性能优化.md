@@ -27,7 +27,7 @@ Logstash 主要是 cpu 密集型服务, 数据传输到 es 的时候为了观察
 ### 2.3 es 侧配置等保持不变
 根据之前的推断, 磁盘 io 主要由于 es index 写入进行的消耗, 所以 es 是本次调节的重点, 暂时保持配置不变, 在验证过程中不断调节 es 配置
 ### 2.4 其他调整
-2. 其他无关服务关闭, 卸载 mongo. Redis .  等无关服务
+1. 其他无关服务关闭, 卸载 mongo. Redis .  等无关服务
 ## 3. 压测步骤
 1. 关闭 logstash 到 es 的输出, 通过 logstash 的 metrics 观察不同配置对 logstash 处理能力的影响
 2. Logstash 配置不变情况下, 调节 es index 生命周期策略等配置, 通过 es 的 metrics 观察不同配置对 doc 数量和 磁盘 io 的影响
@@ -43,13 +43,13 @@ pipeline.batch.delay: 200
 ```
 空间换时间, 内存会有小幅上升, 但是会提升 cpu 处理效率
 
-#### 4.1.5 优化 if else 处理逻辑(暂缓)
+#### 4.1.3 优化 if else 处理逻辑(暂缓)
 由于 logstash 没有 switch 等语句, 只能嵌套多个 if else. 所以可以将中日志频率高的 event code 放在前面
-#### 4.1.8 使用 logstash pipeline, 避免多个数据源的相互影响(暂缓)
+#### 4.1.4 使用 logstash pipeline, 避免多个数据源的相互影响(暂缓)
 Logstash 提供了 logstash pipeline 机制, 避免 filter 之间的相互影响
 参考: https://www.elastic.co/guide/en/logstash/current/configuration.html
 ### 4.2 es 优化
-#### 4.2.2 index segment分段设置 等参数优化 (优先)
+#### 4.2.1 index segment分段设置 等参数优化 (优先)
 索引模版增加 合并相关参数
 ```json
 {
@@ -90,10 +90,10 @@ Logstash 提供了 logstash pipeline 机制, 避免 filter 之间的相互影响
 -  "merge.policy.floor_segment": "2mb", // 小于此大小的段将被优先合并，以减少段的数量并提高查询性能。
 -  "merge.policy.max_merge_at_once": "5",  // 较高的值可以减少段的数量，但也会增加合并操作的 I/O 负载
 -  "merge.policy.max_merged_segment": "5gb"  // 较大的段可以减少段的数量，但也会增加单个段的大小，可能影响查询性能。
-#### 4.2.3 生命周期策略关闭强制合并 (优先)
+#### 4.2.2 生命周期策略关闭强制合并 (优先)
 关闭强制合并, 避免在 index 读写较高时, 进行合并操作, 可以在空闲时段离线进行合并操作
 
-#### 4.2.4 增加温阶段, 在温阶段中, 合并 segement 和降低副本数(暂缓)
+#### 4.2.3 增加温阶段, 在温阶段中, 合并 segement 和降低副本数(暂缓)
 将临近删除的数据, 增加温阶段, 合并 segement 和降低副本数, 以此达到降低磁盘使用量的目的
 
 ## 5. 最终效果
