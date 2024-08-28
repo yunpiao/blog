@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = 'https://blog.yunpiao.site/'
 languageCode = "zh-CN"
 Language = "zh-CN"
 title = '😄 yunpiao 的 Blog'
