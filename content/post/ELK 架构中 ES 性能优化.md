@@ -18,7 +18,7 @@ categories:
 <!--more-->
 
 ## 2. 压测前期准备
-### 2.1 制造大量日志o
+### 2.1 制造大量日志
 该阶段为数据源输入阶段, 为了避免瓶颈在数据制造侧, 所以需要保证上的 filebeat 具有足够的日志制造能力
 最后效果, filebeat 可以达到 70k QPS 的数据发往logstash . (真实数据可以更高, 70k qps 是因为目前单实例 logstash 的 CPU 计算瓶颈, logstash 配置的 output 为空的情况下)
 
