@@ -3,10 +3,10 @@ title: ELK 架构中 ES 性能优化
 tags:
   - elastic
   - 性能优化
-date: 2024-08-28T15:38:44+08:00
+date: 2024-08-28T13:38:44+08:00
 draft: false
 toc: true
-slug: 20240828153844
+slug: 20240828133844
 feature: 
 categories:
   - 杂技浅尝
