@@ -3,11 +3,13 @@ title: ELK 架构中 ES 性能优化
 tags:
   - elastic
   - 性能优化
-date: 2024-08-23T15:38:44+08:00
+date: 2024-08-28T15:38:44+08:00
 draft: false
 toc: true
-slug: 20240823153844
-feature:
+slug: 20240828153844
+feature: 
+categories:
+  - 杂技浅尝
 ---
 ## 1. 背景
 
@@ -16,7 +18,7 @@ feature:
 <!--more-->
 
 ## 2. 压测前期准备
-### 2.1 制造大量日志
+### 2.1 制造大量日志o
 该阶段为数据源输入阶段, 为了避免瓶颈在数据制造侧, 所以需要保证上的 filebeat 具有足够的日志制造能力
 最后效果, filebeat 可以达到 70k QPS 的数据发往logstash . (真实数据可以更高, 70k qps 是因为目前单实例 logstash 的 CPU 计算瓶颈, logstash 配置的 output 为空的情况下)
 
