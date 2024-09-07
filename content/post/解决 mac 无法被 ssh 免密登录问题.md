@@ -1,16 +1,15 @@
 ---
 title: 解决 mac 无法被 ssh 免密登录问题
-tags: 远程登录, 免密登录, 主目录权限
+tags:
+  - mac
+  - 杂
+  - 运维
 date: 2024-04-12T10:39:46+08:00
 draft: false
 hideInList: false
 isTop: true
 feature: 
 toc: true
-slug: solve-mac-unable-to-ssh-passwordless-login-issue
-datetime: 2024-07-03 20:52
-summary: 远程登录加中的mac mini时出现了免密登录的问题, 在执行ssh-copy-id命令后仍然需要输入密码, 经过排查发现是被登录的mac主目录权限不正确导致无法读取authentication文件, 解决方法是修改主目录权限为755.
-cover_image_url: ""
 ---
 
 

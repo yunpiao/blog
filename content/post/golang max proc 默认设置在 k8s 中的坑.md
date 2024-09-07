@@ -1,14 +1,14 @@
 ---
 title: golang max proc 默认设置在 k8s 中的坑
-tags: Kubernetes, Golang, CPU context switching
+tags:
+  - go
+  - k8s
+  - 编程经验
 date: 2024-06-05T15:29:41+08:00
 draft: false
 toc: true
-slug: golang-max-proc-default-setting-in-k8s-pit
-feature: 
-datetime: 2024-07-03 20:47
-summary: In a Kubernetes (k8s) pod, a Golang program's P (processor) count is determined by the number of cores on the physical machine, causing high CPU context switching. By using the 'go.uber.org/automaxprocs' library, this issue can be resolved by automatically setting the maximum P count based on container limits.
-cover_image_url: ""
+slug: 20240605152941
+feature:
 ---
 
 <!--more-->
