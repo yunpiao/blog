@@ -128,14 +128,13 @@ ES data 配置: 双实例 12 核 8g
 	2. pipeline 是一系列处理器（processors）的集合
 
 ## 7. 最佳实践
-- 批次发送到 es
-- 数据预处理放在数据产生侧
-- es 每一个 shard 建议 50G 左右大小
-- 不重要的数据不用保留副本
-- es 的 segement 合并会严重占用磁盘 io, 不需要实时性的数据, 可以减缓合并
-- logstash 是 cpu 密集型, 一般不需要太多内存
-- filebeat 处理功能也很强大, 比如 cache
-
+- 尽量批量发送数据到 Elasticsearch。
+- 数据预处理尽可能在数据产生侧完成。
+- 每个 Elasticsearch shard 的建议大小为 50GB。
+- 不重要的数据可不保留副本。
+- Elasticsearch 的 segment 合并会严重占用磁盘 IO，对于不需要实时处理的数据，可以减缓合并频率。
+- Logstash 是 CPU 密集型应用，一般不需要大量内存。
+- Filebeat 功能强大，可以处理一些数据缓存等任务。
 
 
 
