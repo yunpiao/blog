@@ -67,6 +67,7 @@ identifier = "post"
 name = "文章"
 url = "/post/"
 weight = 1
+
 [[menu.main]]
 name = "标签"
 url = "/tags/"
@@ -76,7 +77,6 @@ weight = 2
 name = "类目"
 url = "/categories/"
 weight = 2
-
 
 [[menu.main]]
 identifier = "gestbook"
@@ -89,6 +89,12 @@ identifier = "about"
 name = "关于我"
 url = "/about/"
 weight = 4
+
+[[menu.main]]
+identifier = "friend"
+name = "友链"
+url = "/friend/"
+weight = 5
 
 [taxonomies]
 category = "categories"
