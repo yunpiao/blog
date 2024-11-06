@@ -1,11 +1,14 @@
 ---
 title: 编程-code review 的检查清单
-tags: []
+tags:
+  - 编程经验
+  - 总结
 date: 2024-11-06T15:05:56+08:00
 draft: false
 toc: true
-slug: 20241106150556
+slug: "20241106150556"
 categories:
+  - 杂技浅尝
 ---
 代码审核清单
 ## 1. 代码结构
