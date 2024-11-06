@@ -10,7 +10,7 @@ paginate =  20
 
 
 # rss 输出数量
-rssLimit = 10
+rssLimit = 30
 timeout = '10m'
 ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
 
