@@ -15,7 +15,7 @@ feature:
 
 ## 太长不看
 mac  可以执行下列脚本
-```
+```bash
 # 指定文件夹路径
 folder_path="./epub 书籍"
 
@@ -38,8 +38,6 @@ for f in "$folder_path"/*; do
     rm -fr ./$file
   fi
 done
-
-
 ```
 ## 删除 HTML 文件中的 'data-savepage-src' 属性
 检查发现是因为图片具有 data-savepage-src 和 src 两个属性, 对于这两个属性, 只要删除 data-savepage-src 属性, 就可以导入微信读书后正常显示图片.

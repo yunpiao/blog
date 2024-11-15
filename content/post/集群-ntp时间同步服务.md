@@ -35,7 +35,7 @@ NTP是Server Client运行方式
 安装NTP服务
 sudo apt-get install ntp
 ## 配置NTPServer
-```
+```bash
 # vi /etc/ntp.conf
 restrict 192.168.100.0 mask 255.255.255.0 nomodify     #本地网段授权访问 
 ```

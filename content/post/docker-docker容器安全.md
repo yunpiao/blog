@@ -19,14 +19,14 @@ toc: true
 
 3.限制快设备io
 
-```nix
+```bash
  	 docker run --rm -ti --name container1 ubuntu bash
  	 dd if=/dev/zero of=testfile0 bs=8k mount=5000 oflag=direct
 ```
 
 修改 Cgroup文件
 
-```elixir
+```bash
 # 查找容器挂载的文件系统“/dev/mapper”的位置
 $ mount|grep ContainerID
 # 查看容器挂载的文件系统中的文件(Path为上条命令取得的返回结果)

@@ -28,7 +28,7 @@ debug1: Authentications that can continue: publickey,password,keyboard-interacti
 
 ## 分析
 client 端检查咩什么问题, 文件也正确, 所以去服务端排查, 查看 sshd 日志输出, 检查发现
-```
+```bash
 Authentication refused: bad ownership or modes for directory /Users/xxx
 ```
 

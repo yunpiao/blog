@@ -1622,7 +1622,9 @@ photos .photo:last-child {
     padding: 5px;
     cursor: pointer;
 }
-
+pre > code {
+	font-size: 14px;	
+}
 .highlight-copy-btn:hover {
     background-color: #666;
 }

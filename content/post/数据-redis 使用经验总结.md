@@ -79,10 +79,10 @@ AOF 先执行命令 在写入内存 再记录日志
 在Redis4.0提出了混合使用AOF和RDB快照的方法，也就是两次RDB快照期间的所有命令操作由AOF日志文件进行记录。这样的好处是RDB快照不需要很频繁的执行，可以避免频繁fork对主线程的影响，而且AOF日志也只记录两次快照期间的操作，不用记录所有操作，
 
 ##  混合持久化
-  - 在Redis 4.0及以上版本中，可以同时使用RDB和AOF进行持久化。
-  - **优化**:
-      - 结合RDB的快速启动和AOF的数据完整性优势。
-      - 在发生故障时，可以使用RDB快速恢复大部分数据，然后使用AOF重放最近的写入操作。
+- 在Redis 4.0及以上版本中，可以同时使用RDB和AOF进行持久化。
+- **优化**:
+	- 结合RDB的快速启动和AOF的数据完整性优势。
+	- 在发生故障时，可以使用RDB快速恢复大部分数据，然后使用AOF重放最近的写入操作。
 ## redis 数据同步
 第一次数据同步， 发送 rdb 文件
 级联的“主-从-从”模式
@@ -195,7 +195,8 @@ lua 脚本为了数据一致性做的改进
 
 #### lua 缓存
 lua 每次执行解析性能有消耗, 可以优化, 使用 cache 将脚本缓存下来
-```
+
+```lua
 script load "redis.call('incr', KEYS[1])" -- 加载后返回 hash 
 EVALSHA da0bf4095ef4b6f337f03ba9dcd326dbc5fc8ace 1 testkey -- 直接使用 hash 执行 lua 脚本
 ```
@@ -287,11 +288,11 @@ rehash 通常在以下两种情况下触发：
 **info Clients**
 -   connected_clients  当前正在连接数量
 **redis 抓包**
-```
+```bash
 sudo tcpdump -i any tcp and port 6379 -n -nn -s0 -tttt -w redis.cap
 ```
 **查看当前连接**
-```
+```bash
 redis-cli  -a "password"  CLIENT LIST|grep -v watch | sort -t " " -k 1
 netstat -na | grep 6379 | grep TIME_WAIT | wc -l
 ```
