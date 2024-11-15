@@ -14,6 +14,7 @@
 	--phoneWidth: (max-width:684px);
 	--tabletWidth: (max-width:900px)
 }
+
 /* 设置友链容器样式 */
 .friend-div {
     display: flex;
@@ -718,9 +719,9 @@ ol ol {
 hr {
 	width: 100%;
 	border: none;
-	background: #dcdcdc;
+    border-top: 1px solid #17d570;  /* 设定颜色 */
 	background: var(--light-border-color);
-	height: 1px
+	height: 2px
 }
 
 .dark hr {
@@ -1620,4 +1621,106 @@ photos .photo:last-child {
 	.db-card{margin:0.8rem 1rem;}
 	.db-card-comment{display: none;}
 }
+
+
+
 /* db-card -------- edn */
+
+.highlight {
+    position: relative;
+}
+
+.highlight pre {
+    padding-right: 75px;
+    /* background-color:#f8f8f8 !important; */
+}
+
+.highlight-copy-btn {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    border: 0;
+    border-radius: 4px;
+    padding: 1px;
+    font-size: 0.8em;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #777;
+    min-width: 50px;
+    text-align: center;
+}
+
+.highlight-copy-btn:hover {
+    background-color: #666;
+}
+
+
+
+.code-container {
+	position: relative;
+  }
+  
+  .copy-btn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background-color: #2980b9;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 3px;
+	font-size: 12px;
+  }
+  
+  .copy-btn:hover {
+	background-color: #3498db;
+  }
+  .code-container {
+	position: relative;
+  }
+  
+  .copy-btn {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background-color: #2980b9;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	cursor: pointer;
+	border-radius: 3px;
+	font-size: 12px;
+  }
+  
+  .copy-btn:hover {
+	background-color: #3498db;
+  }
+
+  .highlight {
+    position: relative;
+}
+
+.highlight pre {
+    padding-right: 75px;
+    /* background-color:#f8f8f8 !important; */
+}
+
+.highlight-copy-btn {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    border: 0;
+    border-radius: 4px;
+    padding: 1px;
+    font-size: 0.8em;
+    line-height: 1.5;
+    color: #fff;
+    background-color: #777;
+    min-width: 50px;
+    text-align: center;
+}
+
+.highlight-copy-btn:hover {
+    background-color: #666;
+}

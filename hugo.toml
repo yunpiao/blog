@@ -73,10 +73,10 @@ name = "标签"
 url = "/tags/"
 weight = 2
 
-[[menu.main]]
-name = "类目"
-url = "/categories/"
-weight = 2
+# [[menu.main]]
+# name = "类目"
+# url = "/categories/"
+# weight = 2
 
 [[menu.main]]
 identifier = "gestbook"
@@ -100,12 +100,13 @@ weight = 5
 category = "categories"
 series = "series"
 tag = "tags"
+
 [social]
 bilibili = "http://example.com/"
 github = "https://github.com/"
 gitlab = "https://gitlab.com/"
 instagram = "http://example.com/"
-mail = "mailto:anon@example.com"
+mail = "mailto:yunpiao111@gmail.com"
 twitter = "https://twitter.com/"
 weibo = "http://example.com/"
 youtube = "https://youtube.com/"
