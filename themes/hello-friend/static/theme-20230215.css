@@ -70,24 +70,7 @@
 }
 
 
-.highlight-copy-btn {
-	position: absolute;
-	top: 7px;
-	right: 7px;
-	border: 0;
-	border-radius: 4px;
-	padding: 1px;
-	font-size: 0.8em;
-	line-height: 1.8;
-	color: #fff;
-	background-color: #777;
-	min-width: 55px;
-	text-align: center;
-  }
-  .highlight-copy-btn:hover {
-	background-color: #666;
-  }
-  
+
 .button-container {
 	display: table;
 	margin-left: auto;
@@ -502,7 +485,7 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	font-family: "LXGW WenKai Screen R",-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
+	font-family: "LXGW WenKai Screen",-apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,sans-serif;
 	font-size: 1.1rem;
 	font-weight: 400;
 	line-height: 2.2;
@@ -832,7 +815,7 @@ margin-left: auto;
 	}
 }
 .post-content {
-	font-family: "LXGW WenKai Screen R", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
+	font-family: "LXGW WenKai Screen", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
 	font-weight: 500;
 	margin-top: 0px;
 	word-break:break-all;
@@ -1016,7 +999,7 @@ margin-left: auto;
 }
 .footer .copyright-font{
 	margin-bottom: 2rem;
-	font-family:  "LXGW WenKai Screen R", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
+	font-family:  "LXGW WenKai Screen", -apple-system,BlinkMacSystemFont,Roboto,Segoe UI,Helvetica,Arial,serif;
 }
 .footer .copyright--user {
 	margin: auto;
@@ -1623,102 +1606,21 @@ photos .photo:last-child {
 }
 
 
-
 /* db-card -------- edn */
-
 .highlight {
     position: relative;
 }
 
-.highlight pre {
-    padding-right: 75px;
-    /* background-color:#f8f8f8 !important; */
-}
-
 .highlight-copy-btn {
     position: absolute;
-    top: 7px;
-    right: 7px;
-    border: 0;
-    border-radius: 4px;
-    padding: 1px;
-    font-size: 0.8em;
-    line-height: 1.5;
+	top: 5px;
+    right: 8px;
+    background-color: #6c757d;
     color: #fff;
-    background-color: #777;
-    min-width: 50px;
-    text-align: center;
-}
-
-.highlight-copy-btn:hover {
-    background-color: #666;
-}
-
-
-
-.code-container {
-	position: relative;
-  }
-  
-  .copy-btn {
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	background-color: #2980b9;
-	color: white;
-	border: none;
-	padding: 5px 10px;
-	cursor: pointer;
-	border-radius: 3px;
-	font-size: 12px;
-  }
-  
-  .copy-btn:hover {
-	background-color: #3498db;
-  }
-  .code-container {
-	position: relative;
-  }
-  
-  .copy-btn {
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	background-color: #2980b9;
-	color: white;
-	border: none;
-	padding: 5px 10px;
-	cursor: pointer;
-	border-radius: 3px;
-	font-size: 12px;
-  }
-  
-  .copy-btn:hover {
-	background-color: #3498db;
-  }
-
-  .highlight {
-    position: relative;
-}
-
-.highlight pre {
-    padding-right: 75px;
-    /* background-color:#f8f8f8 !important; */
-}
-
-.highlight-copy-btn {
-    position: absolute;
-    top: 7px;
-    right: 7px;
-    border: 0;
-    border-radius: 4px;
-    padding: 1px;
-    font-size: 0.8em;
-    line-height: 1.5;
-    color: #fff;
-    background-color: #777;
-    min-width: 50px;
-    text-align: center;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .highlight-copy-btn:hover {

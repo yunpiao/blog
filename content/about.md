@@ -33,7 +33,7 @@ draft: false
 
 ### 博客与交流
 
-我定期在个人博客 [yunpiao.site](http://yunpiao.site) 分享技术见解与行业动态，涵盖 **网络安全**、**大数据处理**、**云计算** 等领域。欢迎对这些话题感兴趣的朋友访问并交流经验。
+我定期在个人博客 [blog.yunpiao.site](http://blog.yunpiao.site) 分享技术见解与行业动态，涵盖 **网络安全**、**大数据处理**、**云计算** 等领域。欢迎对这些话题感兴趣的朋友访问并交流经验。
 
 希望能与志同道合的技术爱好者一起探讨技术的前沿与挑战。
 
@@ -50,12 +50,11 @@ draft: false
 
 符合上述条件的朋友，请在下方评论区留下您的友链信息，格式如下:
 
-```yaml
-- name: yunpiao 的 blog  # 昵称
+```yml
+  name: yunpiao 的 blog  # 昵称
   desc: 悟已往不谏，知来者可追  # 简短介绍
   avatar: https://img.yunpiao.site/2024/11/logo.jpg  # 头像
   link: https://blog.yunpiao.site/  # 站点链接
-
 ```
 
 申请前请先添加本站的友链哦~ 

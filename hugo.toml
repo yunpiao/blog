@@ -25,17 +25,19 @@ ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
   [markup.highlight]
     anchorLineNos = true
     codeFences = true
-    guessSyntax = false
+    guessSyntax = true
     hl_Lines = ''
     hl_inline = false
     lineAnchors = ''
     lineNoStart = 1
-    lineNos = false
-    lineNumbersInTable = true
-    noClasses = true
-    noHl = false
-    style = 'monokai'
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true 
+    noHl = true
+    style = 'rrt'
     tabWidth = 4
+
+
   [markup.tableOfContents]
     endLevel = 3
     ordered = false
@@ -59,6 +61,7 @@ fuse = true # for searchbox. "JSON" must added to output contents. See [outputs]
 math = true # for introducing $KaTeX$
 useChineseFonts = true 
 postDateFormat = "2006-1-2"
+customCSS = ['copy-to-clipboard.js']
 
 [menu]
 # Shown in the side menu.
