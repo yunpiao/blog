@@ -36,6 +36,7 @@
 {{ else if ge $wowWord 5 }}{{$wowBook = "写完一本 埃克苏佩里 的</br>《小王子》了！"}}
 {{ end }}
 
+
 <footer class="footer">
   <div class="footer__inner">
     <div class="copyright copyright-font">
@@ -52,8 +53,7 @@
     {{- partial "plugin/busuanzi.html" (dict "params" .Site.Params.busuanzi "bsz_type" "footer") -}}
   </div>
 </footer>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M808G3QRN8"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -62,18 +62,14 @@
   gtag('config', 'G-M808G3QRN8');
 </script>
 <script type="text/javascript" src="/theme-main-1.js"></script>
+<script type="text/javascript" src="/copy-to-clipboard.js"></script>
 <script type="text/javascript" src="/lately.min.js"></script>
 <script type="text/javascript" src="/waterfall.min.js"></script>
 <script type="text/javascript" src="/imgStatus.min.js"></script>
 <script type="text/javascript" src="/view-image.js"></script>
 <script type="text/javascript" src="/theme-lmm-20230123.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    pangu.autoSpacingPage();
-  });
-</script>
-
-
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M808G3QRN8"></script>
 {{ if .IsHome }}
   <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -100,8 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
         n.appendChild(e[0])
       },1000)
   },2000)
+
 });
   </script>
-
-  
 {{ end }}

@@ -1,5 +1,6 @@
-baseURL = '/'
+baseURL = 'https://blog.yunpiao.site/'
 languageCode = "zh-CN"
+Language = "zh-CN"
 title = '😄 yunpiao 的 Blog'
 theme = 'hello-friend'
 subtitle = "悟已往不谏，知来者可追"
@@ -9,7 +10,7 @@ paginate =  20
 
 
 # rss 输出数量
-rssLimit = 5
+rssLimit = 10
 timeout = '10m'
 ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
 
@@ -29,12 +30,14 @@ ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
     hl_inline = false
     lineAnchors = ''
     lineNoStart = 1
-    lineNos = false
-    lineNumbersInTable = true
-    noClasses = true
-    noHl = false
-    style = 'monokai'
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true 
+    noHl = true
+    style = 'doom-one'
     tabWidth = 4
+
+
   [markup.tableOfContents]
     endLevel = 3
     ordered = false
@@ -58,6 +61,7 @@ fuse = true # for searchbox. "JSON" must added to output contents. See [outputs]
 math = true # for introducing $KaTeX$
 useChineseFonts = true 
 postDateFormat = "2006-1-2"
+customCSS = ['copy-to-clipboard.js']
 
 [menu]
 # Shown in the side menu.
@@ -66,16 +70,16 @@ identifier = "post"
 name = "文章"
 url = "/post/"
 weight = 1
+
 [[menu.main]]
 name = "标签"
 url = "/tags/"
 weight = 2
 
-[[menu.main]]
-name = "类目"
-url = "/categories/"
-weight = 2
-
+# [[menu.main]]
+# name = "类目"
+# url = "/categories/"
+# weight = 2
 
 [[menu.main]]
 identifier = "gestbook"
@@ -89,16 +93,23 @@ name = "关于我"
 url = "/about/"
 weight = 4
 
+[[menu.main]]
+identifier = "friend"
+name = "友链"
+url = "/friend/"
+weight = 5
+
 [taxonomies]
 category = "categories"
 series = "series"
 tag = "tags"
+
 [social]
 bilibili = "http://example.com/"
 github = "https://github.com/"
 gitlab = "https://gitlab.com/"
 instagram = "http://example.com/"
-mail = "mailto:anon@example.com"
+mail = "mailto:yunpiao111@gmail.com"
 twitter = "https://twitter.com/"
 weibo = "http://example.com/"
 youtube = "https://youtube.com/"

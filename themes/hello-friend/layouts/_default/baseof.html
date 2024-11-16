@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $.Site.Language }}">
+<html lang="zh-CN">
   <head>
     {{ block "title" . }}
       <title>{{ if .IsHome }}{{ $.Site.Title }}{{ with $.Site.Params.Subtitle }} — {{ . }}{{ end }}{{ else }}{{ .Title }} :: {{ $.Site.Title }}{{ with $.Site.Params.Subtitle }} — {{ . }}{{ end }}{{ end }}</title>
@@ -7,6 +7,7 @@
     {{ partial "head.html" . }}
     {{ block "head" . }}
     {{ end }}
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/lxgwwenkaiscreenr.css" /> -->
   </head>
   <body class="{{ if ne $.Site.Params.defaultTheme "light" -}} dark {{- end -}}">
     <script>var getTheme = localStorage.getItem("theme") || '';if(getTheme == 'dark'){document.body.classList.add("dark")}else if(getTheme == 'light'){document.body.classList.remove("dark")}</script>

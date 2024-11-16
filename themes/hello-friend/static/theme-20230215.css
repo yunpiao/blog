@@ -14,24 +14,63 @@
 	--phoneWidth: (max-width:684px);
 	--tabletWidth: (max-width:900px)
 }
-.highlight-copy-btn {
-	position: absolute;
-	top: 7px;
-	right: 7px;
-	border: 0;
-	border-radius: 4px;
-	padding: 1px;
-	font-size: 0.8em;
-	line-height: 1.8;
-	color: #fff;
-	background-color: #777;
-	min-width: 55px;
-	text-align: center;
-  }
-  .highlight-copy-btn:hover {
-	background-color: #666;
-  }
-  
+
+/* 设置友链容器样式 */
+.friend-div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    transition: transform 0.2s;
+}
+
+.friend-div:hover {
+    transform: scale(1.02);
+}
+
+/* 设置图片样式 */
+.friend-div img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 名称和描述容器 */
+.friend-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 友链名称样式 */
+.friend-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* 友链描述样式 */
+.friend-info {
+    font-size: 14px;
+    color: #666;
+}
+
+/* 整体居中 */
+.friend-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+
+
 .button-container {
 	display: table;
 	margin-left: auto;
@@ -443,7 +482,6 @@ html {
 *,:after,:before {
 	box-sizing: inherit
 }
-
 body {
 	margin: 0;
 	padding: 0;
@@ -664,9 +702,9 @@ ol ol {
 hr {
 	width: 100%;
 	border: none;
-	background: #dcdcdc;
+    border-top: 1px solid #17d570;  /* 设定颜色 */
 	background: var(--light-border-color);
-	height: 1px
+	height: 2px
 }
 
 .dark hr {
@@ -1566,4 +1604,27 @@ photos .photo:last-child {
 	.db-card{margin:0.8rem 1rem;}
 	.db-card-comment{display: none;}
 }
+
+
 /* db-card -------- edn */
+.highlight {
+    position: relative;
+}
+
+.highlight-copy-btn {
+    position: absolute;
+	top: 5px;
+    right: 8px;
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
+pre > code {
+	font-size: 14px;	
+}
+.highlight-copy-btn:hover {
+    background-color: #666;
+}

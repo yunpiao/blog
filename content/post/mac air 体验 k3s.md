@@ -57,7 +57,7 @@ c1581c4030.zicp.fun
 
 加拉取仓库
 
-```
+```bash
 cat > /etc/rancher/k3s/registries.yaml <<EOF
 mirrors:
   docker.io:

@@ -37,7 +37,7 @@ GOMAXPROCS: 16
 ## 解决
 这种常见问题, 一般都有现成的方案
 
-```
+```go
 	_ "go.uber.org/automaxprocs" // 根据容器配额设置 maxprocs
 ```
 

@@ -1,6 +1,18 @@
-{{ if .Get "url" }}
-<div class="archive-item links-item cf-friends">
-	<img loading="lazy" class="archive-list-image avatar" src="{{- if .Get "src" -}}{{- .Get "src" -}}{{- else -}}https://gravatar.loli.net/avatar/{{ .Get "md5" -}}{{- end -}}"/>
-	<a target="_blank" href={{ .Get "url" }} >{{ .Get "name" }}</a>
-</div>
+{{ if .IsNamedParams }}
+{{- $src := .Get "logo" -}}
+{{- $small := .Get "logo_small" | default $src -}}
+{{- $large := .Get "logo_large" | default $src -}}
+<div class="friend-div">
+	<a target="_blank" href={{ .Get "url" | safeURL }} title={{ .Get "name" }} >
+	  <img class="lazyload"
+		   src={{ $src | safeURL }}
+		   data-src={{ $src | safeURL }}
+		   alt={{ .Get "name" }}
+		   data-sizes="auto"
+		   data-srcset="{{ $small | safeURL }}, {{ $src | safeURL }} 1.5x, {{ $large | safeURL }} 2x" />
+	  <span class="friend-name">{{ .Get "name" }}</span>
+	  <span class="friend-info">{{ .Get "word" }}</span>
+	</a>
+  </div>
+  
 {{ end }}
