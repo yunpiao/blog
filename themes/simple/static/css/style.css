@@ -263,7 +263,7 @@ a {
     color: var(--secondary-color);
     text-decoration: none; /* 移除默认下划线 */
     transition: all 0.3s ease; /* 平滑的过渡效果 */
-    font-size: 1rem; /* 提升链接字体大小 */
+    font-size: 1.3rem; /* 提升链接字体大小 */
     font-weight: 500; /* 让字体稍微更突出 */
     line-height: 1.6;
 }
@@ -275,41 +275,110 @@ a {
 
 .toc-content ul ul {
     margin-top: 0.4rem; /* 增加上下层级之间的间距 */
-    padding-left: 1.2rem; /* 缩进子级内容 */
+    padding-left: 1.1rem; /* 缩进子级内容 */
     border-left: 2px dashed #dfe6e9; /* 添加虚线左边框以区分层级 */
+    font-size: 1.1rem; /* 提升链接字体大小 */
 }
 
 /* 子项内容 */
 .toc-content ul ul li {
     margin: 0.4rem 0; /* 子级内容间距略小 */
+    font-size: 1.1rem; /* 提升链接字体大小 */
 }
 
 /* 子级链接样式 */
 .toc-content ul ul a {
-    font-size: 0.95rem; /* 子级字体稍微小一点 */
     color: #636e72; /* 子级使用稍微淡一点的颜色 */
+    font-size: 1.0rem; /* 提升链接字体大小 */
+
 }
 
 
 
 /* 文章内容 */
-.post-header {
-    margin-bottom: 2rem;
-}
-
-.tag {
-    display: inline-block;
-    margin-right: 0.5rem;
-    color: var(--secondary-color);
-}
-
 .post-content {
-    line-height: var(--line-height-base);
-    font-size: var(--font-size-base);
+    line-height: 1.8;
+    font-size: 1.2rem;  /* 增大字体 */
+    color: var(--text-color);
 }
 
 .post-content p {
-    margin: 1.2em 0;
+    margin: 1.5em 0;
+    font-size: 1.2rem;  /* 段落字体 */
+}
+
+.post-content h1 {
+    font-size: 2.2rem;  /* 增大标题字体 */
+}
+
+.post-content h2 {
+    font-size: 1.9rem;
+}
+
+.post-content h3 {
+    font-size: 1.6rem;
+}
+
+.post-content h4 {
+    font-size: 1.4rem;
+}
+
+.post-content h5 {
+    font-size: 1.3rem;
+}
+
+.post-content h6 {
+    font-size: 1.2rem;
+}
+
+.post-content ul,
+.post-content ol {
+    font-size: 1.2rem;  /* 列表字体 */
+    padding-left: 1.5em;
+    margin: 1em 0;
+}
+
+.post-content blockquote {
+    font-size: 1.2rem;  /* 引用字体 */
+    line-height: 1.8;
+    border-left: 4px solid var(--border-color);
+    margin: 1.5em 0;
+    padding: 0.8em 1.5em;
+    color: var(--secondary-color);
+    background-color: var(--bg-secondary);
+}
+
+/* 代码字体 */
+.post-content code {
+    font-size: 1.1rem;  /* 行内代码字体 */
+}
+
+.post-content pre {
+    font-size: 1.1rem;  /* 代码块字体 */
+    line-height: 1.6;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5em auto;
+}
+
+.post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+
+.post-content table th,
+.post-content table td {
+    padding: 0.5em;
+    border: 1px solid var(--border-color);
+}
+
+.post-content table th {
+    background: #f8f9fa;
 }
 
 /* 标题样式优化 */
@@ -372,73 +441,6 @@ a {
 
 .post-content h4::before {
     content: "####";
-}
-
-.post-content h1 {
-    font-size: 2em;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
-}
-
-.post-content h2 {
-    font-size: 1.75em;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.3rem;
-}
-
-.post-content h3 {
-    font-size: 1.5em;
-}
-
-.post-content h4 {
-    font-size: 1.25em;
-}
-
-.post-content h5 {
-    font-size: 1.1em;
-}
-
-.post-content h6 {
-    font-size: 1em;
-}
-
-.post-content img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 1.5em auto;
-}
-
-.post-content blockquote {
-    font-size: var(--font-size-base);
-    font-style: italic;
-    line-height: var(--line-height-base);
-    border-left: 4px solid var(--border-color);
-    margin: 1.5em 0;
-    padding: 0.5em 1.5em;
-    color: var(--secondary-color);
-}
-
-.post-content ul,
-.post-content ol {
-    padding-left: 1.5em;
-    margin: 1em 0;
-}
-
-.post-content table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1em 0;
-}
-
-.post-content table th,
-.post-content table td {
-    padding: 0.5em;
-    border: 1px solid var(--border-color);
-}
-
-.post-content table th {
-    background: #f8f9fa;
 }
 
 /* 代码样式 */
@@ -813,9 +815,6 @@ pre > code {
 .friend-div {
     display: flex;
     align-items: center; /* 垂直居中图片和文字 */
-    padding: 12px 16px;
-    margin-bottom: 12px;
-    border-radius: 8px;
     background-color: #f9f9f9; 
     transition: all 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -863,4 +862,28 @@ pre > code {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* 归档链接样式 */
+.view-archives {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.archive-link {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.archive-link:hover {
+    color: var(--primary-color);
+    background-color: var(--border-color);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

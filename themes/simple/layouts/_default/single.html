@@ -23,29 +23,6 @@
     </div>
 
 
-    {{ if or .Next .Prev }}
-    <div class="pagination">
-        <div class="pagination__buttons">
-            {{ if .Next }}
-            <span class="button previous">
-                <a href="{{ .Next.Permalink }}">
-                    <span class="button__icon">←</span>
-                    <span class="button__text">{{ .Next.Title }}</span>
-                </a>
-            </span>
-            {{ end }}
-            {{ if .Prev }}
-            <span class="button next">
-                <a href="{{ .Prev.Permalink }}">
-                    <span class="button__text">{{ .Prev.Title }}</span>
-                    <span class="button__icon">→</span>
-                </a>
-            </span>
-            {{ end }}
-        </div>
-    </div>
-    {{ end }}
-
     {{ partial "comments.html" . }}
 </article>
 {{ end }}

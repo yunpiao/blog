@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="content-list">
+    {{ with .Site.Params.description }}
+    <h1>{{ . }}</h1>
+    {{ end }}
+
+    {{ $pages := where .Site.RegularPages "Type" "post" }}
+    <ul class="post-list">
+        {{ range first 10 $pages }}
+        <li class="post-item">
+            <time>{{ .Date.Format "01-02" }}</time>
+            <a href="{{ .Permalink }}" class="post-title-link">{{ .Title }}</a>
+            {{ with .Params.description }}
+            <span class="post-description">{{ . }}</span>
+            {{ end }}
+        </li>
+        {{ end }}
+    </ul>
+
+    <div class="view-archives">
+        <a href="/post/" class="archive-link">查看全部文章</a>
+    </div>
+</div>
+{{ end }}
