@@ -78,18 +78,19 @@ header, main, footer {
 
 .post-item {
     display: flex;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.5rem;
     align-items: center;
     margin-bottom: 0.2rem;
     padding-bottom: 0.2rem;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     white-space: nowrap;
 }
 
 .post-item time {
     color: var(--secondary-color);
     margin-right: 1.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     min-width: 4rem;
 }
 
@@ -741,15 +742,7 @@ pre > code {
     margin: 0;
 }
 
-.post-item {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 1.5rem;
 
-}
 
 .post-item time {
     color: var(--secondary-color);
