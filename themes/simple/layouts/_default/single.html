@@ -1,0 +1,51 @@
+{{ define "main" }}
+<article class="post">
+    {{ partial "breadcrumb.html" . }}
+    <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+    <div class="clear"></div>
+    <div class="post-meta">
+        <span class="post-date">发布时间 {{ .Date.Format "2006-01-02 15:04:05" }}</span>
+        <span class="meta-divider">/</span>
+        <span class="post-reading">{{- partial "plugin/busuanzi.html" (dict "params" .Site.Params.busuanzi "bsz_type" "page-reading") -}}</span>
+    </div>
+
+    {{ if and (eq .Type "post") .TableOfContents }}
+    <div class="post-toc">
+        <div class="toc-title">目录</div>
+        <div class="toc-content">
+            {{ .TableOfContents }}
+        </div>
+    </div>
+    {{ end }}
+
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+
+
+    {{ if or .Next .Prev }}
+    <div class="pagination">
+        <div class="pagination__buttons">
+            {{ if .Next }}
+            <span class="button previous">
+                <a href="{{ .Next.Permalink }}">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">{{ .Next.Title }}</span>
+                </a>
+            </span>
+            {{ end }}
+            {{ if .Prev }}
+            <span class="button next">
+                <a href="{{ .Prev.Permalink }}">
+                    <span class="button__text">{{ .Prev.Title }}</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+    {{ partial "comments.html" . }}
+</article>
+{{ end }}

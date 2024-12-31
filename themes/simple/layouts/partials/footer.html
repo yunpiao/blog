@@ -1,0 +1,9 @@
+<div class="footer-content">
+    <div class="copyright">
+        {{ now.Format "2006" }} {{ .Site.Title }}
+    </div>
+    {{- partial "plugin/busuanzi.html" (dict "params" .Site.Params.busuanzi "bsz_type" "footer") -}}
+    <div class="powered-by">
+        Powered by <a href="https://gohugo.io">Hugo</a>
+    </div>
+</div>

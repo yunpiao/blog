@@ -1,0 +1,23 @@
+{{ if .IsNamedParams }}
+{{ $name := .Get "name" }}
+{{ $url := .Get "url" }}
+{{ $avatar := .Get "avatar" }}
+{{ $desc := .Get "desc" }}
+{{- $src := .Get "logo" -}}
+{{- $small := .Get "logo_small" | default $src -}}
+{{- $large := .Get "logo_large" | default $src -}}
+
+<div class="friend-div">
+    <img 		   src={{ $src | safeURL }}
+	data-src={{ $src | safeURL }} alt="{{ $name }}" loading="lazy">
+    <div class="friend-content">
+        <a href="{{ $url }}" class="friend-name" target="_blank">{{ $name }}
+			<span class="friend-info">{{ .Get "word" }}</span>
+
+		</a>
+
+
+    </div>
+</div>
+
+{{ end }}

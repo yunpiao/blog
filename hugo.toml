@@ -2,7 +2,7 @@ baseURL = 'https://blog.yunpiao.site/'
 languageCode = "zh-CN"
 Language = "zh-CN"
 title = '😄 yunpiao 的 Blog'
-theme = 'hello-friend'
+theme = 'simple'
 subtitle = "悟已往不谏，知来者可追"
 hasCJKLanguage = true
 # 每页显示的文章数量用于分页
@@ -119,9 +119,12 @@ zhihu = "http://example.com/"
 [outputs]
   home = ["HTML","Atom","JSON"] # <domain>/atom.xml
   page = ["HTML"]
+
+
 [outputFormats.Atom]
   mediatype = "application/rss"
   baseName = "atom"
+
 [article]
 	showComments = true
 

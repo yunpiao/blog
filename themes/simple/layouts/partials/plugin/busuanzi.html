@@ -1,0 +1,34 @@
+{{ if .params.enable }}
+    {{ if eq .bsz_type "footer" }}
+        {{/* 只有 footer 才刷新，防止页面进行多次调用，计数重复 */}}
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    {{ end }}
+
+    {{ if or (eq .params.site_pv true) (eq .params.site_uv true) (eq .params.page_pv true) }}
+        {{ if eq .bsz_type "footer" }}
+            <div class="busuanzi-footer">
+                {{ if eq .params.site_pv true }}
+                    <span id="busuanzi_container_value_site_pv">
+                        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                    </span>
+                {{ end }}
+
+                {{ if and (eq .params.site_pv true) (eq .params.site_uv true) }}
+                    <span class="separator">|</span>
+                {{ end }}
+
+                {{ if eq .params.site_uv true }}
+                    <span id="busuanzi_container_value_site_uv">
+                        访客数 <span id="busuanzi_value_site_uv"></span> 人
+                    </span>
+                {{ end }}
+            </div>
+        {{ end }}
+
+        {{ if and (eq .params.page_pv true) (eq .bsz_type "page-reading") }}
+            <span id="busuanzi_container_value_page_pv">
+                <span id="busuanzi_value_page_pv"></span> 次阅读
+            </span>
+        {{ end }}
+    {{ end }}
+{{ end }}
