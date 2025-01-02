@@ -116,10 +116,17 @@ youtube = "https://youtube.com/"
 zhihu = "http://example.com/"
 # any icon in layouts/partials/svg can be used by the name without the "-line.svg"
 
-[outputs]
-  home = ["HTML","Atom","JSON"] # <domain>/atom.xml
-  page = ["HTML"]
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
 
+[outputs]
+  home = ["HTML", "Atom", "JSON", "SITEMAP"]
+  page = ["HTML"]
+  section = ["HTML", "RSS", "SITEMAP"]
+  taxonomy = ["HTML", "SITEMAP"]
+  term = ["HTML", "SITEMAP"]
 
 [outputFormats.Atom]
   mediatype = "application/rss"
