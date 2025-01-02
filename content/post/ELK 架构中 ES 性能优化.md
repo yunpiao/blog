@@ -1,3 +1,4 @@
+gewu
 ---
 title: ELK 架构中 ES 性能优化
 tags:
@@ -118,7 +119,7 @@ ES data 配置: 双实例 12 核 8g
 	1. jvm 直接占用内存, 不是实际使用的内存
 	2. 实际要看 jvm 内的指标量
 3. 什么是 segement, 为什么要合并, 什么时候合并
-	1. Elasticsearch 中，段是一个倒排索引的基本单元
+	1.  Elasticsearch 中，段是一个倒排索引的基本单元
 	2. es 会自动和手动合并 segement
 	3. segement 不变, 只能被合并, 合并可以通过参数调节
 	4. 数据首先写入内存缓冲区，然后定期刷新到新的段中
