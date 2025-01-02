@@ -28,6 +28,9 @@ body {
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    background:url('/images/bg.png');   
+     filter: blur(0.1px);
+
 }
 
 /* 布局 */
