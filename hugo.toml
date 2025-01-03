@@ -34,7 +34,7 @@ ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
     lineNumbersInTable = false
     noClasses = true 
     noHl = true
-    style = 'doom-one'
+    style = 'emacs'
     tabWidth = 4
 
 

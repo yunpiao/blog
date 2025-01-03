@@ -10,6 +10,7 @@
     --background-color: #ffffff;
     --link-color: #0066cc;
     --border-color: #eee;
+    /* --font-family-base: bree serif,sans-serif; */
     --font-family-base: "LXGW WenKai", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
     --font-family-mono: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
     --font-size-base: 16px;
@@ -28,13 +29,13 @@ body {
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    background:url('/images/ep_naturalwhite.png');
+    background:url('/images/bg.webp');
      filter: blur(0.1px);
 }
 
 /* 布局 */
 header, main, footer {
-    max-width: 800px;
+    max-width: 70%;
     margin: 0 auto;
     padding: 1rem;
 }
@@ -574,7 +575,7 @@ a {
 /* 代码样式 */
 pre {
     background: #f5f5f5;
-    padding: 1rem;
+    padding: 1em;
     border-radius: 4px;
     overflow-x: auto;
     margin: 1.5rem 0;
@@ -585,14 +586,12 @@ pre {
 }
 
 code {
-    font-family: var(--font-family-mono, 'Fira Code', monospace); /* 默认使用等宽字体 */
-    background: #1e1e1e; /* 更柔和的深色背景，保护眼睛 */
-    padding: 0.3em 0.5em; /* 增加内边距，让代码块更清晰 */
-    border-radius: 5px; /* 圆角更大，视觉上更柔和 */
-    font-size: var(--font-size-sm, 0.9rem); /* 提供默认值，防止变量为空 */
-    color: #dcdcdc; /* 改为浅灰色，减少纯白的锐利感 */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 添加微弱阴影，提升立体感 */
-    border: 1px solid #2a2a2a; /* 添加细边框，与背景形成区分 */
+    font-family: var(--font-family-mono, 'Fira Code', monospace);
+    padding: 0.3em 0.5em;
+    border-radius: 3px;
+    font-size: 0.9em;
+    line-height: 1.6;
+    margin: 0 0.2em;
 }
 
 pre code {
@@ -601,6 +600,14 @@ pre code {
     line-height: 1.5; /* 增加行高，提升可读性 */
 }
 
+pre code {
+    display: block;
+    padding: 1em;
+    overflow-x: auto;
+    border: 1px solid #3e4451;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1em 0;
+}
 
 .copy-button-container {
     position: absolute;
@@ -811,13 +818,13 @@ pre:hover .copy-button-container {
 .highlight {
     position: relative;
     white-space: nowrap; /* 默认不换行 */
+    background-color: #abb2bf;
 }
 
 .highlight-copy-btn {
     position: absolute;
 	top: 5px;
     right: 8px;
-    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 3px;
