@@ -1,5 +1,5 @@
 ---
-title: golang max proc 默认设置在 k8s 中的坑
+title: 后端-golang max proc 默认设置在 k8s 中的坑
 tags:
   - go
   - k8s

@@ -1,4 +1,3 @@
-gewu
 ---
 title: ELK 架构中 ES 性能优化
 tags:

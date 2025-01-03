@@ -40,7 +40,87 @@ header, main, footer {
     padding: 1rem;
 }
 
-/* 导航 */
+
+.site-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#Logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.tools {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tools a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;  /* 增大导航栏字体 */
+    padding: 4px 12px;  /* 增加水平内边距 */
+    border-radius: 4px;
+    font-weight: 500;  /* 稍微加粗 */
+}
+
+.tools a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+.v2p-hover-btn {
+    transition: all 0.2s ease;
+}
+
+#search-container {
+    position: relative;
+    margin: 0 20px;
+}
+
+#search {
+    width: 250px;
+    padding: 5px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    background-color: var(--content-bg);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+#search:focus {
+    border-color: var(--link-color);
+}
+
+#search-result {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--content-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-top: 5px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.main-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
 .site-nav {
     display: flex;
     justify-content: space-between;
@@ -49,11 +129,28 @@ header, main, footer {
     border-bottom: 1px solid var(--border-color);
 }
 
-.site-title a {
+.nav-container {
+    background-color: var(--content-bg);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.site-title {
     font-size: 1.5rem;
     font-weight: bold;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.site-title a {
     color: var(--primary-color);
     text-decoration: none;
+}
+
+.site-title a:hover {
+    color: var(--link-color);
 }
 
 .menu-item {
@@ -144,6 +241,11 @@ header, main, footer {
 
 /* 面包屑导航 */
 .breadcrumb {
+    background-color: var(--content-bg);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
     margin-bottom: 2rem;
     font-size: 1rem;
     color: rgb(119, 117, 117)
@@ -173,6 +275,14 @@ header, main, footer {
 }
 
 /* 文章标题和元信息 */
+.post-header {
+    background-color: var(--content-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
 .post-title {
 	font-weight: 400;
 	font-size: 1.8rem;
@@ -181,9 +291,9 @@ header, main, footer {
 	margin: 0 0 10px;
 	--shadow-color: rgba(0,0,0,0.12);
 	--shadow: 0 8px 20px var(--shadow-color);
-    text-decoration: underline; /* 保留下划线 */
-
+    /* 移除下划线 */
 }
+
 .post-title a {
 	text-decoration: none;
     color: inherit;
@@ -229,14 +339,14 @@ a {
     margin: 2rem 0;
     padding: 1.5rem 1.8rem; 
     background-color: var(--secondary-bg);
+    border: 1px solid ;
     border-radius: 10px; 
-    border: 1px solid var(--border-color);
     box-shadow: var(--shadow);
 }
 
 /* 目录标题 */
 .toc-title {
-    font-size: 1.3rem; 
+    font-size: 1.1rem; 
     font-weight: bold;
     margin-bottom: 1rem;
     color: var(--primary-color);
@@ -259,17 +369,16 @@ a {
 
 .toc-content li {
     margin: 0.6rem 0; /* 增加每一项的间距，提升清晰度 */
-    line-height: 1.8; /* 增加行高，让文字更易读 */
+    line-height: 1.2; /* 增加行高，让文字更易读 */
 }
 
 /* 链接样式 */
 .toc-content a {
-    color: var(--secondary-color);
     text-decoration: none; /* 移除默认下划线 */
     transition: all 0.3s ease; /* 平滑的过渡效果 */
-    font-size: 1.3rem; /* 提升链接字体大小 */
-    font-weight: 500; /* 让字体稍微更突出 */
-    line-height: 1.6;
+    font-size: 1.1rem; /* 提升链接字体大小 */
+    font-weight: 800; /* 让字体稍微更突出 */
+    line-height: 1.3;
 }
 
 /* 目录层级缩进 */
@@ -304,6 +413,10 @@ a {
     line-height: 1.8;
     font-size: 1.2rem;  /* 增大字体 */
     color: var(--text-color);
+    background-color: var(--content-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
 }
 
 .post-content p {
@@ -313,14 +426,35 @@ a {
 
 .post-content h1 {
     font-size: 2.2rem;  /* 增大标题字体 */
+    margin-top: 1.5em;
 }
 
-.post-content h2 {
-    font-size: 1.9rem;
+
+.post-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;  /* h2的横线稍细一点 */
+    background: linear-gradient(to right, rgb(66, 185, 131) 20%, transparent);
+    opacity: 0.6;
+
 }
 
 .post-content h3 {
     font-size: 1.6rem;
+}
+
+.post-content h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;  /* h3的横线宽度减半 */
+    height: 1px;
+    background: linear-gradient(to right, var(--primary-color) 10%, transparent);
+    opacity: 0.4;
 }
 
 .post-content h4 {
@@ -390,8 +524,6 @@ a {
 .post-content h2,
 .post-content h3 {
     position: relative;
-    padding-bottom: 0.5em;
-    margin-top: 2em;
 }
 
 .post-content h1::after {
@@ -401,17 +533,10 @@ a {
     left: 0;
     height: 1px;
     width: 100%;
+    background: linear-gradient(to right, rgb(66, 185, 131) 20%, transparent);
+
 }
 
-.post-content h2::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background: var(--border-color);
-}
 
 .post-content h4,
 .post-content h5,
@@ -460,21 +585,23 @@ pre {
     position: relative;
 }
 
-pre code {
-    padding: 0;
-    background: none;
-    font-size: inherit;
-    color: inherit;
+code {
+    font-family: var(--font-family-mono, 'Fira Code', monospace); /* 默认使用等宽字体 */
+    background: #1e1e1e; /* 更柔和的深色背景，保护眼睛 */
+    padding: 0.3em 0.5em; /* 增加内边距，让代码块更清晰 */
+    border-radius: 5px; /* 圆角更大，视觉上更柔和 */
+    font-size: var(--font-size-sm, 0.9rem); /* 提供默认值，防止变量为空 */
+    color: #dcdcdc; /* 改为浅灰色，减少纯白的锐利感 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 添加微弱阴影，提升立体感 */
+    border: 1px solid #2a2a2a; /* 添加细边框，与背景形成区分 */
 }
 
-code {
-    font-family: var(--font-family-mono);
-    background: #f5f5f5;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-size: var(--font-size-sm);
-    color: #24292e;
+pre code {
+    display: block; /* 让预格式文本中的代码块独占一行 */
+    white-space: pre-wrap; /* 自动换行，防止长代码溢出 */
+    line-height: 1.5; /* 增加行高，提升可读性 */
 }
+
 
 .copy-button-container {
     position: absolute;
@@ -684,13 +811,14 @@ pre:hover .copy-button-container {
 /* db-card -------- edn */
 .highlight {
     position: relative;
+    white-space: nowrap; /* 默认不换行 */
 }
 
 .highlight-copy-btn {
     position: absolute;
 	top: 5px;
     right: 8px;
-    background-color: #6c757d;
+    background-color: #000000;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -699,6 +827,8 @@ pre:hover .copy-button-container {
 }
 pre > code {
 	font-size: 14px;	
+    white-space: nowrap; /* 默认不换行 */
+
 }
 .highlight-copy-btn:hover {
     background-color: #666;
@@ -771,17 +901,13 @@ pre > code {
 }
 
 .post-meta {
-    color: var(--secondary-color);
-    margin-left: auto;
-    font-size: 0.7rem;
-    display: flex;
-    gap: 0.1rem;
-    flex-shrink: 0;
+    color: #888;  /* 更亮的灰色 */
+    font-size: 0.9rem;
+    margin: 1rem 0;
 }
 
-.post-tag {
-    color: var(--secondary-color);
-    margin-left: 0.5rem;
+.post-meta span {
+    color: #888;  /* 确保数字也是更亮的灰色 */
 }
 
 .post-meta {
@@ -806,59 +932,105 @@ pre > code {
 }
 
 
+
 /* 设置友链容器样式 */
 /* 单个友链容器：图片和文字一行排列 */
+/* 设置友链容器样式 */
 .friend-div {
     display: flex;
     align-items: center; /* 垂直居中图片和文字 */
-    background-color: #f9f9f9; 
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 8px 12px; /* 缩小容器内边距 */
+    background: var(--background-color, #fff); /* 背景色 */
+    border-radius: 6px; /* 圆角 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* 轻柔阴影 */
+    cursor: pointer;
 }
 
 .friend-div:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px); /* 鼠标悬停轻微浮动效果 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 增强悬停阴影 */
 }
 
+/* 友链图片样式 */
 .friend-div img {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    width: 50px; /* 更小的头像 */
+    height: 50px;
+    border-radius: 80%;
     object-fit: cover;
-    margin-right: 16px;
-    border: 2px solid var(--border-color);
+    margin-right: 20px; /* 缩小图片和文字间距 */
+    border: 2px solid var(--border-color, #ddd); /* 边框 */
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+.friend-div:hover img {
+    transform: scale(1.05); /* 鼠标悬停时轻微放大图片 */
+    border-color: var(--primary-color, #00bcd4); /* 改变边框颜色 */
+}
+
+/* 内容容器 */
 .friend-content {
+    display: flex;
+    flex-direction: column; /* 调整文字为竖向布局 */
     flex: 1;
     min-width: 0;
 }
 
+/* 将名字和描述放在一行 */
+.friend-name-info {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    gap: 8px; /* 名字和描述之间的间距 */
+    white-space: nowrap; /* 禁止换行 */
+    overflow: hidden;
+    text-overflow: ellipsis; /* 超出部分省略 */
+}
+
+/* 友链名称样式 */
 .friend-name {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--primary-color);
+    font-size: 1rem; /* 更小的字体 */
+    font-weight: 600; /* 保持醒目 */
+    color: var(--primary-color, #333); /* 主色 */
     text-decoration: none;
-    margin-bottom: 4px;
+    transition: color 0.3s ease;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .friend-name:hover {
-    color: var(--link-color);
+    color: var(--link-color, #007acc); /* 鼠标悬停颜色 */
 }
 
+/* 友链描述样式 */
 .friend-info {
-    display: block;
     font-size: 0.9rem;
-    color: var(--secondary-color);
+    color: var(--secondary-color, #666); /* 次要颜色 */
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; /* 省略多余文字 */
+    margin-left: 20px; /* 添加左侧的间距 */
 }
+
+/* 响应式适配 */
+@media (max-width: 600px) {
+    .friend-div {
+        flex-direction: column; /* 小屏幕垂直排列 */
+        align-items: flex-start;
+    }
+
+    .friend-div img {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .friend-name-info {
+        flex-direction: column; /* 垂直排列名字和描述 */
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
+
 
 /* 归档链接样式 */
 .view-archives {
@@ -882,4 +1054,74 @@ pre > code {
     background-color: var(--border-color);
     transform: translateY(-2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar {
+    background-color: var(--content-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* 表格样式 */
+table {
+    width: 100%;
+    margin: 1rem 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid var(--border-color);
+    font-size: 0.9em;
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+    background-color: var(--bg-color);
+}
+
+th, td {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+th {
+    font-weight: 600;
+    background-color: var(--code-bg-color);
+    color: var(--primary-color);
+}
+
+td {
+    background-color: var(--bg-color);
+}
+
+tr:nth-child(even) {
+    background-color: var(--code-bg-color);
+}
+
+/* 暗色模式表格样式 */
+html[class="scroll-smooth dark"] table {
+    border-color: var(--border-color);
+    background-color: var(--bg-color);
+}
+
+html[class="scroll-smooth dark"] th {
+    background-color: var(--code-bg-color);
+    color: var(--primary-color);
+    border-color: var(--border-color);
+}
+
+html[class="scroll-smooth dark"] td {
+    border-color: var(--border-color);
+    background-color: var(--bg-color);
+}
+
+html[class="scroll-smooth dark"] tr:nth-child(even) {
+    background-color: var(--code-bg-color);
+}
+
+/* 表格响应式处理 */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }

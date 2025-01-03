@@ -1,8 +1,8 @@
 ---
-title: 如何使用 golang 写单测
+title: 经验-如何使用 golang 写单测
 tags:
   - 编程经验
-date: 2024-04-18T17:09:27+08:00
+date: 2023-08-07T17:09:27+08:00
 draft: false
 toc: true
 slug: 20240418170927
