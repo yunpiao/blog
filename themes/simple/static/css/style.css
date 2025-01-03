@@ -488,11 +488,12 @@ a {
 
 /* 代码字体 */
 .post-content code {
-    font-size: 1.1rem;  /* 行内代码字体 */
+    font-size: 1.0rem;  /* 行内代码字体 */
+    border: 0.2px solid #949698;
 }
 
 .post-content pre {
-    font-size: 1.1rem;  /* 代码块字体 */
+    font-size: 1.0rem;  /* 代码块字体 */
     line-height: 1.6;
 }
 
