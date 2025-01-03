@@ -28,7 +28,7 @@ body {
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    background:url('/images/bg.webp');
+    background:url('/images/ep_naturalwhite.png');
      filter: blur(0.1px);
 }
 
