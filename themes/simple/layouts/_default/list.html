@@ -51,5 +51,27 @@
         {{ end }}
     </div>
     {{ end }}
+    
+    {{ if .Site.Params.backToTop }}  
+    <button id="back-to-top" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    {{ end }}
 </div>
+
+{{ if .Site.Params.backToTop }}
+<script>
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add('show');
+    } else {
+      backToTop.classList.remove('show');
+    }
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+{{ end }}
 {{ end }}
