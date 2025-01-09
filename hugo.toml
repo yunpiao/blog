@@ -34,7 +34,7 @@ ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
     lineNumbersInTable = false
     noClasses = true 
     noHl = true
-    style = 'emacs'
+    style = 'monokai'
     tabWidth = 4
 
 
@@ -62,7 +62,13 @@ math = true # for introducing $KaTeX$
 useChineseFonts = true 
 postDateFormat = "2006-1-2"
 customCSS = ['copy-to-clipboard.js']
+  # 主题色
+primaryColor = "#333"
+secondaryColor = "#666"
+linkColor = "#0066cc"
 
+  # 是否开启回到顶部按钮 
+  backToTop = true 
 [menu]
 # Shown in the side menu.
 [[menu.main]]
