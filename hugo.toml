@@ -67,8 +67,8 @@ primaryColor = "#333"
 secondaryColor = "#666"
 linkColor = "#0066cc"
 
-  # 是否开启回到顶部按钮 
-  backToTop = true 
+# 是否开启回到顶部按钮 
+backToTop = true 
 [menu]
 # Shown in the side menu.
 [[menu.main]]
