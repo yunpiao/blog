@@ -1,51 +1,46 @@
 {{ define "main" }}
 <div class="post-container">
-  <article class="post">
-      {{ partial "breadcrumb.html" . }}
-      <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
-      <div class="clear"></div>
-      <div class="post-meta">
-          <span class="post-date">发布时间 {{ .Date.Format "2006-01-02 15:04:05" }}</span>
-          <span class="meta-divider">/</span>
-          <span class="post-reading">{{- partial "plugin/busuanzi.html" (dict "params" .Site.Params.busuanzi "bsz_type" "page-reading") -}}</span>
-      </div>
-
-      {{ if and (eq .Type "post") .TableOfContents }}
-      <div class="post-toc">
-          <div class="toc-title">目录</div>
-          <div class="toc-content">
-              {{ .TableOfContents }}
-          </div>
-      </div>
-      {{ end }}
-
-      <div class="post-content">
-          {{ .Content }}
-      </div>
+    <article class="post-content">
+        {{ partial "breadcrumb.html" . }}
+        <h2 class="post-title"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h2>
+        <div class="post-meta">
+            <span class="post-date">发布时间 {{ .Date.Format "2006-01-02 15:04:05" }}</span>
+            <span class="meta-divider">/</span>
+            <span class="post-reading">{{- partial "plugin/busuanzi.html" (dict "params" .Site.Params.busuanzi "bsz_type" "page-reading") -}}</span>
+        </div>
+        {{ .Content }}
+    </article>
+    
+    {{ if .TableOfContents }}
+    <div class="post-toc">
+        <div class="toc-title">目录</div>
+        <div class="toc-content">
+            {{ .TableOfContents }}
+        </div>
+    </div>
+    {{ end }}
+  </div>
       
-      {{ partial "comments.html" . }}
+  {{ partial "comments.html" . }}
 
-      {{ if .Site.Params.backToTop }}
-      <button id="back-to-top" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-      </button>
-      {{ end }}
-  </article>
-
-</div>
+{{ if .Site.Params.backToTop }}
+<button id="back-to-top" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+{{ end }}
 
 {{ if .Site.Params.backToTop }}
 <script>
 const backToTop = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 300) {
-    backToTop.classList.add('show');
-  } else {
-    backToTop.classList.remove('show');
-  }
+    if (window.pageYOffset > 300) {
+        backToTop.classList.add('show');
+    } else {
+        backToTop.classList.remove('show');
+    }
 });
 backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
 {{ end }}

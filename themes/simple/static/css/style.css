@@ -34,12 +34,20 @@ body {
 }
 
 /* 布局 */
-header, main, footer {
-    max-width: 60%;
+header, footer {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+main {
+    max-width: 90%;
     margin: 0 auto;
     padding: 1rem;
 }
 
+.content-list {
+    padding: 0 5rem;
+}
 
 .site-nav {
     width: 100%;
@@ -239,21 +247,33 @@ header, main, footer {
     font-size: 0.9rem;
 }
 
+/* 定义颜色变量 */
+:root {
+    --breadcrumb-bg-color: #0c81ef;
+    --breadcrumb-text-color: #ffffff;
+    --breadcrumb-hover-color: #005f99;
+    --breadcrumb-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 /* 面包屑导航 */
 .breadcrumb {
-    background-color: var(--content-bg);
-    padding: 1rem 2rem;
+    background-color: var(--breadcrumb-bg-color);
     border-radius: 8px;
     margin-bottom: 2rem;
-    box-shadow: 0 2px 8px var(--shadow-color);
-    margin-bottom: 2rem;
+    padding: 0.75rem 1.5rem; /* 增加上下左右内边距 */
+    box-shadow: var(--breadcrumb-shadow);
     font-size: 1rem;
-    color: rgb(119, 117, 117)
+    color: var(--breadcrumb-text-color);
+    display: flex; /* 可以用于灵活排列内部元素 */
+    align-items: center; /* 内容居中对齐 */
+    gap: 0.5rem; /* 元素间距 */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 平滑的交互效果 */
 }
+
 
 .breadcrumb-item {
     text-decoration: none;
-    color:rgb(119, 117, 117)
+    color:rgb(247, 245, 245)
 }
 
 .breadcrumb-item:hover {
@@ -262,7 +282,7 @@ header, main, footer {
 
 .breadcrumb-arrow {
     margin: 0 0.5rem;
-    color: rgb(119, 117, 117)
+    color: rgb(252, 251, 251)
 }
 
 .breadcrumb-item.active {
@@ -322,28 +342,47 @@ a {
     padding: 0.3rem 0.8rem;
     background-color: var(--secondary-bg);
     border-radius: 4px;
-    color: rgb(66, 185, 131);
+    color: var(--breadcrumb-bg-color);
     font-size: 0.9rem;
     transition: all 0.3s ease;
     text-decoration: none;
 }
 
 .post-tags-header .tag-item:hover {
-    background-color: rgb(66, 185, 131);
+    background-color: var(--breadcrumb-bg-color);
     color: white;
     text-decoration: none;
 }
 
 /* 文章目录 */
 .post-toc {
-    margin: 2rem 0;
-    padding: 1.5rem 1.8rem; 
+    flex: 1;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+    padding: 1.5rem;
     background: var(--content-bg);
     border: none;
-    border-radius: 10px; 
+    border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
+}
+
+
+/* 响应式设计 */  
+@media (max-width: 1200px) {
+    .post-container {
+        flex-direction: column;
+    }
+    
+    .post-toc {
+        display: none;
+    }
+    
+    .post-content {
+        width: 100%;
+    }
 }
 
 /* 目录滚动条样式 */
@@ -380,7 +419,7 @@ a {
 
 /* 目录标题 */
 .toc-title {
-    font-size: 1.2rem; 
+    font-size: 1rem; 
     font-weight: bold;
     margin-bottom: 1rem;
     color: var(--text-color);
@@ -405,10 +444,10 @@ a {
 }
 
 .toc-content li {
-    margin: 0.8rem 0; /* 增加每一项的间距,提升清晰度 */
-    line-height: 1.2; /* 增加行高,让文字更易读 */
+    margin: 0.5rem 0;
+    line-height: 1.2;
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 1.2rem;
 }
 
 .toc-content li::before {
@@ -422,10 +461,10 @@ a {
 
 /* 链接样式 */
 .toc-content a {
-    text-decoration: none; /* 移除默认下划线 */
-    transition: all 0.3s ease; /* 平滑的过渡效果 */
-    font-size: 1.1rem; /* 提升链接字体大小 */
-    font-weight: 800; /* 让字体稍微更突出 */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
     line-height: 1.3;
     position: relative;
     display: inline-block;
@@ -446,8 +485,8 @@ a {
 
 /* 子项内容 */
 .toc-content ul ul li {
-    margin: 0.4rem 0; /* 子级内容间距略小 */
-    font-size: 1.1rem; /* 提升链接字体大小 */
+    margin: 0.3rem 0;
+    font-size: 0.85rem;
 }
 
 .toc-content ul ul li::before {
@@ -457,8 +496,8 @@ a {
 
 /* 子级链接样式 */
 .toc-content ul ul a {
-    color: var(--text-color); /* 子级使用稍微淡一点的颜色 */
-    font-size: 1.0rem; /* 提升链接字体大小 */
+    color: var(--text-color);
+    font-size: 0.85rem;
 }
 
 /* 悬停和活动状态样式 */
@@ -497,9 +536,7 @@ a {
 
 /* 文章内容 */
 .post-content {
-    line-height: 1.8;
-    font-size: 1.2rem;  /* 增大字体 */
-    color: var(--text-color);
+    flex: 3;
     background-color: var(--content-bg);
     padding: 2rem;
     border-radius: 8px;
@@ -525,7 +562,7 @@ a {
     left: 0;
     width: 100%;
     height: 1px;  /* h2的横线稍细一点 */
-    background: linear-gradient(to right, rgb(66, 185, 131) 20%, transparent);
+    background: linear-gradient(to right, var(--breadcrumb-bg-color) 20%, transparent);
     opacity: 0.6;
 
 }
@@ -577,7 +614,7 @@ a {
 
 .post-content ul li::before {
     content: "•";
-    color: rgb(66, 185, 131);
+    color: var(--breadcrumb-bg-color);
     font-weight: bold;
     position: absolute;
     left: 0;
@@ -598,7 +635,7 @@ a {
 
 .post-content ol li::before {
     content: counter(item) ".";
-    color: rgb(66, 185, 131);
+    color: var(--breadcrumb-bg-color);
     font-weight: bold;
     position: absolute;
     left: 0;
@@ -608,7 +645,7 @@ a {
 .post-content blockquote {
     font-size: 1rem;  /* 与列表字体大小保持一致 */
     line-height: 1.6;
-    border-left: 4px solid rgb(66, 185, 131);
+    border-left: 4px solid var(--breadcrumb-bg-color);
     margin: 1rem 0;
     padding: 0.6em 1em;
     color: #2c3e50;
@@ -735,7 +772,7 @@ code {
     left: 0;
     height: 1px;
     width: 100%;
-    background: linear-gradient(to right, rgb(66, 185, 131) 20%, transparent);
+    background: linear-gradient(to right, var(--breadcrumb-bg-color) 20%, transparent);
 
 }
 
@@ -753,7 +790,7 @@ code {
 .post-content h2::before,
 .post-content h3::before,
 .post-content h4::before {
-    color: rgb(66, 185, 131);
+    color: var(--breadcrumb-bg-color);
     margin-right: 0.5rem;
     font-weight: normal;
 }
@@ -841,8 +878,8 @@ pre:hover .copy-button-container {
 }
 
 .copy-button.copied {
-    background: #28a745;
-    border-color: #28a745;
+    background: var(--breadcrumb-bg-color);
+    border-color: var(--breadcrumb-bg-color);
     color: white;
 }
 
@@ -1309,7 +1346,7 @@ pre:hover .copy-button-container {
     font-size: 14px;
   }
   
-  /* 调整布局 */
+  /* 调整布局  */
   header, main, footer {
     padding: 10px;
   }
@@ -1405,5 +1442,51 @@ code {
   code::-webkit-scrollbar-thumb:hover {
     background: #555; /* 滑块悬停时颜色 */
   }
+
+  
+/* 文章布局容器 */
+.post-container {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    gap: 2rem;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* 文章内容 */
+.post-content {
+    min-width: 0;
+    background-color: var(--content-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+/* 文章目录 */
+.post-toc {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+    padding: 1.5rem;
+    background: var(--content-bg);
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0 0 0 3rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .post-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-toc {
+        display: none;
+    }
+}
 
   
