@@ -7,7 +7,7 @@
 :root {
     --primary-color: {{ .Site.Params.primaryColor | default "#333" }};
     --secondary-color: {{ .Site.Params.secondaryColor | default "#666" }};
-    --background-color: #ffffff;
+    --background-color: #000000;
     --link-color: {{ .Site.Params.linkColor | default "#0066cc" }};
     --border-color: #eee;
     /* --font-family-base: bree serif,sans-serif; */
