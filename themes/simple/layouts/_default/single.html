@@ -9,9 +9,11 @@
             <span class="post-reading">{{- partial "plugin/busuanzi.html" (dict "params" .Site.Params.busuanzi "bsz_type" "page-reading") -}}</span>
         </div>
         {{ .Content }}
+        
+        {{ partial "comments.html" . }}
     </article>
     
-    {{ if .TableOfContents }}
+    {{ if and (eq .Type "post") (.TableOfContents) }}
     <div class="post-toc">
         <div class="toc-title">目录</div>
         <div class="toc-content">
@@ -19,9 +21,7 @@
         </div>
     </div>
     {{ end }}
-  </div>
-      
-  {{ partial "comments.html" . }}
+</div>
 
 {{ if .Site.Params.backToTop }}
 <button id="back-to-top" class="back-to-top">
