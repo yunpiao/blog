@@ -4,7 +4,7 @@ tags:
   - linux
   - 运维
   - 杂
-date: 2024-04-16T15:57:42+08:00
+date: 2023-07-16T15:57:42+08:00
 draft: false
 hideInList: false
 isTop: false
@@ -182,9 +182,8 @@ select a from t where id = 1 for update;
 
 ```Plain Text
 update t set a = a + 1;
+
 ```
-
-
 
 
 ### innodb 解决幻读问题

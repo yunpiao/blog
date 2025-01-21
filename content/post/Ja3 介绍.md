@@ -4,7 +4,7 @@ tags:
   - linux
   - 运维
   - 杂
-date: 2024-04-16T15:57:42+08:00
+date: 2023-04-16T15:57:42+08:00
 draft: false
 hideInList: false
 isTop: false
@@ -63,4 +63,3 @@ nginx: log -> socketgoflume: socket -> tls_sink
 [https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html](https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html)
 
 [https://www.guildhab.top/2021/04/%E9%80%9A%E8%BF%87-ja3s-%E5%AE%9E%E7%8E%B0-tls-%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB/](https://www.guildhab.top/2021/04/%E9%80%9A%E8%BF%87-ja3s-%E5%AE%9E%E7%8E%B0-tls-%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB/)
-

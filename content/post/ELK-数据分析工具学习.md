@@ -1,6 +1,6 @@
 ---
 title: ELK-数据分析工具学习
-date: 2022-04-12T10:39:46+08:00
+date: 2022-04-01T10:39:46+08:00
 draft: false
 tags:
   - 机器学习
@@ -362,5 +362,3 @@ POST /website/blog/1/_update
    }
 }
 ```
-
-
