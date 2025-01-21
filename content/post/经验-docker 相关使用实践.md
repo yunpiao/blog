@@ -11,7 +11,7 @@ slug: 20250106142544
 categories:
 ---
 
-#### 一、Harbor 仓库 SSL 证书问题解决(依赖加证书文件实在解决不了的情况下)
+## 一、Harbor 仓库 SSL 证书问题解决(依赖加证书文件实在解决不了的情况下)
 ```bash
 # 添加自签名证书到系统信任链
 echo "-----BEGIN CERTIFICATE-----
@@ -31,7 +31,7 @@ sudo update-ca-certificates
 curl -v https://your-harbor-domain
 ```
 
-#### 二、镜像优化分析工具
+## 二、镜像优化分析工具
 使用 Dive 进行镜像层分析：
 ```bash
 # 安装 Dive
@@ -46,7 +46,7 @@ dive your-image:tag
 - 可视化每层文件变化
 - 计算浪费的空间（重复/删除的文件）
 
-#### 三、Dockerfile 最佳实践
+## 三、Dockerfile 最佳实践
 
 1. **基础规范**
    ```dockerfile
@@ -79,7 +79,7 @@ dive your-image:tag
 8. 优先使用 copy 而不是 add
 9. 设置默认的环境变量
 10. 使用 label 设置镜像元数据
-#### 四、多架构镜像构建
+## 四、多架构镜像构建
 ```bash
 # 创建构建器实例
 docker buildx create --use --name multiarch-builder
@@ -94,7 +94,7 @@ docker manifest create your-registry/image:tag \
   your-registry/image:tag-amd64
 ```
 
-#### 五、网络与安全管控
+## 五、网络与安全管控
 
 1. **动态防火墙管理**
    ```bash
@@ -110,7 +110,7 @@ docker manifest create your-registry/image:tag \
    iptables -A DOCKER-USER -p tcp --dport 8080 -j DROP
    ```
 
-#### 六、CI/CD 集成
+## 六、CI/CD 集成
 
 1. **GitLab Runner 配置**
    ```bash
@@ -128,7 +128,7 @@ docker manifest create your-registry/image:tag \
        - docker push your-image:latest
    ```
 
-#### 七、**高级技巧**
+## 七、**高级技巧**
 
 1. **Root 权限进入容器**
    ```bash
