@@ -80,6 +80,7 @@ dive your-image:tag
 9. 设置默认的环境变量
 10. 使用 label 设置镜像元数据
 ## 四、多架构镜像构建
+
 ```bash
 # 创建构建器实例
 docker buildx create --use --name multiarch-builder
@@ -130,13 +131,12 @@ docker manifest create your-registry/image:tag \
 
 ## 七、**高级技巧**
 
-1. **Root 权限进入容器**
-   ```bash
+- **Root 权限进入容器**
+```bash
    docker exec -it --user root <container> /bin/bash
    ```
-
-2. **代理网络配置
-   ```bash
+- **代理网络配置**
+```bash
    # 创建代理配置文件
    cat <<EOF | sudo tee /etc/systemd/system/docker.service.d/http-proxy.conf
    [Service]
@@ -147,15 +147,13 @@ docker manifest create your-registry/image:tag \
    systemctl daemon-reload
    systemctl restart docker
 ```
-
-3. **镜像压缩优化**
-   ```bash
+- **镜像压缩优化**
+```bash
    # 多线程压缩加速
    docker save your-image | pigz -9 > image.tar.gz
    ```
-
-4. **多阶段构建**
-   ```dockerfile
+- **多阶段构建**
+```dockerfile
    FROM golang:1.19 AS build
    COPY . .
    RUN go build -o /app
@@ -164,13 +162,11 @@ docker manifest create your-registry/image:tag \
    COPY --from=build /app /app
    CMD ["/app"]
    ```
-
-5. **标签管理策略**
+- **标签管理策略**
    - 使用语义化版本标签（v1.2.3）
    - 为最新稳定版本维护 latest 标签
    - 包含构建元数据（commit hash + 日期）
-
-6. **日志管理, 防止磁盘撑爆**
+- **日志管理, 防止磁盘撑爆**
    ```json
    {
      "log-driver": "json-file",
@@ -180,8 +176,7 @@ docker manifest create your-registry/image:tag \
      }
    }
    ```
-
-7. **资源限制**
+- **资源限制**
    ```bash
    docker run -it --cpus=2 --memory=512m --blkio-weight=500 your-image
    ```
