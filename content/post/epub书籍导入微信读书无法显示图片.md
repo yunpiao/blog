@@ -1,5 +1,5 @@
 ---
-title: 杂-epub书籍导入微信读书无法显示图片
+title: epub书籍导入微信读书无法显示图片
 tags:
   - 杂
   - 小说
@@ -16,7 +16,6 @@ feature:
 ## 太长不看
 mac  可以执行下列脚本
 ```bash
-
 # 指定文件夹路径
 folder_path="./epub 书籍"
 

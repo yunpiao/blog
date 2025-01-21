@@ -1,9 +1,9 @@
 ---
-title: 实战-mongo 在线调整缓存大小
+title: mongo 在线调整缓存大小
 tags:
   - 编程经验
   - 线上实战
-date: 2024-02-18T18:18:03+08:00
+date: 2024-04-18T18:18:03+08:00
 draft: false
 toc: true
 slug: 20240418181803

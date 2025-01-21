@@ -1,6 +1,6 @@
 ---
-title: 大数据-HDP使用maven构建udf开发环境
-date: 2022-04-01T00:00:00+08:00
+title: HDP-使用maven构建udf开发环境
+date: 2022-04-12T10:39:46+08:00
 draft: false
 tags:
   - 机器学习

@@ -4,7 +4,7 @@ tags:
   - 线上实战
   - go
   - cgo
-date: 2024-04-25T00:00:00+08:00
+date: 2024-04-25T15:28:36+08:00
 draft: false
 toc: true
 slug: 20240425152836
@@ -164,3 +164,4 @@ scrape_configs:
 ![image.png](https://img.yunpiao.site/2024/04/beedd3c83ac4b8311a922d34038c1f00.png)
 
 具体的指标项为 `windows_process_working_set_private_bytes`, 通过 grafana 可以只管查看到具体的内存占用数据
+

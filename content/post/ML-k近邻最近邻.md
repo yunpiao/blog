@@ -1,6 +1,6 @@
 ---
 title: ML-k近邻最近邻
-date: 2019-10-12T10:39:46+08:00
+date: 2022-04-12T10:39:46+08:00
 draft: false
 tags:
   - 机器学习
@@ -56,3 +56,4 @@ k临近算法 也叫Knn 是一种基于样本的模型,当K取值为1时
 
 参考网址 
 - http://blog.csdn.net/v_july_v/article/details/8203674
+

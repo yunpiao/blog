@@ -4,7 +4,7 @@ tags:
   - mac
   - 杂
   - 运维
-date: 2023-01-12T10:39:46+08:00
+date: 2024-04-12T10:39:46+08:00
 draft: false
 hideInList: false
 isTop: true
@@ -40,3 +40,4 @@ Authentication refused: bad ownership or modes for directory /Users/xxx
 
 ```bash
 chmod 755 ~
+```
