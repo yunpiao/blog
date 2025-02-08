@@ -22,7 +22,7 @@ categories:
 ### 1.5 在耗时函数上加一层缓存
 如计算 hash 函数, 或者 json decode 后的对象, 空间换时间
 ### 1.6 使用 LuaJIT FFI 
-openresty 计划使用 ffi 完全替换掉之前的 直接调用 c, 性能会有所提升, openrest 的工具库也在一直转移
+openresty lua-resty-core 计划使用 ffi 完全替换掉之前的 nginx-lua-module, 性能会有所提升
 ### 1.7 采样执行一些不重要的函数
 如打印错误日志, 当逾期错误日志会频繁打印, 增加一层限制, 固定 100/秒等策略
 ### 1.8 非必要不 io
