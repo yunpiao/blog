@@ -38,7 +38,7 @@ openresty lua-resty-core 计划使用 ffi 完全替换掉之前的 nginx-lua-mod
 ### 1.13 使用 ECC 证书而不是 RSA
 压测发现, RCC 证书比 RSA 具有更好的性能
 ### 1.14 发现攻击, 尽早关闭
-- ngx.exit(444)  连接数多 直接 RST, 缺点没有日志记录
+ngx.exit(444)  连接数多 直接 RST, 缺点没有日志记录
 
 ## 2. Nginx 层面 
 ### 2.1 参数优化
