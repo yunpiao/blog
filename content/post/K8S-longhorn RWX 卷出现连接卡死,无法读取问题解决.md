@@ -187,7 +187,15 @@ ExecStart={{ bin_dir }}/kubelet \
   --v=2
 ```
 
-
+## 其他命令
+```bash
+# 查看挂载卷
+kubectl -n longhorn-system get volumes 
+# 删除挂载卷
+kubectl -n longhorn-system delete volume pvc-a99e2813-f30c-4562-87f6-3e49b568f8fe 
+# 获取卷的副本数
+kubectl -n longhorn-system get replicas
+```
 
 
 <!--more-->
