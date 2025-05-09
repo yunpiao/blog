@@ -621,25 +621,38 @@ a {
     font-size: 1.1em;
 }
 
+/* 有序列表：只对直接子项进行计数与编号 */
 .post-content ol {
     list-style: none;
     counter-reset: item;
 }
 
-.post-content ol li {
+/* 原来匹配所有后代 li，会把嵌套 ul li 也纳入计数 */
+.post-content ol > li {
     position: relative;
     padding-left: 1.2em;  /* 减小数字和文本的间距 */
-    margin: 0.3em 0;  /* 减小项目间距 */
+    margin: 0.3em 0;       /* 减小项目间距 */
     counter-increment: item;
 }
 
-.post-content ol li::before {
+/* 原来匹配所有后代 li 生成数字 */
+.post-content ol > li::before {
     content: counter(item) ".";
     color: var(--breadcrumb-bg-color);
     font-weight: bold;
     position: absolute;
     left: 0;
     font-size: 1em;
+}
+
+/* 内层 ul li 恢复为 • 号（若仍有需要保留） */
+.post-content ol > li > ul li::before {
+    content: "•";
+    color: var(--breadcrumb-bg-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    font-size: 1.1em;
 }
 
 .post-content blockquote {
