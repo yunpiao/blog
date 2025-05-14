@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "hugo-bin": "^0.112.7"
-  }
+  },
   "dependencies": {
     "@prisma/adapter-d1": "^5.15.1",
     "@prisma/client": "^5.15.1",
