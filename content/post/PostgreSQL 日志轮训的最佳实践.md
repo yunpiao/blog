@@ -1,18 +1,18 @@
 ---
 title: PostgreSQL 日志轮训的最佳实践
-tags: []
+tags:
+  - "#运维经验"
 date: 2025-05-15T17:39:13+08:00
 draft: false
 toc: true
 slug: 20250515173913
 categories:
 ---
-1. 文件变量名可以用作日志轮转时, 进行清理, 比如 'postgresql-%H.log' 每小时一个文件, 第二天会对前一天的日志进行覆盖
-2. 日志轮转时机  log_rotation_age log_rotation_size, 根据时间和大小
-3. log_truncate_on_rotation 仅对“时间轮转”有效，新的同名文件会覆盖旧文件, 用于清理旧日志
-4. 这种限制理论最大文件数量限制将会是 log_rotation_age * 文件名循环中的一个环中的文件数
-5. 这种方法不完美, 没有办法硬限制, 最优方案是使用 logrotate
-
+- 文件变量名用作日志轮转时进行清理历史文件的作用, 比如 ‘postgresql-%H.log’ 每小时一个文件, 第二天会对前一天的日志进行覆盖
+- 日志轮转时机可以配置根据时间和大小, log_rotation_age log_rotation_size 参数
+- log_truncate_on_rotation 仅对“时间轮转”有效，新的同名文件会覆盖旧文件, 用于清理旧日志
+- 这种限制理论最大文件数量限制将会是 log_rotation_age * 文件名循环中的一个环中的文件数
+- 这种方法不完美, 没有办法硬限制, 最优方案是使用 logrotate  优化表达, 注意还是原格式, 只修改少量词语
 ## logrotate 限制日志大小的 6 个关键指令
 
 | 指令                       | 版本   | 作用                      | 常见写法         |
