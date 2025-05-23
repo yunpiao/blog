@@ -14,6 +14,7 @@ categories:
 # 分析
 
 > https://learn.microsoft.com/en-us/troubleshoot/windows-server/windows-security/error-add-user-to-security-permissions
+
 当达到访问控制列表 (ACL) 的最大大小时，就会出现这个问题。ACL 的大小随访问控制条目 (ACE) 的数量和大小而变化。ACL 的最大大小为 64 KB，即大约 1 820 个 ACE。不过，出于性能考虑，最大大小并不实用。
 命令将返回 `> The parameter is incorrect.`
 # 修复
