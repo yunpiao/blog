@@ -1,5 +1,5 @@
 ---
-title: 问题排查-windows 下权限的 ace 的限制
+title: 经验-windows 下权限 ace 的限制
 tags:
   - 编程经验
 date: 2025-05-23T15:10:24+08:00
