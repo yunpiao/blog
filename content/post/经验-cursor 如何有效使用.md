@@ -16,7 +16,7 @@ categories:
 MCP（Model Context Protocol）是 Cursor 提供的一种机制，允许 AI 助手通过外部服务器获取实时、准确的文档或数据，以增强代码生成的质量。以下是你提到的三个 MCP 的使用实践：
 
 ### 1.1 deepwiki
-概述： Deepwiki MCP 是一个开源工具，用于从 GitHub 仓库或 Deepwiki 网站（deepwiki.com）获取最新的文档或代码库内容，特别适合需要爬取 GitHub 仓库文档的场景。它通过 MCP 协议将爬取的内容转换为 Markdown 格式，供 Cursor 使用
+Deepwiki MCP 是一个开源工具，用于从 GitHub 仓库或 Deepwiki 网站（deepwiki.com）获取最新的文档或代码库内容，特别适合需要爬取 GitHub 仓库文档的场景。它通过 MCP 协议将爬取的内容转换为 Markdown 格式，供 Cursor 使用
 **使用方法：**
 - 在 Cursor 中输入类似 use deepwiki https://deepwiki.com/shadcn-ui/ui 的提示，获取指定 Deepwiki 页面内容。
 - 支持单页或多页爬取，例如 use deepwiki multiple pages https://deepwiki.com/shadcn-ui/ui。
