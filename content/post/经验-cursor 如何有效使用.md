@@ -1,6 +1,7 @@
 ---
 title: 经验-cursor 如何有效使用
-tags: 
+tags:
+  - 编程经验
 date: 2025-06-04T15:01:26+08:00
 draft: false
 toc: true
