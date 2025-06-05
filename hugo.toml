@@ -42,6 +42,7 @@ ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
     endLevel = 3
     ordered = false
     startLevel = 2
+    
 [params]
 bannerFont = "fonts/exampleFont" 
 description = "😎 最近的博文"
