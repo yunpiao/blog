@@ -1,6 +1,8 @@
 ---
 title: 项目回顾-检测恶意 http 流量时的词向量选型
-tags: 
+tags:
+  - 项目
+  - 安全
 date: 2025-07-15T15:11:21+08:00
 draft: true
 toc: true
