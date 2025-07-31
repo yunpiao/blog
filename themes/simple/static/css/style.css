@@ -563,8 +563,9 @@ a {
     font-size: 1.15rem;  /* 稍微调整字体大小 */
     line-height: 1.8;  /* 增加行高，提升可读性 */
     color: #2c3e50;  /* 深灰色文字 */
-    text-align: justify;  /* 两端对齐 */
+    text-align: left;  /* 左对齐，避免字符间距过大 */
     word-break: break-word;  /* 长单词换行 */
+    letter-spacing: normal;  /* 正常字符间距 */
 }
 
 /* 加粗文本样式 */
@@ -574,8 +575,10 @@ a {
     background: rgba(52, 152, 219, 0.1);  /* 淡蓝色背景 */
     padding: 0.05em 0.2em;  /* 减小内边距 */
     border-radius: 2px;  /* 更小的圆角 */
-    display: inline-block;
+    display: inline;
     margin: 0 0.05em;  /* 减小间距 */
+    white-space: normal;  /* 允许换行 */
+    word-wrap: break-word;  /* 长单词换行 */
 }
 
 .post-content h1 {
@@ -690,9 +693,10 @@ a {
 /* 原来匹配所有后代 li，会把嵌套 ul li 也纳入计数 */
 .post-content ol > li {
     position: relative;
-    padding-left: 1.2em;  /* 减小数字和文本的间距 */
-    margin: 0.3em 0;       /* 减小项目间距 */
+    padding-left: 1.8em;  /* 减少左边距，让序号和文字更近 */
+    margin: 0.8em 0;      /* 增加项目间距 */
     counter-increment: item;
+    line-height: 1.6;      /* 确保行高一致 */
 }
 
 /* 原来匹配所有后代 li 生成数字 */
@@ -703,14 +707,16 @@ a {
     font-weight: bold;
     position: absolute;
     left: 0;
-    font-size: 0.8em;
-    width: 1.2em;
-    height: 1.2em;
+    top: 0.1em;           /* 微调垂直位置 */
+    font-size: 0.75em;
+    width: 1.5em;
+    height: 1.5em;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* 内层 ul li 恢复为 • 号（若仍有需要保留） */
@@ -1572,6 +1578,13 @@ code {
     max-width: 95%;
     margin: 0 auto;
     padding: 1rem;
+}
+
+/* 留言板和关于我页面 - 占满宽度 */
+.post-container:has(.post-content:only-child),
+.post-container .post-content:only-child {
+    grid-column: 1 / -1;
+    max-width: 100%;
 }
 
 /* 文章内容 */
