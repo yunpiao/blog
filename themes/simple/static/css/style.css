@@ -568,17 +568,53 @@ a {
     letter-spacing: normal;  /* 正常字符间距 */
 }
 
-/* 加粗文本样式 */
+/* 加粗文本样式 - 黄色荧光笔效果 */
 .post-content strong {
     font-weight: 600;
-    color: #2c3e50;  /* 深灰色，更低调 */
-    background: rgba(52, 152, 219, 0.1);  /* 淡蓝色背景 */
-    padding: 0.05em 0.2em;  /* 减小内边距 */
-    border-radius: 2px;  /* 更小的圆角 */
+    color: #1a1a1a;  /* 更深的黑色 */
+    background: linear-gradient(120deg, #ffeb3b 0%, #fff59d 100%);  /* 黄色荧光笔渐变 */
+    padding: 0.1em 0.2em;  /* 适当的内边距 */
+    border-radius: 2px;  /* 小圆角 */
     display: inline;
-    margin: 0 0.05em;  /* 减小间距 */
+    margin: 0 0.05em;  /* 小间距 */
     white-space: normal;  /* 允许换行 */
     word-wrap: break-word;  /* 长单词换行 */
+    box-shadow: 0 1px 2px rgba(255, 235, 59, 0.3);  /* 轻微阴影 */
+}
+
+/* 标题中的加粗文本 - 不使用蓝色背景 */
+.post-content h1 strong,
+.post-content h2 strong,
+.post-content h3 strong,
+.post-content h4 strong,
+.post-content h5 strong,
+.post-content h6 strong {
+    background: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    color: inherit !important;
+    border-left: none !important;
+}
+
+/* 表格中的加粗文本 - 不使用蓝色背景 */
+.post-content table strong {
+    background: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    color: inherit !important;
+    border-left: none !important;
+}
+
+/* 引用块中的加粗文本 - 不使用黄色荧光笔效果 */
+.post-content blockquote strong {
+    background: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    color: inherit !important;
+    box-shadow: none !important;
 }
 
 .post-content h1 {
@@ -589,9 +625,9 @@ a {
     position: relative;
     padding-left: 1rem;
     border-left: 4px solid #0c81ef;
-    background: linear-gradient(135deg, rgba(12, 129, 239, 0.05) 0%, rgba(52, 152, 219, 0.05) 100%);
     padding: 1rem 1.5rem;
     border-radius: 0 8px 8px 0;
+    background: none !important;  /* 强制移除背景 */
 }
 
 
@@ -603,9 +639,9 @@ a {
     position: relative;
     padding: 0.8rem 0;
     border-bottom: 2px solid #e8f4fd;
-    background: linear-gradient(135deg, rgba(12, 129, 239, 0.03) 0%, rgba(52, 152, 219, 0.03) 100%);
     padding-left: 1rem;
     border-radius: 0 6px 6px 0;
+    background: none !important;  /* 强制移除背景 */
 }
 
 .post-content h2::after {
@@ -623,13 +659,12 @@ a {
     font-size: 1.7rem;
     margin: 1.8em 0 1em;
     font-weight: 600;
-    color: #34495e;
     position: relative;
     padding: 0.6rem 0;
     border-left: 3px solid #bdc3c7;
     padding-left: 1rem;
-    background: rgba(189, 195, 199, 0.05);
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 6px 0;
+    background: none !important;  /* 强制移除背景 */
 }
 
 .post-content h3::after {
@@ -740,7 +775,7 @@ a {
     border-radius: 0 10px 10px 0;
     position: relative;
     box-shadow: 0 2px 8px rgba(12, 129, 239, 0.1);
-    font-style: italic;
+    font-style: normal;
 }
 
 .post-content blockquote::before {
@@ -1612,6 +1647,34 @@ code {
 }
 
 /* 响应式设计 */
+@media (max-width: 1200px) {
+    .post-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-toc {
+        display: none;
+    }
+}
+
+/* 覆盖 Waline 点赞区域的 overflow 设置 */
+.wl-reaction {
+    overflow: visible !important;
+    margin-bottom: 1.75em;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .post-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-toc {
+        display: none;
+    }
+}
+
+
 @media (max-width: 1200px) {
     .post-container {
         grid-template-columns: 1fr;
