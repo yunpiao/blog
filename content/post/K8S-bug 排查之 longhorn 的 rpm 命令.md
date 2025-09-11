@@ -1,5 +1,5 @@
 ---
-title: K8S-longhorn 的 rpm 命令 bug 排查
+title: K8S-bug 排查之 longhorn 的 rpm 命令
 tags:
   - k8s
   - Longhorn
