@@ -1,5 +1,5 @@
 ---
-title: K8S-bug排查之 kubeproxy 无法正常设置 iptables 了
+title: K8S-bug 排查之 kubeproxy 无法正常设置 iptables 了
 tags:
   - 问题排查
   - k8s
@@ -17,6 +17,7 @@ categories:
 
 即将下班的周五下午 5 点, 运维不合时宜的甩给我了一个图片,  这次好一些, 加了一段文字, 说用户做了下迁移, 然后发现服务启动后 redis 服务异常, 卸载重装大法也不好使,
 redis ha 使用 helm 部署的时候, 只有一个正常, 剩下的两个 redis pod 启动后无法连接到 master 的 redis pod. 
+![image.png](https://img.yunpiao.site/2025/09/f21e80ba47aa5ed4bb8b167000735261.png)
 
 **环境说明**
 - 公司私有化部署到客户的 k8s 环境 v1.26
@@ -71,11 +72,11 @@ I1113 16:15:07.931317 1 proxier.go:820] "SyncProxyRules complete" elapsed="22.67
 11. 不经意对比到内核版本的时候发现问题了 
 
 ![image.png](https://img.yunpiao.site/2025/09/4c10a8a3e0168c4fc4348f51428c5a81.png)
-`找到一个十分像问题点的不同, 内核版本有差别`
+**找到一个十分像问题点的不同, 内核版本有差别**
 ### 4. 定位原因
 #### google 大法
-'`unknown option "--set-mark"` 发现确实好像有些眉目额, 难道就是内核的 bug 吗 ? 
-确实是的, 内核的锅, 上一年 12 月, 也算是一个新鲜的 bug, 这种事为什么发生在我身上, 我是易 bug 体质吗?
+**unknown option "--set-mark"** 发现确实好像有些眉目额, 难道就是内核的 bug 吗 ? 
+> 确实是的, 内核的锅, 上一年 12 月, 也算是一个新鲜的 bug, 这种事为什么发生在我身上, 我是易 bug 体质吗?
 
 ![image.png](https://img.yunpiao.site/2025/09/8d8295c7a5bd517627cbbc8197d990bd.png)
 
