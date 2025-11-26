@@ -35,7 +35,7 @@ body {
 
 /* 布局 */
 header, footer {
-    max-width: 80%;
+    max-width: 90%;
     margin: 0 auto;
     padding: 1rem;
 }
@@ -257,7 +257,7 @@ main {
 
 /* 面包屑导航 */
 .breadcrumb {
-    background-color: var(--breadcrumb-bg-color);
+ background-color: var(--breadcrumb-bg-color);
     border-radius: 8px;
     margin-bottom: 2rem;
     padding: 0.75rem 1.5rem; /* 增加上下左右内边距 */
@@ -273,20 +273,21 @@ main {
 
 .breadcrumb-item {
     text-decoration: none;
-    color:rgb(247, 245, 245)
+    color: var(--secondary-color);
 }
 
 .breadcrumb-item:hover {
-    color:rgb(119, 117, 117)
+    color: var(--primary-color);
 }
 
 .breadcrumb-arrow {
     margin: 0 0.5rem;
-    color: rgb(252, 251, 251)
+    color: var(--border-color);
 }
 
 .breadcrumb-item.active {
     color: var(--primary-color);
+    font-weight: bold;
 }
 
 .emoji {
@@ -537,6 +538,7 @@ a {
 /* 文章内容 */
 .post-content {
     flex: 3;
+    width: 100%; /* 确保填满容器 */
     background-color: var(--content-bg);
     padding: 2.5rem;
     border-radius: 12px;
@@ -629,9 +631,13 @@ a {
     border-radius: 0 8px 8px 0;
     background: none !important;  /* 强制移除背景 */
 }
-
-
-.post-content h2 {
+ 
+ .post-content > h1.post-title {
+    margin-top: 2rem;
+    padding-top: 0;
+}
+ 
+ .post-content h2 {
     font-size: 2rem;
     margin: 2em 0 1em;
     font-weight: 600;
@@ -947,28 +953,28 @@ code {
     color: var(--primary-color);
 }
 
-.post-content h1::before,
-.post-content h2::before,
-.post-content h3::before,
-.post-content h4::before {
+.post-content h1:not(.post-title):not(.about-title)::before,
+.post-content h2:not(.post-title):not(.about-title):not(.year-title)::before,
+.post-content h3:not(.post-title):not(.about-title):not(.month-title)::before,
+.post-content h4:not(.post-title):not(.about-title)::before {
     color: var(--breadcrumb-bg-color);
     margin-right: 0.5rem;
     font-weight: normal;
 }
 
-.post-content h1::before {
+.post-content h1:not(.post-title):not(.about-title)::before {
     content: "#";
 }
 
-.post-content h2::before {
+.post-content h2:not(.post-title):not(.about-title):not(.year-title)::before {
     content: "##";
 }
 
-.post-content h3::before {
+.post-content h3:not(.post-title):not(.about-title):not(.month-title)::before {
     content: "###";
 }
 
-.post-content h4::before {
+.post-content h4:not(.post-title):not(.about-title)::before {
     content: "####";
 }
 
@@ -1664,24 +1670,433 @@ code {
     text-align: center;
 }
 
-@media (max-width: 1200px) {
-    .post-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .post-toc {
-        display: none;
+/* ============================================
+   About 页面 Hero 区域样式
+   ============================================ */
+
+/* Hero 区域整体 */
+.about-hero {
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 10rem;
+    overflow: hidden;
+}
+
+/* 背景渐变 */
+.about-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #e0f2fe, #f0f9ff, #ffffff);
+    z-index: 0;
+}
+
+/* 装饰性云朵效果 */
+.about-cloud {
+    position: absolute;
+    border-radius: 9999px;
+    z-index: 0;
+}
+
+.about-cloud-1 {
+    top: 80px;
+    left: -50px;
+    width: 288px;
+    height: 288px;
+    background: #ffffff;
+    filter: blur(48px);
+    opacity: 0.6;
+}
+
+.about-cloud-2 {
+    top: 160px;
+    right: -100px;
+    width: 384px;
+    height: 384px;
+    background: #bfdbfe;
+    filter: blur(100px);
+    opacity: 0.3;
+}
+
+/* Hero 内容容器 */
+.about-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* 左侧介绍区域 */
+.about-intro {
+    order: 2;
+}
+
+@media (min-width: 1024px) {
+    .about-intro {
+        order: 1;
     }
 }
 
+/* 标题样式 */
+.about-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
 
-@media (max-width: 1200px) {
-    .post-container {
+@media (min-width: 640px) {
+    .about-title {
+        font-size: 3rem;
+    }
+}
+
+/* 标题高亮文字 */
+.about-title-highlight {
+    font-family: "LXGW WenKai", "KaiTi", serif;
+    font-weight: bold;
+    color: #2563eb; /* 纯净的蓝色 */
+    position: relative;
+    display: inline-block;
+    padding: 0 0.2em;
+    -webkit-text-fill-color: initial;
+    background: none;
+}
+
+/* 手绘风格下划线装饰 */
+.about-title-highlight::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.1em;
+    width: 100%;
+    height: 0.3em;
+    background-color: rgba(147, 197, 253, 0.5); /* 浅蓝色高亮笔触 */
+    z-index: -1;
+    border-radius: 1em;
+    transform: rotate(-1deg);
+}
+
+/* 副标题 */
+.about-subtitle {
+    font-size: 1.125rem;
+    color: #475569;
+    margin-bottom: 2rem;
+    max-width: 28rem;
+    line-height: 1.75;
+}
+
+/* 右侧头像区域 */
+.about-avatar-section {
+    position: relative;
+    order: 1;
+    display: flex;
+    justify-content: center;
+    height: 350px;
+    align-items: center;
+}
+
+@media (min-width: 640px) {
+    .about-avatar-section {
+        height: 450px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about-avatar-section {
+        order: 2;
+        justify-content: flex-end;
+    }
+}
+
+/* Canvas 容器 */
+.canvas-container {
+    position: absolute;
+    top: -50px;
+    right: -20px;
+    width: 450px;
+    height: 380px;
+    z-index: 0;
+    pointer-events: auto;
+    transform: rotate(-12deg);
+    opacity: 0.9;
+}
+
+@media (min-width: 640px) {
+    .canvas-container {
+        width: 600px;
+        height: 500px;
+    }
+}
+
+.canvas-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* 头像包装器 */
+.about-avatar-wrapper {
+    position: relative;
+    z-index: 20;
+    pointer-events: none;
+    animation: about-float 6s ease-in-out infinite;
+}
+
+/* 头像光晕 */
+.about-avatar-glow {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.5);
+    filter: blur(32px);
+    border-radius: 9999px;
+    transform: scale(0.9);
+}
+
+/* 头像图片 */
+.about-avatar {
+    width: 224px;
+    height: 224px;
+    object-fit: cover;
+    border-radius: 9999px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border: 6px solid #ffffff;
+    transition: all 0.5s ease;
+    position: relative;
+    z-index: 10;
+}
+
+@media (min-width: 640px) {
+    .about-avatar {
+        width: 288px;
+        height: 288px;
+    }
+}
+
+.about-avatar:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* 头像底部阴影 */
+.about-avatar-shadow {
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 32px;
+    background: rgba(30, 27, 75, 0.1);
+    border-radius: 100%;
+    filter: blur(12px);
+}
+
+/* 波浪分隔线 */
+.about-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 10;
+    color: #ffffff;
+    pointer-events: none;
+}
+
+.about-wave-svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+}
+
+@media (min-width: 640px) {
+    .about-wave-svg {
+        height: 120px;
+    }
+}
+
+/* 浮动动画 */
+@keyframes about-float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* 响应式设计 - About页面 */
+@media (max-width: 1023px) {
+    .about-hero-content {
         grid-template-columns: 1fr;
+        text-align: center;
     }
     
-    .post-toc {
-        display: none;
+    .about-intro {
+        order: 2;
     }
+    
+    .about-avatar-section {
+        order: 1;
+        justify-content: center;
+    }
+    
+    .about-subtitle {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .canvas-container {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%) rotate(-12deg);
+    }
+}
+
+@media (max-width: 640px) {
+    .about-title {
+        font-size: 2rem;
+    }
+    
+    .about-avatar-section {
+        height: 300px;
+    }
+    
+    .canvas-container {
+        width: 350px;
+        height: 300px;
+    }
+    
+    .about-avatar {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* About 页面内嵌 Hero 样式 */
+.about-page-content {
+    overflow: visible !important;
+}
+
+.about-page-content .breadcrumb {
+    position: relative;
+    z-index: 100;
+    margin-bottom: 2rem;
+}
+
+.about-hero-inline {
+    position: relative;
+    padding: 3rem 2rem 4rem;
+    overflow: hidden; /* 修复 Canvas 溢出问题 */
+    border-radius: 16px;
+    /* 让 Hero 卡片与上方导航之间多一点呼吸空间，并与内容保持左右对齐 */
+    margin: 2rem 0 2.5rem 0;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.about-hero-inline .about-hero-bg {
+    border-radius: 16px;
+    z-index: 0; /* 调整回 0，因为父容器现在 hidden 了 */
+    /* 顶部从接近白色渐变到浅蓝，减弱和导航之间的生硬对比 */
+    background: linear-gradient(to bottom, #f9fbff 0%, #e0f2fe 40%, #f0f9ff 100%);
+}
+
+.about-hero-inline .about-avatar-section {
+    height: 320px;
+}
+
+.about-hero-inline .canvas-container {
+    top: -30px;
+    right: -10px;
+    width: 400px;
+    height: 350px;
+}
+
+@media (min-width: 640px) {
+    .about-hero-inline .canvas-container {
+        width: 500px;
+        height: 420px;
+    }
+    
+    .about-hero-inline .about-avatar-section {
+        height: 380px;
+    }
+}
+
+.about-hero-inline .about-avatar {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+@media (min-width: 640px) {
+    .about-hero-inline .about-avatar {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+.about-main-content-inline {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 0 0;
+    max-width: 100%;
+}
+
+/* 移除 about-main-content-inline 内所有标题的默认装饰 */
+.about-main-content-inline h1,
+.about-main-content-inline h2,
+.about-main-content-inline h3,
+.about-main-content-inline h4 {
+    border: none !important;
+    background: none !important;
+    padding: 0 !important;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #1e293b; /* 深蓝灰色，配合背景 */
+}
+
+.about-main-content-inline h1::before,
+.about-main-content-inline h1::after,
+.about-main-content-inline h2::before,
+.about-main-content-inline h2::after,
+.about-main-content-inline h3::before,
+.about-main-content-inline h3::after {
+    content: none !important;
+    display: none !important;
+}
+
+.about-main-content-inline p,
+.about-main-content-inline li {
+    color: #334155; /* 稍微深一点的灰色 */
+}
+
+/* 列表样式微调 */
+.about-main-content-inline ul li::before {
+    color: #4f46e5; /* 列表点颜色改为靛蓝色 */
+}
+
+/* 移除 about-hero-inline 内标题的默认样式 */
+.about-hero-inline .about-title::before {
+    content: none;
+}
+
+.about-hero-inline .about-title::after {
+    display: none;
+}
+
+.about-hero-inline .about-title {
+    border: none;
+    padding-left: 0;
+    background: none;
+    margin: 0 0 1.5rem 0;
 }
 
