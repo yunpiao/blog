@@ -1,0 +1,67 @@
+{{ define "main" }}
+<div class="post-container about-container">
+    <article class="post-content">
+        {{ partial "breadcrumb.html" . }}
+        
+        <!-- Hero 区域 (蓝色波浪背景 + Canvas 交互) -->
+        <section class="about-hero-inline">
+            <!-- 背景颜色 -->
+            <div class="about-hero-bg"></div>
+            
+            <!-- 装饰性云朵 (背景虚化圆) -->
+            <div class="about-cloud about-cloud-1"></div>
+            <div class="about-cloud about-cloud-2"></div>
+
+            <!-- Hero 内容容器 -->
+            <div class="about-hero-content">
+                
+                <!-- 左侧：标语 -->
+                <div class="about-intro">
+                    <h1 class="about-title">
+                        大家好，我是<br/>
+                        <span class="about-title-highlight">云飘</span>
+                    </h1>
+                    <p class="about-subtitle">
+                        研发工程师，热爱分享技术经验与见解。专注于解决问题。
+                    </p>
+                </div>
+
+                <!-- 右侧：交互区 & 头像 -->
+                <div class="about-avatar-section">
+                    
+                    <!-- Canvas 交互特效 (绝对定位在头像后面) -->
+                    <div id="canvas-container" class="canvas-container">
+                        <canvas id="interactive-canvas"></canvas>
+                    </div>
+
+                    <!-- 头像 -->
+                    <div class="about-avatar-wrapper">
+                        <!-- 白色光晕背景 -->
+                        <div class="about-avatar-glow"></div>
+                        
+                        <img 
+                            src="{{ "images/avatar.jpg" | relURL }}" 
+                            alt="云飘头像" 
+                            class="about-avatar"
+                            onerror="this.src='https://img.yunpiao.site/2025/11/73e62a19649206c732671720d10fc4c1.png'"
+                        />
+                        
+                        <!-- 底部阴影 -->
+                        <div class="about-avatar-shadow"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 文章内容 (移入 Hero 区域) -->
+            <div class="about-main-content-inline">
+                {{ .Content }}
+            </div>
+        </section>
+        
+        {{ partial "comments.html" . }}
+    </article>
+</div>
+
+<script src="{{ "js/interactive-canvas-grid.js" | relURL }}"></script>
+{{ end }}

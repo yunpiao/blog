@@ -1,63 +1,63 @@
 {{ define "main" }}
 <div class="content-list">
-    <h1>{{ .Title }}</h1>
-    {{ $paginator := .Paginate (where .Pages "Type" "post") 30 }}
-    
-    {{ $pages := $paginator.Pages }}
-    {{ $years := $pages.GroupByDate "2006" }}
-    
-    <div class="posts-by-year">
-        {{ range $years }}
-        <div class="year-group">
-            <h2 class="year-title">{{ .Key }}年 
-                <sup class="post-count">{{ len .Pages }}</sup>
-            </h2>
-            {{ range .Pages.GroupByDate "01" }}
-            <div class="month-group">
-                <h3 class="month-title">{{ .Key }}月</h3>
-                <ul class="post-list">
-                    {{ range .Pages }}
-                    <li class="post-item">
-                        <time>{{ .Date.Format "01-02" }}</time>
-                        <a href="{{ .Permalink }}" class="post-title-link">{{ .Title }}</a>
-                        {{ with .Params.description }}
-                        <span class="post-description">{{ . }}</span>
+                <h1>{{ .Title }}</h1>
+        {{ $paginator := .Paginate (where .Pages "Type" "post") 30 }}
+        
+        {{ $pages := $paginator.Pages }}
+        {{ $years := $pages.GroupByDate "2006" }}
+        
+        <div class="posts-by-year">
+            {{ range $years }}
+            <div class="year-group">
+                <h2 class="year-title">{{ .Key }}年 
+                    <sup class="post-count">{{ len .Pages }}</sup>
+                </h2>
+                {{ range .Pages.GroupByDate "01" }}
+                <div class="month-group">
+                    <h3 class="month-title">{{ .Key }}月</h3>
+                    <ul class="post-list">
+                        {{ range .Pages }}
+                        <li class="post-item">
+                            <time>{{ .Date.Format "01-02" }}</time>
+                            <a href="{{ .Permalink }}" class="post-title-link">{{ .Title }}</a>
+                            {{ with .Params.description }}
+                            <span class="post-description">{{ . }}</span>
+                            {{ end }}
+                        </li>
                         {{ end }}
-                    </li>
-                    {{ end }}
-                </ul>
+                    </ul>
+                </div>
+                {{ end }}
             </div>
             {{ end }}
         </div>
-        {{ end }}
-    </div>
 
-    {{ if gt $paginator.TotalPages 1 }}
-    <div class="pagination">
-        {{ if $paginator.HasPrev }}
-        <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
+        {{ if gt $paginator.TotalPages 1 }}
+        <div class="pagination">
+            {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
+            {{ end }}
+            <span class="page-numbers">
+                {{ range $paginator.Pagers }}
+                {{ if eq . $paginator.PageNumber }}
+                <span class="current">{{ . }}</span>
+                {{ else }}
+                <a href="{{ .URL }}">{{ . }}</a>
+                {{ end }}
+                {{ end }}
+            </span>
+            {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
+            {{ end }}
+        </div>
         {{ end }}
-        <span class="page-numbers">
-            {{ range $paginator.Pagers }}
-            {{ if eq . $paginator.PageNumber }}
-            <span class="current">{{ . }}</span>
-            {{ else }}
-            <a href="{{ .URL }}">{{ . }}</a>
-            {{ end }}
-            {{ end }}
-        </span>
-        {{ if $paginator.HasNext }}
-        <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
+        
+        {{ if .Site.Params.backToTop }}  
+        <button id="back-to-top" class="back-to-top">
+          <i class="fas fa-arrow-up"></i>
+        </button>
         {{ end }}
     </div>
-    {{ end }}
-    
-    {{ if .Site.Params.backToTop }}  
-    <button id="back-to-top" class="back-to-top">
-      <i class="fas fa-arrow-up"></i>
-    </button>
-    {{ end }}
-</div>
 
 {{ if .Site.Params.backToTop }}
 <script>

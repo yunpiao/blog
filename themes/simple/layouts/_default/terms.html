@@ -1,20 +1,22 @@
 {{ define "main" }}
-<div class="post-content">
-    <h1>{{ .Title }}</h1>
-    <div class="tags-cloud">
-        {{ range .Data.Terms.ByCount }}
-            {{ $fontSize := add 14 (mul 2 .Count) }} <!-- 根据数量调整字体大小 -->
-            {{ $lightness := sub 8 (mul 5 .Count) }} <!-- 调整亮度值，数量越多亮度越低 -->
-            {{ $fontWeight := add 800 (mul 100 .Count) }} <!-- 数量越多字体加粗 -->
-            <a href="{{ .Page.RelPermalink }}" 
-               class="tag-cloud-item"
-               style="font-size: {{ $fontSize }}px; 
-                      font-weight: {{ $fontWeight }}; 
-                      color: hsl(0, 0%, {{ $lightness }}%);">
-                # {{ .Page.Title }}
-                <sup>{{ .Count }}</sup>
-            </a>
-        {{ end }}
+<div class="post-container">
+    <div class="post-content">
+        <h1 class="post-title">{{ .Title }}</h1>
+        <div class="tags-cloud">
+            {{ range .Data.Terms.ByCount }}
+                {{ $fontSize := add 14 (mul 2 .Count) }} <!-- 根据数量调整字体大小 -->
+                {{ $lightness := sub 8 (mul 5 .Count) }} <!-- 调整亮度值，数量越多亮度越低 -->
+                {{ $fontWeight := add 800 (mul 100 .Count) }} <!-- 数量越多字体加粗 -->
+                <a href="{{ .Page.RelPermalink }}" 
+                   class="tag-cloud-item"
+                   style="font-size: {{ $fontSize }}px; 
+                          font-weight: {{ $fontWeight }}; 
+                          color: hsl(0, 0%, {{ $lightness }}%);">
+                    # {{ .Page.Title }}
+                    <sup>{{ .Count }}</sup>
+                </a>
+            {{ end }}
+        </div>
     </div>
 </div>
 
