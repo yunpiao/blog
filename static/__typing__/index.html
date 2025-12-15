@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>solution.go - algorithm - Visual Studio Code</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1e1e1e;
+            color: #cccccc;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* 标题栏 */
+        .titlebar {
+            height: 30px;
+            background: #323233;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            font-size: 12px;
+            -webkit-app-region: drag;
+        }
+        .titlebar .menu { display: flex; gap: 15px; color: #cccccc; }
+        .titlebar .menu span { cursor: pointer; }
+        .titlebar .menu span:hover { color: #ffffff; }
+        .titlebar .title { flex: 1; text-align: center; color: #cccccc; }
+        .titlebar .window-controls { display: flex; gap: 5px; }
+        .titlebar .window-controls span {
+            width: 12px; height: 12px; border-radius: 50%;
+            display: inline-block;
+        }
+        .titlebar .window-controls .close { background: #ff5f57; }
+        .titlebar .window-controls .minimize { background: #febc2e; }
+        .titlebar .window-controls .maximize { background: #28c840; }
+        
+        /* 主容器 */
+        .main {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+        
+        /* 活动栏 */
+        .activitybar {
+            width: 48px;
+            background: #333333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 5px;
+        }
+        .activitybar .icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #858585;
+            cursor: pointer;
+            border-left: 2px solid transparent;
+        }
+        .activitybar .icon:hover { color: #ffffff; }
+        .activitybar .icon.active { color: #ffffff; border-left-color: #ffffff; }
+        .activitybar .icon svg { width: 24px; height: 24px; }
+        
+        /* 侧边栏 */
+        .sidebar {
+            width: 220px;
+            background: #252526;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #1e1e1e;
+        }
+        .sidebar-header {
+            padding: 10px 15px;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #bbbbbb;
+            letter-spacing: 0.5px;
+        }
+        .file-tree { flex: 1; overflow-y: auto; }
+        .file-item {
+            padding: 5px 15px 5px 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+        .file-item:hover { background: #2a2d2e; }
+        .file-item.active { background: #37373d; }
+        .file-item .icon { color: #519aba; font-size: 14px; }
+        .folder { color: #dcb67a !important; }
+        .folder-header {
+            padding: 5px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+        .folder-header:hover { background: #2a2d2e; }
+        
+        /* 编辑器区域 */
+        .editor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #1e1e1e;
+        }
+        
+        /* 标签栏 */
+        .tabs {
+            height: 35px;
+            background: #252526;
+            display: flex;
+            align-items: center;
+        }
+        .tab {
+            height: 100%;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            background: #1e1e1e;
+            border-right: 1px solid #252526;
+            cursor: pointer;
+        }
+        .tab .icon { color: #519aba; }
+        .tab .close { 
+            opacity: 0; 
+            font-size: 16px; 
+            width: 16px; 
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 3px;
+        }
+        .tab:hover .close { opacity: 1; }
+        .tab .close:hover { background: #5a5a5a; }
+        
+        /* 面包屑 */
+        .breadcrumb {
+            height: 22px;
+            padding: 0 15px;
+            font-size: 12px;
+            color: #999999;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: #1e1e1e;
+        }
+        
+        /* 编辑器 */
+        .editor {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+        .line-numbers {
+            width: 50px;
+            background: #1e1e1e;
+            text-align: right;
+            padding: 10px 10px 10px 0;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #858585;
+            user-select: none;
+        }
+        .code-area {
+            flex: 1;
+            position: relative;
+            padding: 10px 15px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow: auto;
+        }
+        .code-display {
+            white-space: pre;
+            pointer-events: none;
+        }
+        .code-display span.correct { color: #4ec9b0; }
+        .code-display span.incorrect { color: #f44747; background: #5a1d1d; }
+        .code-display span.current { background: #264f78; }
+        .code-display span.pending { color: #6a6a6a; }
+        
+        textarea {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 10px 15px;
+            background: transparent;
+            border: none;
+            color: transparent;
+            caret-color: #aeafad;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            resize: none;
+            outline: none;
+            z-index: 2;
+            white-space: pre;
+        }
+        textarea::placeholder { color: transparent; }
+        
+        /* 状态栏 */
+        .statusbar {
+            height: 22px;
+            background: #007acc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            color: #ffffff;
+        }
+        .statusbar-left, .statusbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .statusbar-item { display: flex; align-items: center; gap: 4px; }
+        
+        /* 迷你地图 */
+        .minimap {
+            width: 80px;
+            background: #1e1e1e;
+            border-left: 1px solid #333;
+            opacity: 0.6;
+        }
+        
+        /* 隐藏结果弹窗 */
+        .result-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #252526;
+            border: 1px solid #454545;
+            border-radius: 6px;
+            padding: 30px 50px;
+            z-index: 100;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .result-modal.show { display: block; }
+        .result-modal h2 { color: #4ec9b0; margin-bottom: 20px; }
+        .result-stats { display: flex; gap: 30px; justify-content: center; }
+        .result-stats .stat-value { font-size: 24px; font-weight: bold; color: #569cd6; }
+        .result-stats .stat-label { font-size: 12px; color: #858585; margin-top: 5px; }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+        }
+        .overlay.show { display: block; }
+    </style>
+</head>
+<body>
+    <!-- 标题栏 -->
+    <div class="titlebar">
+        <div class="window-controls">
+            <span class="close"></span>
+            <span class="minimize"></span>
+            <span class="maximize"></span>
+        </div>
+        <div class="menu">
+            <span>File</span>
+            <span>Edit</span>
+            <span>Selection</span>
+            <span>View</span>
+            <span>Go</span>
+            <span>Run</span>
+            <span>Terminal</span>
+            <span>Help</span>
+        </div>
+        <div class="title">solution.go - algorithm - Visual Studio Code</div>
+        <div style="width: 80px;"></div>
+    </div>
+    
+    <div class="main">
+        <!-- 活动栏 -->
+        <div class="activitybar">
+            <div class="icon active">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 0h-9L7 1.5V6H2.5L1 7.5v15.07L2.5 24h12.07L16 22.57V18h4.5l1.5-1.5v-15L20.5 0h-3zM14 22H3V8h4v8.5l1.5 1.5H14v4zm6-6H9V2h5v4.5l1.5 1.5H20v8z"/></svg>
+            </div>
+            <div class="icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.25 0a8.25 8.25 0 00-6.18 13.72L1 22.88l1.12 1.12 9.06-9.06A8.25 8.25 0 1015.25 0zm0 15a6.75 6.75 0 110-13.5 6.75 6.75 0 010 13.5z"/></svg>
+            </div>
+            <div class="icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.007 8.222A3.738 3.738 0 0 0 17.5 5.5a3.73 3.73 0 0 0-2.55 1.014l-.478-.398a4 4 0 0 0-5.665.667l-.428-.428-.707.707L2 1.39.586 2.804 1.878 4.096A4 4 0 0 0 1 6.5a4 4 0 0 0 1.218 2.872L2 9.59v4.82l3 3V22h4v-3h2v3h4v-4.59l3-3V9.59l-.218-.218A3.738 3.738 0 0 0 21.007 8.222zM10 16H6v-2.586l-1-1V10h1v2h2v-2h2v6zm8-2.586l-1 1V16h-4v-6h2v2h2v-2h1v2.414z"/></svg>
+            </div>
+            <div class="icon">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+        </div>
+        
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">Explorer</div>
+            <div class="file-tree">
+                <div class="folder-header">
+                    <span>▼</span>
+                    <span class="folder">📁</span>
+                    <span>algorithm</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('binary')">
+                    <span class="icon">📄</span>
+                    <span>binary_search.go</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('sliding')">
+                    <span class="icon">📄</span>
+                    <span>sliding_window.go</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('reverse')">
+                    <span class="icon">📄</span>
+                    <span>reverse_list.go</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('bfs')">
+                    <span class="icon">📄</span>
+                    <span>level_order.go</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('backtrack')">
+                    <span class="icon">📄</span>
+                    <span>permute.go</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('monotonic')">
+                    <span class="icon">📄</span>
+                    <span>monotonic_stack.go</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('heap')">
+                    <span class="icon">📄</span>
+                    <span>min_heap.go</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('quicksort')">
+                    <span class="icon">📄</span>
+                    <span>quick_sort.go</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('mergesort')">
+                    <span class="icon">📄</span>
+                    <span>merge_sort.go</span>
+                </div>
+                <div class="file-item" onclick="loadTemplate('lru')">
+                    <span class="icon">📄</span>
+                    <span>lru_cache.go</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 编辑器 -->
+        <div class="editor-container">
+            <div class="tabs">
+                <div class="tab">
+                    <span class="icon">📄</span>
+                    <span id="tabName">solution.go</span>
+                    <span class="close">×</span>
+                </div>
+            </div>
+            <div class="breadcrumb">
+                <span>algorithm</span>
+                <span>›</span>
+                <span id="breadcrumbFile">solution.go</span>
+            </div>
+            <div class="editor">
+                <div class="line-numbers" id="lineNumbers"></div>
+                <div class="code-area">
+                    <div class="code-display" id="display"></div>
+                    <textarea id="input" spellcheck="false"></textarea>
+                </div>
+                <div class="minimap"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 状态栏 -->
+    <div class="statusbar">
+        <div class="statusbar-left">
+            <div class="statusbar-item">⎇ main</div>
+            <div class="statusbar-item">⟳ 0</div>
+            <div class="statusbar-item">⚠ 0</div>
+        </div>
+        <div class="statusbar-right">
+            <div class="statusbar-item" id="statsDisplay">Ln 1, Col 1</div>
+            <div class="statusbar-item">Spaces: 4</div>
+            <div class="statusbar-item">UTF-8</div>
+            <div class="statusbar-item">Go</div>
+            <div class="statusbar-item" id="wpmDisplay">WPM: 0</div>
+            <div class="statusbar-item" id="accDisplay">ACC: 100%</div>
+        </div>
+    </div>
+    
+    <!-- 完成弹窗 -->
+    <div class="overlay" id="overlay" onclick="closeResult()"></div>
+    <div class="result-modal" id="result">
+        <h2>✓ Build Successful</h2>
+        <div class="result-stats">
+            <div>
+                <div class="stat-value" id="finalWpm">0</div>
+                <div class="stat-label">WPM</div>
+            </div>
+            <div>
+                <div class="stat-value" id="finalAccuracy">100%</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+            <div>
+                <div class="stat-value" id="finalTime">0:00</div>
+                <div class="stat-label">Time</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+const templates = {
+    binary: { name: "binary_search.go", code: `func binarySearch(nums []int, target int) int {
+    l, r := 0, len(nums)-1
+    for l <= r {
+        mid := l + (r-l)/2
+        if nums[mid] == target {
+            return mid
+        } else if nums[mid] > target {
+            r = mid - 1
+        } else {
+            l = mid + 1
+        }
+    }
+    return -1
+}` },
+    sliding: { name: "sliding_window.go", code: `func lengthOfLongestSubstring(s string) int {
+    n := len(s)
+    l, r := 0, 0
+    window := make(map[byte]int)
+    ret := 0
+    for r < n {
+        if idx, ok := window[s[r]]; ok && idx >= l {
+            l = idx + 1
+        }
+        window[s[r]] = r
+        ret = max(ret, r-l+1)
+        r++
+    }
+    return ret
+}` },
+    reverse: { name: "reverse_list.go", code: `func reverseList(head *ListNode) *ListNode {
+    var prev *ListNode
+    curr := head
+    for curr != nil {
+        next := curr.Next
+        curr.Next = prev
+        prev = curr
+        curr = next
+    }
+    return prev
+}` },
+    bfs: { name: "level_order.go", code: `func levelOrder(root *TreeNode) [][]int {
+    if root == nil {
+        return nil
+    }
+    ret := [][]int{}
+    queue := []*TreeNode{root}
+    for len(queue) > 0 {
+        size := len(queue)
+        level := []int{}
+        for i := 0; i < size; i++ {
+            node := queue[0]
+            queue = queue[1:]
+            level = append(level, node.Val)
+            if node.Left != nil {
+                queue = append(queue, node.Left)
+            }
+            if node.Right != nil {
+                queue = append(queue, node.Right)
+            }
+        }
+        ret = append(ret, level)
+    }
+    return ret
+}` },
+    backtrack: { name: "permute.go", code: `func permute(nums []int) [][]int {
+    ret := [][]int{}
+    used := make([]bool, len(nums))
+    var dfs func(path []int)
+    dfs = func(path []int) {
+        if len(path) == len(nums) {
+            ret = append(ret, append([]int{}, path...))
+            return
+        }
+        for i := 0; i < len(nums); i++ {
+            if used[i] {
+                continue
+            }
+            used[i] = true
+            dfs(append(path, nums[i]))
+            used[i] = false
+        }
+    }
+    dfs([]int{})
+    return ret
+}` },
+    monotonic: { name: "monotonic_stack.go", code: `func dailyTemperatures(T []int) []int {
+    n := len(T)
+    stack := []int{}
+    ret := make([]int, n)
+    for i := 0; i < n; i++ {
+        for len(stack) > 0 && T[stack[len(stack)-1]] < T[i] {
+            idx := stack[len(stack)-1]
+            stack = stack[:len(stack)-1]
+            ret[idx] = i - idx
+        }
+        stack = append(stack, i)
+    }
+    return ret
+}` },
+    heap: { name: "min_heap.go", code: `type MinHeap []int
+
+func (h MinHeap) Len() int           { return len(h) }
+func (h MinHeap) Less(i, j int) bool { return h[i] < h[j] }
+func (h MinHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *MinHeap) Push(x any) {
+    *h = append(*h, x.(int))
+}
+
+func (h *MinHeap) Pop() any {
+    old := *h
+    x := old[len(old)-1]
+    *h = old[:len(old)-1]
+    return x
+}` },
+    quicksort: { name: "quick_sort.go", code: `func quickSort(nums []int, left, right int) {
+    if left >= right {
+        return
+    }
+    pivot := partition(nums, left, right)
+    quickSort(nums, left, pivot-1)
+    quickSort(nums, pivot+1, right)
+}
+
+func partition(nums []int, left, right int) int {
+    pivot := nums[right]
+    i := left
+    for j := left; j < right; j++ {
+        if nums[j] < pivot {
+            nums[i], nums[j] = nums[j], nums[i]
+            i++
+        }
+    }
+    nums[i], nums[right] = nums[right], nums[i]
+    return i
+}` },
+    mergesort: { name: "merge_sort.go", code: `func mergeSort(nums []int) []int {
+    if len(nums) <= 1 {
+        return nums
+    }
+    mid := len(nums) / 2
+    left := mergeSort(nums[:mid])
+    right := mergeSort(nums[mid:])
+    return merge(left, right)
+}
+
+func merge(left, right []int) []int {
+    result := make([]int, 0, len(left)+len(right))
+    i, j := 0, 0
+    for i < len(left) && j < len(right) {
+        if left[i] <= right[j] {
+            result = append(result, left[i])
+            i++
+        } else {
+            result = append(result, right[j])
+            j++
+        }
+    }
+    result = append(result, left[i:]...)
+    result = append(result, right[j:]...)
+    return result
+}` },
+    lru: { name: "lru_cache.go", code: `type Node struct {
+    Key, Val   int
+    Prev, Next *Node
+}
+
+type LRUCache struct {
+    Head, Tail *Node
+    Cache      map[int]*Node
+    Cap        int
+}
+
+func Constructor(cap int) LRUCache {
+    h, t := &Node{}, &Node{}
+    h.Next, t.Prev = t, h
+    return LRUCache{
+        Head:  h,
+        Tail:  t,
+        Cache: make(map[int]*Node),
+        Cap:   cap,
+    }
+}` }
+};
+
+let currentTemplate = "";
+let currentFileName = "";
+let startTime = null;
+let timerInterval = null;
+let totalKeystrokes = 0;
+let correctKeystrokes = 0;
+
+const input = document.getElementById('input');
+const display = document.getElementById('display');
+
+function loadTemplate(key) {
+    const template = templates[key];
+    if (!template) return;
+    
+    currentTemplate = template.code;
+    currentFileName = template.name;
+    
+    document.getElementById('tabName').textContent = template.name;
+    document.getElementById('breadcrumbFile').textContent = template.name;
+    document.title = `${template.name} - algorithm - Visual Studio Code`;
+    
+    input.value = "";
+    startTime = null;
+    totalKeystrokes = 0;
+    correctKeystrokes = 0;
+    
+    if (timerInterval) clearInterval(timerInterval);
+    
+    document.querySelectorAll('.file-item').forEach(f => f.classList.remove('active'));
+    event.target.closest('.file-item').classList.add('active');
+    
+    updateDisplay();
+    updateLineNumbers();
+    input.focus();
+}
+
+function updateLineNumbers() {
+    const lines = currentTemplate.split('\n').length;
+    let html = '';
+    for (let i = 1; i <= lines; i++) {
+        html += i + '\n';
+    }
+    document.getElementById('lineNumbers').textContent = html;
+}
+
+function updateDisplay() {
+    const typed = input.value;
+    let html = "";
+    
+    for (let i = 0; i < currentTemplate.length; i++) {
+        const char = currentTemplate[i];
+        if (i < typed.length) {
+            if (typed[i] === char) {
+                html += `<span class="correct">${escapeHtml(char)}</span>`;
+            } else {
+                html += `<span class="incorrect">${escapeHtml(char)}</span>`;
+            }
+        } else if (i === typed.length) {
+            html += `<span class="current">${escapeHtml(char)}</span>`;
+        } else {
+            html += `<span class="pending">${escapeHtml(char)}</span>`;
+        }
+    }
+    display.innerHTML = html;
+    
+    // Update cursor position
+    const lines = typed.split('\n');
+    const ln = lines.length;
+    const col = lines[lines.length - 1].length + 1;
+    document.getElementById('statsDisplay').textContent = `Ln ${ln}, Col ${col}`;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function updateStats() {
+    if (!startTime) return;
+    const elapsed = (Date.now() - startTime) / 1000;
+    const minutes = elapsed / 60;
+    const wpm = Math.round((correctKeystrokes / 5) / minutes) || 0;
+    const accuracy = totalKeystrokes > 0 ? Math.round((correctKeystrokes / totalKeystrokes) * 100) : 100;
+    
+    document.getElementById('wpmDisplay').textContent = `WPM: ${wpm}`;
+    document.getElementById('accDisplay').textContent = `ACC: ${accuracy}%`;
+}
+
+function checkComplete() {
+    if (input.value === currentTemplate) {
+        clearInterval(timerInterval);
+        const elapsed = (Date.now() - startTime) / 1000;
+        const minutes = elapsed / 60;
+        const wpm = Math.round((correctKeystrokes / 5) / minutes) || 0;
+        const accuracy = totalKeystrokes > 0 ? Math.round((correctKeystrokes / totalKeystrokes) * 100) : 100;
+        const mins = Math.floor(elapsed / 60);
+        const secs = Math.floor(elapsed % 60);
+        
+        document.getElementById('finalWpm').textContent = wpm;
+        document.getElementById('finalAccuracy').textContent = `${accuracy}%`;
+        document.getElementById('finalTime').textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+        document.getElementById('result').classList.add('show');
+        document.getElementById('overlay').classList.add('show');
+    }
+}
+
+function closeResult() {
+    document.getElementById('result').classList.remove('show');
+    document.getElementById('overlay').classList.remove('show');
+}
+
+input.addEventListener('input', (e) => {
+    if (!currentTemplate) return;
+    
+    if (!startTime) {
+        startTime = Date.now();
+        timerInterval = setInterval(updateStats, 1000);
+    }
+    
+    let typed = input.value;
+    const lastChar = typed[typed.length - 1];
+    
+    if (lastChar === '\n') {
+        let pos = typed.length;
+        while (pos < currentTemplate.length && currentTemplate[pos] === ' ') {
+            typed += ' ';
+            pos++;
+        }
+        input.value = typed;
+    }
+    
+    const expectedChar = currentTemplate[typed.length - 1];
+    if (lastChar !== undefined) {
+        totalKeystrokes++;
+        if (lastChar === expectedChar || lastChar === '\n') {
+            correctKeystrokes++;
+        }
+    }
+    
+    updateDisplay();
+    updateStats();
+    checkComplete();
+});
+
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        const start = input.selectionStart;
+        input.value = input.value.slice(0, start) + '    ' + input.value.slice(input.selectionEnd);
+        input.selectionStart = input.selectionEnd = start + 4;
+        input.dispatchEvent(new Event('input'));
+    }
+});
+
+// Load first template
+loadTemplate('binary');
+    </script>
+</body>
+</html>
