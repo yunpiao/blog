@@ -5,12 +5,25 @@
     font-display: swap;
 }
 :root {
+    /* 颜色变量 */
     --primary-color: {{ .Site.Params.primaryColor | default "#333" }};
     --secondary-color: {{ .Site.Params.secondaryColor | default "#666" }};
     --background-color: {{ .Site.Params.backgroundColor | default "#ffffff" }};
     --link-color: {{ .Site.Params.linkColor | default "#0066cc" }};
     --border-color: #eee;
-    /* --font-family-base: bree serif,sans-serif; */
+    --text-color: #333;
+    --content-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --bg-secondary: #f5f5f5;
+    --secondary-bg: #f8f9fa;
+
+    /* 面包屑导航颜色 */
+    --breadcrumb-bg-color: #0c81ef;
+    --breadcrumb-text-color: #ffffff;
+    --breadcrumb-hover-color: #005f99;
+    --breadcrumb-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    /* 字体变量 */
     --font-family-base: "LXGW WenKai", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
     --font-family-mono: "JetBrains Mono", "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
     --font-size-base: 16px;
@@ -29,8 +42,6 @@ body {
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    /* background: url('/images/bg.webp'); */
-    filter: blur(0.1px);
 }
 
 /* 布局 */
@@ -245,14 +256,6 @@ main {
 .post-preview time {
     color: var(--secondary-color);
     font-size: 0.9rem;
-}
-
-/* 定义颜色变量 */
-:root {
-    --breadcrumb-bg-color: #0c81ef;
-    --breadcrumb-text-color: #ffffff;
-    --breadcrumb-hover-color: #005f99;
-    --breadcrumb-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* 面包屑导航 */
@@ -584,7 +587,7 @@ a {
     box-shadow: 0 1px 2px rgba(255, 235, 59, 0.3);  /* 轻微阴影 */
 }
 
-/* 标题中的加粗文本 - 不使用蓝色背景 */
+/* 标题中的加粗文本 - 不使用黄色荧光笔效果 */
 .post-content h1 strong,
 .post-content h2 strong,
 .post-content h3 strong,
@@ -599,7 +602,7 @@ a {
     border-left: none !important;
 }
 
-/* 表格中的加粗文本 - 不使用蓝色背景 */
+/* 表格中的加粗文本 - 不使用黄色荧光笔效果 */
 .post-content table strong {
     background: none !important;
     padding: 0 !important;
@@ -617,6 +620,21 @@ a {
     margin: 0 !important;
     color: inherit !important;
     box-shadow: none !important;
+}
+
+/* 包含行内代码的加粗文本 - 移除黄色荧光笔效果 */
+.post-content strong:has(code) {
+    background: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+
+/* 加粗中的行内代码 - 保持代码样式 */
+.post-content strong code {
+    background: #e6e8eb !important;
+    box-shadow: none !important;
+    color: #24292e !important;
 }
 
 .post-content h1 {
@@ -1365,7 +1383,7 @@ pre:hover .copy-button-container {
 .friend-div img {
     width: 50px; /* 更小的头像 */
     height: 50px;
-    border-radius: 80%;
+    border-radius: 50%;
     object-fit: cover;
     margin-right: 20px; /* 缩小图片和文字间距 */
     border: 2px solid var(--border-color, #ddd); /* 边框 */
