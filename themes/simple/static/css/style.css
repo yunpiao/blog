@@ -2065,8 +2065,9 @@ code {
 .about-main-content-inline {
     position: relative;
     z-index: 10;
-    padding: 2rem 0 0;
-    max-width: 100%;
+    padding: 2rem 1.5rem 0;
+    max-width: 72rem;  /* 与 about-hero-content 相同 */
+    margin: 0 auto;    /* 居中对齐 */
 }
 
 /* 移除 about-main-content-inline 内所有标题的默认装饰 */

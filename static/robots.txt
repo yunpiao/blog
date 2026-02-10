@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# 禁止爬虫抓取简历页面
+Disallow: /resume/
+
+Sitemap: https://blog.yunpiao.site/sitemap.xml

@@ -11,4 +11,4 @@ node_modules/*
 # Sensitive files
 CLAUDE.md
 resume_content.html
-rebuild_script.py
+resume-tool.js

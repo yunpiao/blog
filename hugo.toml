@@ -6,7 +6,8 @@ theme = 'simple'
 subtitle = "悟已往不谏，知来者可追"
 hasCJKLanguage = true
 # 每页显示的文章数量用于分页
-paginate =  20
+[pagination]
+pagerSize = 20
 
 
 # rss 输出数量
@@ -14,8 +15,9 @@ rssLimit = 10
 timeout = '10m'
 ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
 
-[Author]
-  name = "云飘"
+# Author 信息移到 params 下
+# [Author]
+#   name = "云飘"
 
 [markup]
   [markup.goldmark]
@@ -44,6 +46,7 @@ ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
     startLevel = 2
     
 [params]
+author = "云飘"
 bannerFont = "fonts/exampleFont" 
 description = "😎 最近的博文"
 defaultTheme = "dark"
