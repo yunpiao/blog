@@ -45,6 +45,12 @@ ignoreErrors = ["error-remote-getjson","error-remote-getcsv"]
     ordered = false
     startLevel = 2
     
+[module]
+[[module.mounts]]
+  source = "static"
+  target = "static"
+  files = ["! **/*.tmp.*"]
+
 [params]
 author = "云飘"
 bannerFont = "fonts/exampleFont" 

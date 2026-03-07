@@ -4,12 +4,16 @@
     <h1>{{ . }}</h1>
     {{ end }}
 
-    {{ $pages := where .Site.RegularPages "Type" "post" }}
+    {{ $allPosts := where .Site.RegularPages "Type" "post" }}
+    {{ $allPosts = $allPosts.ByDate.Reverse }}
+    {{ $pinnedPosts := where $allPosts "Params.isTop" true }}
+    {{ $normalPosts := where $allPosts "Params.isTop" "!=" true }}
+    {{ $pages := $pinnedPosts | append $normalPosts }}
     <ul class="post-list">
         {{ range first 20 $pages }}
         <li class="post-item">
             <time>{{ .Date.Format "2006-01-02" }}</time>
-            <a href="{{ .Permalink }}" class="post-title-link">{{ .Title }}</a>
+            <a href="{{ .Permalink }}" class="post-title-link">{{ if .Params.isTop }}<span class="post-pin">[置顶]</span>{{ end }}{{ .Title }}</a>
             {{ with .Params.description }}
             <span class="post-description">{{ . }}</span>
             {{ end }}
