@@ -2,7 +2,7 @@
 title: 从零开始：如何用 Kubernetes 轻松管理云原生应用
 tags:
   - k8s
-date: 2025-04-29T10:19:29+08:00
+date: 2021-04-29T10:19:29+08:00
 draft: false
 toc: true
 slug: 20250429101929
