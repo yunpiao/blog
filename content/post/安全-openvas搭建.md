@@ -3,6 +3,7 @@ title: 安全-openvas搭建
 date: 2019-04-12T10:39:46+08:00
 draft: false
 toc: true
+slug: 20190412103946
 ---
 
 <!--more-->

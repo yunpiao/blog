@@ -6,6 +6,7 @@ draft: false
 toc: true
 slug: 20250123113047
 categories:
+  - Infra/Ops
 ---
 >  最近公司产品部署到客户公司使用的一款小众些的分布式存储-iomesh, 做下流水账记录
 ## **一、环境准备**

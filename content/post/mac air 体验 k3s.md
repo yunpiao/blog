@@ -3,10 +3,11 @@ title: mac air 体验 k3s
 date: 2023-04-12T10:39:46+08:00
 draft: false
 toc: true
+slug: 20230412103946
 tags:
   - 运维
 categories:
-  - 杂技浅尝
+  - Kubernetes
 ---
 <!--more-->
 ```bash

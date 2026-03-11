@@ -3,8 +3,8 @@ title: Spark基础知识
 date: 2020-08-12T10:39:46+08:00
 draft: false
 toc: true
+slug: 20200812103946
 ---
-<!--more-->
 ## 1. Spark介绍
 
 **Apache Spark**是一个[开源](https://zh.wikipedia.org/wiki/%E5%BC%80%E6%BA%90 "开源")集群运算框架，最初是由加州大学柏克莱分校AMPLab所开发。相对于[Hadoop](https://zh.wikipedia.org/wiki/Apache_Hadoop "Apache Hadoop")的[MapReduce](https://zh.wikipedia.org/wiki/MapReduce "MapReduce")会在运行完工作后将中介数据存放到磁盘中，Spark使用了存储器内运算技术，能在数据尚未写入硬盘时即在存储器内分析运算。Spark在存储器内运行程序的运算速度能做到比Hadoop MapReduce的运算速度快上100倍，即便是运行程序于硬盘时，Spark也能快上10倍速度。<sup>[[1]](https://zh.wikipedia.org/wiki/Apache_Spark#cite_note-1)</sup>Spark允许用户将数据加载至集群存储器，并多次对其进行查询，非常适合用于[机器学习](https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0 "机器学习")算法。<sup>[[2]](https://zh.wikipedia.org/wiki/Apache_Spark#cite_note-2)</sup>

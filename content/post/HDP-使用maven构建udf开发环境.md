@@ -5,15 +5,17 @@ draft: false
 tags:
   - 机器学习
 categories:
-  - 杂技浅尝
+  - Data/ML
 toc: true
-summary: 这是文章的摘要部分
+slug: 20220401000000
 ---
 环境： 
 -  idea 2017
 - maven 4.0
 - hive 	1.2.1.2.6
 - win10
+
+<!--more-->
 
 ## 创建maven项目
 

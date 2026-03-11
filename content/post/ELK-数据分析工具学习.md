@@ -5,9 +5,9 @@ draft: false
 tags:
   - 机器学习
 categories:
-  - 杂技浅尝
+  - Data/ML
 toc: true
-summary: 这是文章的摘要部分
+slug: 20200401103946
 ---
 # ELK数据分析工具学习
 ---
@@ -24,6 +24,8 @@ http://udn.yyuap.com/doc/logstash-best-practice-cn/index.html
 Kibana参考手册，使用Kibana提供的前端界面对数据进行快速展示，主要是对Visulize 模块的使
 https://kibana.logstash.es/content/
 ---
+<!--more-->
+
 ## 安装
 
   #### 下载

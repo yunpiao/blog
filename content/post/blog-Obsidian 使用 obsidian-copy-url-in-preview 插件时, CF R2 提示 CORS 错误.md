@@ -1,5 +1,5 @@
 ---
-title: blog-Obsidian 使用 obsidian-copy-url-in-preview 插件时, CF R2 提示 CORS 错误
+title: Obsidian 使用 obsidian-copy-url-in-preview 插件时, CF R2 提示 CORS 错误
 tags:
   - 开源工具
   - blog

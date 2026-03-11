@@ -7,6 +7,7 @@ draft: false
 toc: true
 slug: 20250523151024
 categories:
+  - Security
 ---
 ## 问题
 当 一个对象设置 dacl (1. DACL 定义了"谁"可以对资源做"什么"操作) 的时候, 出现参数错误

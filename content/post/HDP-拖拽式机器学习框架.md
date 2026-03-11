@@ -5,9 +5,9 @@ draft: false
 tags:
   - 机器学习
 categories:
-  - 杂技浅尝
+  - Data/ML
 toc: true
-summary: 这是文章的摘要部分
+slug: 20200401103946
 ---
 >拖拽式机器学习框架
 

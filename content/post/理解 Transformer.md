@@ -13,7 +13,7 @@ draft: false
 toc: true
 slug: 20250731103921
 categories:
-  - 技术洞察
+  - Data/ML
 ---
 > 整天 vibe coding , 怎么能不稍微了解下这个神奇的生成是怎么实现的呢
 

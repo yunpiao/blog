@@ -6,6 +6,7 @@ draft: false
 toc: true
 slug: 20251113174006
 categories:
+  - Infra/Ops
 ---
 >   之前没有亲手实践过 eoll, 最近开发一个小的 c 语言的网络工具, 从阻塞到事件驱动一步一步优化 , 最后性能挺不错的. 😂 实在想不出来没有 epoll 的世界 
 

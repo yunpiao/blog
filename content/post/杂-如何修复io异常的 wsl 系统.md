@@ -6,6 +6,7 @@ draft: false
 toc: true
 slug: 20250711172444
 categories:
+  - Infra/Ops
 ---
 ### **如何安全修复WSL2虚拟磁盘的文件系统错误**
 
@@ -18,6 +19,8 @@ categories:
 文件系统检查工具 (`e2fsck`) 必须在**目标文件系统完全卸载（unmounted）**的状态下运行。
 
 ---
+
+<!--more-->
 
 ### **操作步骤**
 

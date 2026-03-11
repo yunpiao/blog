@@ -9,6 +9,7 @@ draft: false
 toc: true
 slug: 20250911112456
 categories:
+  - Kubernetes
 ---
 >  怎么稀奇古怪的问题都被我遇到啊 😧
 ### 一、现象：诡异的内存增长

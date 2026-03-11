@@ -8,6 +8,7 @@ draft: false
 toc: true
 slug: 20250715151121
 categories:
+  - Project Retrospective
 ---
 >  当时做完安全项目后, 计划升级下特征, 用词向量来进行特征转化, 但是实际下来, 效果很差, 当时使用的 300 维, 现在 gpt 都几万维了
 ---

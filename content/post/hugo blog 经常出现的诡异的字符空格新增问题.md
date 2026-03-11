@@ -1,5 +1,5 @@
 ---
-title: blog-hugo blog 经常出现的诡异的字符空格新增问题
+title: hugo blog 经常出现的诡异的字符空格新增问题
 tags:
   - hugo
   - blog

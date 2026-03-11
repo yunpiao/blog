@@ -7,6 +7,7 @@ toc: true
 isTop: true
 slug: 20251227143139
 categories:
+  - Security
 ---
 # Claude Code 密钥防护：如何阻止 AI 读取你的 API Token
 

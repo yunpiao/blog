@@ -7,11 +7,14 @@ draft: false
 toc: true
 slug: 20250429101929
 categories:
+  - Kubernetes
 ---
 ## **“Kubernetes 不怕从零开始：30 分钟搞定你的第一个云原生部署”**  
 > 如果你从未接触过 Kubernetes，却想快速上手它管理容器化应用，这篇文章就是为你写的。本文将用最直观的步骤，教你如何在本地环境搭建一个 Kubernetes 集群，并部署一个简单的 Web 应用。无需复杂配置，只需一台电脑和 Docker 环境即可。  
 
 ---
+<!--more-->
+
 ![image.png](https://img.yunpiao.site/2025/04/e8b629391b08f091c5fcf36ab94bfec9.png)
 
 ---

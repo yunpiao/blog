@@ -5,8 +5,9 @@ draft: false
 series:
   - Blog养成记
 categories:
-  - 杂技浅尝
+  - Data/ML
 toc: true
+slug: 20180612103946
 tags:
   - 论文
 ---

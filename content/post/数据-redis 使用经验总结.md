@@ -7,7 +7,8 @@ date: 2024-11-06T10:39:55+08:00
 draft: false
 toc: true
 slug: 20241106103955
-categories: 
+categories:
+  - Backend
 ---
 # 记录工作中总结的 redis 相关知识
 <!--more-->

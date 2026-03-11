@@ -7,6 +7,7 @@ toc: true
 isTop: true
 slug: 20260123114712
 categories:
+  - Kubernetes
 ---
 > 😵 VM 迁移后改个 IP 而已，怎么就这么多坑呢
 
@@ -17,6 +18,8 @@ categories:
 我心想，改个 IP 能有多难？不就是改改配置文件重启一下嘛。
 
 然后我就开始了长达 30 分钟的踩坑之旅。
+
+<!--more-->
 
 **环境说明**
 

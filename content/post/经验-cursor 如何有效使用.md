@@ -7,6 +7,7 @@ draft: false
 toc: true
 slug: 20250604150126
 categories:
+  - Backend
 ---
 >  目前使用 cursor 做程序的实践, cursor 版本: 0.50.7
 
@@ -14,6 +15,8 @@ categories:
   
 ## 1. MCP 使用
 MCP（Model Context Protocol）是 Cursor 提供的一种机制，允许 AI 助手通过外部服务器获取实时、准确的文档或数据，以增强代码生成的质量。以下是你提到的三个 MCP 的使用实践：
+
+<!--more-->
 
 ### 1.1 deepwiki
 Deepwiki MCP 是一个开源工具，用于从 GitHub 仓库或 Deepwiki 网站（deepwiki.com）获取最新的文档或代码库内容，特别适合需要爬取 GitHub 仓库文档的场景。它通过 MCP 协议将爬取的内容转换为 Markdown 格式，供 Cursor 使用

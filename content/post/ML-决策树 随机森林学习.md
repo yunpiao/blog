@@ -5,9 +5,9 @@ draft: false
 tags:
   - 机器学习
 categories:
-  - 杂技浅尝
+  - Data/ML
 toc: true
-summary: 这是文章的摘要部分
+slug: 20191012103946
 ---
 ![image](http://upload-images.jianshu.io/upload_images/10970403-b5e84597340b867b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ## 连续值处理 
@@ -17,6 +17,8 @@ summary: 这是文章的摘要部分
   - PlayTennis: No No Yes Yes Yes No
 ---
 决策树学习是一种逼近离散值目标函数的方法，在这种方法中学习到的函数被表示 为一棵决策树。学习得到的决策树也能再被表示为多个 if-then 的规则，以提高可读性。 这种学习算法是最流行的归纳推理算法之一，已经被成功地应用到从学习医疗诊断到学 习评估贷款申请的信用风险的广阔领域。
+
+<!--more-->
 
 对属性 Temprature，首先按照连续属性 A 排序样例，然后确定目标分类不同的 相邻实例，于是我们可以产生一组候选阈值，它们的值是相应的 A 值之间的中间值。 可以证明产生最大信息增益的 c 值必定位于这样的边界中(Fayyad 1991)。然后可以通过计算与每个候选阈值关联的信息增益评估这些候选值。在当前的例子中，有两个候选 阈值，它们对应于目标属性 PlayTennis 变化时属性 Temperature 的值:(48+60)/2 和 (80+90)/2。然后计算每一个候选属性——Temperature>54 和Temperature>85的信息增 益，并选择最好的(Temperature>54)。现在这个动态创建的布尔属性便可以和其他候选 的离散值属性一同“竞争”，以用于增长决策树。Fayyad & Irani(1993)讨论了这种方 法的一个扩展，即把连续的属性分割成多个区间，而不是基于单一阈值的两个区间。 Utgoff & Brodley(1991)和 Murthy et al.(1994)讨论了通过对几个连续值属性的线性 组合定义阈值参数的方法。
 

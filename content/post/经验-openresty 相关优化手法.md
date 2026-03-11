@@ -8,6 +8,7 @@ draft: false
 toc: true
 slug: 20250208150956
 categories:
+  - Backend
 ---
 ## 1. LUA 层面
 ### 1.1 尽量使用局部变量, 减少垃圾回收开销
@@ -19,6 +20,8 @@ categories:
 `local re = ngx.re.compile("pattern")`。
 ### 1.4 确定重复数据的域
 将全局可以用到的保存为全局变量, 在初始化的时候加载好, 并确定好最方便查找的结构, 如 ip 地址库
+
+<!--more-->
 ### 1.5 在耗时函数上加一层缓存
 如计算 hash 函数, 或者 json decode 后的对象, 空间换时间
 ### 1.6 使用 LuaJIT FFI 

@@ -8,7 +8,7 @@ draft: false
 toc: true
 slug: 20260203135314
 categories:
-  - 技术折腾
+  - Infra/Ops
 ---
 >  平淡无奇的周一, 老板突然说 7z 怎么无法在 esxi host 解析 vmdk 呢? 于是有这个工具的探索. 实现起来倒是不复杂, 只因为 AI 可以闭环验证, 很快就完成了
 
@@ -27,6 +27,8 @@ categories:
 2. **文件系统原理**：ext4、NTFS、XFS 的核心数据结构
 3. **LVM 机制**：逻辑卷管理器的元数据组织
 4. **VMware SESparse**：快照格式的增量存储原理
+
+<!--more-->
 
 ## 二、磁盘数据的层次结构
 

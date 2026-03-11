@@ -1,5 +1,5 @@
 ---
-title: 实战-Windows 下 golang 进程无法被 kill 排查.md
+title: 实战-Windows 下 golang 进程无法被 kill 排查
 tags:
   - windows
   - go
@@ -9,7 +9,6 @@ date: 2023-07-07T21:10:04+08:00
 draft: false
 toc: true
 slug: 20230707211004
-categories:
 isTop: true
 ---
 ## 1. 背景

@@ -9,6 +9,7 @@ draft: false
 toc: true
 slug: 20250715152828
 categories:
+  - Project Retrospective
 ---
 > 现在想起这个项目, 当时的我真是个天才, 对机器学习和深度学习分类出来的恶意模型, 进行自动分类, 再也不用一条一条分析日志了
 ---

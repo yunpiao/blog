@@ -8,7 +8,7 @@ draft: false
 toc: true
 slug: 20251217140051
 categories:
-  - 技术折腾
+  - Infra/Ops
 ---
 ![image.png](https://img.yunpiao.site/2025/12/2e64cc88473573bd13ffeeca91d93ca6.png)
 

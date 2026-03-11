@@ -9,6 +9,7 @@ draft: false
 toc: true
 slug: 20250911141844
 categories:
+  - Kubernetes
 ---
 > 😧 稀奇古怪的 bug 怎么这么多, 还好是一个前人遇到过的, 如果我是第一个发现的, 估计美好的周五晚上就没有了
 

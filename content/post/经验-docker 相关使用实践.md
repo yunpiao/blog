@@ -9,6 +9,7 @@ draft: false
 toc: true
 slug: 20250106142544
 categories:
+  - Infra/Ops
 ---
 
 ## 一、Harbor 仓库 SSL 证书问题解决(依赖加证书文件实在解决不了的情况下)
@@ -30,6 +31,8 @@ sudo update-ca-certificates
 ```bash
 curl -v https://your-harbor-domain
 ```
+
+<!--more-->
 
 ## 二、镜像优化分析工具
 使用 Dive 进行镜像层分析：

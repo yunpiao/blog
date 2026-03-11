@@ -5,9 +5,9 @@ draft: false
 tags:
   - 机器学习
 categories:
-  - 杂技浅尝
+  - Data/ML
 toc: true
-summary: 这是文章的摘要部分
+slug: 20191012103946
 ---
 
 # 梯度下降代码线性回归为例
@@ -15,6 +15,8 @@ summary: 这是文章的摘要部分
 ## bgd 批量梯度下降
 ## sbd 随机梯度下降
 ## mbfd 小批量随机梯度下降
+
+<!--more-->
 
 
 ```python

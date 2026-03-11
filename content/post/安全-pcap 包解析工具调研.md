@@ -3,6 +3,7 @@ title: 安全-pcap 包解析工具调研
 date: 2019-04-12T10:39:46+08:00
 draft: false
 toc: true
+slug: 20190412103946
 ---
 > 调研了些可以大数据量的处理pcap包的工具
 <!--more-->
@@ -10,7 +11,6 @@ toc: true
 
 
 
-<!--more-->
 opensoc
 https://blog.sectong.com/blog/opensoc_deep_analysis.html
 

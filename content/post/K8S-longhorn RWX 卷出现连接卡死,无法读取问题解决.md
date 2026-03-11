@@ -8,6 +8,7 @@ draft: false
 toc: true
 slug: 20241211171937
 categories:
+  - Kubernetes
 ---
 ## 背景
 公司产品私有化部署原本是用 nfs-provisioner  RWX 卷, 用于多个 pod 间的数据同步, 但是由于 `nfs` 也部署在产品内部, 还是有单点问题, 所以增加了使用 longhorn 作为分布式存储组件, 在兼容适配后, 在交付第一次给用户部署的时候, 遇到了一个奇怪的问题

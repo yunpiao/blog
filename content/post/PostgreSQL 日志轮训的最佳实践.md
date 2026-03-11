@@ -7,6 +7,7 @@ draft: false
 toc: true
 slug: 20250515173913
 categories:
+  - Infra/Ops
 ---
 - 文件变量名用作日志轮转时进行清理历史文件的作用, 比如 ‘postgresql-%H.log’ 每小时一个文件, 第二天会对前一天的日志进行覆盖
 - 日志轮转时机可以配置根据时间和大小, log_rotation_age log_rotation_size 参数
