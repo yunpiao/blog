@@ -65,10 +65,10 @@ Cloudflared 直连 Cloudflare 边缘节点的时候，流量路径大致是：
 
 ```bash
 # 基础用法 - 通过本地代理
-cloudflared tunnel run --edge-proxy-url socks5://127.0.0.1:1080 mytunnel
+cloudflared tunnel --edge-proxy-url socks5://127.0.0.1:1080 run mytunnel
 
 # 带认证的代理
-cloudflared tunnel run --edge-proxy-url socks5://user:pass@proxy.example.com:1080 mytunnel
+cloudflared tunnel --edge-proxy-url socks5://user:pass@proxy.example.com:1080 run mytunnel
 
 # 使用配置文件
 cat > config.yml <<EOF
@@ -103,7 +103,7 @@ cloudflared tunnel run mytunnel
 
 **方式 1: 命令行参数**
 ```bash
-cloudflared tunnel run --edge-proxy-url socks5://proxy:1080 mytunnel
+cloudflared tunnel --edge-proxy-url socks5://proxy:1080 run mytunnel
 ```
 
 **方式 2: 环境变量**
@@ -131,7 +131,7 @@ QUIC 使用 UDP，标准 SOCKS5 主要是为 TCP 设计的。
 
 ```bash
 # ❌ 不安全
-cloudflared tunnel run --edge-proxy-url socks5://user:password@proxy:1080 mytunnel
+cloudflared tunnel --edge-proxy-url socks5://user:password@proxy:1080 run mytunnel
 ```
 
 **解决：** 使用配置文件并设置权限：
