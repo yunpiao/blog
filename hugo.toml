@@ -79,6 +79,10 @@ linkColor = "#0066cc"
 
 # 是否开启回到顶部按钮 
 backToTop = true 
+
+[params.aiSearch]
+publicEndpoint = "https://256fd4a7-30a0-4e79-b5f9-dde3f546b928.search.ai.cloudflare.com/"
+
 [menu]
 # Shown in the side menu.
 [[menu.main]]
@@ -114,6 +118,12 @@ identifier = "friend"
 name = "友链"
 url = "/friend/"
 weight = 5
+
+[[menu.main]]
+identifier = "ai-search"
+name = "AI 搜索"
+url = "/ai-search/"
+weight = 6
 
 [taxonomies]
 category = "categories"

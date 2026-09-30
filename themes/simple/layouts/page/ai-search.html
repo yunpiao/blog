@@ -1,0 +1,36 @@
+{{ define "head" }}
+<link rel="stylesheet" href="{{ "css/ai-search.css" | relURL }}">
+<script type="module" src="{{ "js/ai-search.js" | relURL }}"></script>
+{{ end }}
+
+{{ define "main" }}
+<section class="ai-search-page" aria-labelledby="ai-search-title">
+    <h1 id="ai-search-title">问问博客</h1>
+    <p class="ai-search-description">从博客文章中找资料、问问题，查看回答中的原文链接。</p>
+
+    <div id="ai-search-status" class="ai-search-status" role="status">正在加载 AI 搜索…</div>
+    <div id="ai-search-error" class="ai-search-error" role="alert" hidden>
+        <p>AI 搜索暂时无法加载，请检查网络后重试。</p>
+        <button id="ai-search-retry" type="button">重新加载</button>
+        <a href="{{ "/post/" | relURL }}">浏览文章目录</a>
+    </div>
+
+    <div id="ai-search-examples" class="ai-search-examples" aria-label="试试这些问题" hidden>
+        <button type="button" data-question="Redis 的使用经验有哪些？">Redis 使用经验</button>
+        <button type="button" data-question="如何避免 AI 读取 API Token？">保护 API Token</button>
+        <button type="button" data-question="K8s 集群更换节点 IP 时要注意什么？">K8s 节点 IP 变更</button>
+    </div>
+
+    <chat-page-snippet
+        id="blog-ai-chat"
+        api-url="{{ .Site.Params.aiSearch.publicEndpoint }}"
+        theme="light"
+        placeholder="输入你想了解的问题…"
+        hidden
+    ></chat-page-snippet>
+
+    <noscript>
+        <p>AI 搜索需要启用 JavaScript。你也可以<a href="{{ "/post/" | relURL }}">浏览文章目录</a>。</p>
+    </noscript>
+</section>
+{{ end }}
