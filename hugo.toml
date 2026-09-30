@@ -81,7 +81,7 @@ linkColor = "#0066cc"
 backToTop = true 
 
 [params.aiSearch]
-publicEndpoint = "https://a19ee2c5-7514-4eb8-95c9-9c5904865695.search.ai.cloudflare.com/"
+publicEndpoint = "https://256fd4a7-30a0-4e79-b5f9-dde3f546b928.search.ai.cloudflare.com/"
 
 [menu]
 # Shown in the side menu.

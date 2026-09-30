@@ -4,6 +4,34 @@ const error = document.getElementById("ai-search-error");
 const retry = document.getElementById("ai-search-retry");
 const examples = document.getElementById("ai-search-examples");
 
+function linkifyArticleURLs() {
+    for (const content of chat.shadowRoot.querySelectorAll(".chat-message-assistant .chat-message-text")) {
+        if (content.parentElement.querySelector(".chat-streaming")) continue;
+        const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        for (const node of nodes) {
+            if (node.parentElement.closest("a, code, pre")) continue;
+            const matches = [...node.textContent.matchAll(/https:\/\/blog\.yunpiao\.site\/post\/[a-zA-Z0-9%_-]+\/(?:index\.html)?/g)];
+            if (!matches.length) continue;
+            const fragment = document.createDocumentFragment();
+            let offset = 0;
+            for (const match of matches) {
+                fragment.append(node.textContent.slice(offset, match.index));
+                const link = document.createElement("a");
+                link.href = match[0];
+                link.textContent = match[0];
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                fragment.append(link);
+                offset = match.index + match[0].length;
+            }
+            fragment.append(node.textContent.slice(offset));
+            node.replaceWith(fragment);
+        }
+    }
+}
+
 const translations = {
     loadingAriaLabel: "正在加载",
     errorPrefix: "请求失败：",
@@ -61,6 +89,7 @@ async function initialize() {
         // 固定版本的聊天组件有 280px 侧栏，小屏只保留当前对话。
         const responsiveStyle = document.createElement("style");
         responsiveStyle.textContent = `
+            .chat-message-text a { overflow-wrap: anywhere; }
             @media (max-width: 768px) {
                 .chat-sidebar, .toggle-sidebar-button { display: none; }
                 .chat-page-header { gap: 0.5rem; }
@@ -69,6 +98,17 @@ async function initialize() {
             }
         `;
         chat.shadowRoot.append(responsiveStyle);
+        // 官方组件不自动识别裸网址；只给博客文章网址补充可点击链接。
+        let scheduled = false;
+        new MutationObserver(() => {
+            if (scheduled) return;
+            scheduled = true;
+            requestAnimationFrame(() => {
+                scheduled = false;
+                linkifyArticleURLs();
+            });
+        }).observe(chat.shadowRoot, { childList: true, subtree: true, characterData: true });
+        linkifyArticleURLs();
         chat.hidden = false;
         examples.hidden = false;
         status.hidden = true;
