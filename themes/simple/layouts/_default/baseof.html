@@ -8,9 +8,12 @@
     <script defer src="https://cloud.umami.is/script.js" data-website-id="b341aa93-c0f2-40b4-bee8-dff72e443562"></script>
     <script defer src="{{ "js/typing-egg.js" | relURL }}"></script>
     {{ block "head" . }}{{ end }}
+    {{ if eq .Params.commentStyle "guestbook" }}
+    <link rel="stylesheet" href="{{ "css/guestbook-comments.css" | relURL }}?v={{ readFile "static/css/guestbook-comments.css" | md5 }}">
+    {{ end }}
 
 </head>
-<body{{ if eq .Layout "guestbook" }} class="page-guestbook"{{ end }}>
+<body>
     <header>
         {{ partial "header.html" . }}
     </header>

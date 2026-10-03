@@ -1,5 +1,5 @@
-<section id="blog-comments" aria-label="评论" aria-busy="true">
-  {{ if eq .Layout "guestbook" }}
+<section id="blog-comments"{{ if eq .Params.commentStyle "guestbook" }} class="guestbook-comments"{{ end }} aria-label="评论" aria-busy="true">
+  {{ if eq .Params.commentStyle "guestbook" }}
   <div class="guestbook-compose-heading">
     <div>
       <h2>写点什么</h2>
@@ -27,7 +27,7 @@
     const capWasmURL = {{ "js/vendor/cap-wasm-0.0.8.wasm" | relURL }};
     let loadTimer;
 
-    {{ if eq .Layout "guestbook" }}
+    {{ if eq .Params.commentStyle "guestbook" }}
     function labelGuestbookInputs() {
       const labels = { nick: '昵称', mail: '邮箱', link: '网址' };
       container.querySelectorAll('.tk-submit input[name]').forEach((input) => {
@@ -66,7 +66,7 @@
 
     // Twikoo reports list/request errors inside the widget after init has returned.
     new MutationObserver(() => {
-      {{ if eq .Layout "guestbook" }}labelGuestbookInputs();{{ end }}
+      {{ if eq .Params.commentStyle "guestbook" }}labelGuestbookInputs();{{ end }}
       if (container.querySelector('.tk-error')) {
         showFailure('评论请求失败，请查看下方错误信息后重试。');
       }
