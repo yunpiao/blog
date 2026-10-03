@@ -1,6 +1,17 @@
 <section id="blog-comments" aria-label="评论" aria-busy="true">
+  {{ if eq .Layout "guestbook" }}
+  <div class="guestbook-compose-heading">
+    <div>
+      <h2>写点什么</h2>
+      <p>昵称必填，邮箱和网址选填。</p>
+    </div>
+    <button id="comments-retry" type="button">刷新页面</button>
+  </div>
+  <p id="comments-status" role="status" aria-live="polite">正在加载评论…</p>
+  {{ else }}
   <p id="comments-status" role="status" aria-live="polite">正在加载评论…</p>
   <button id="comments-retry" type="button">重新加载页面</button>
+  {{ end }}
   <div id="tcomment"></div>
   <noscript>请启用 JavaScript 后查看和发布评论。</noscript>
 </section>
@@ -15,6 +26,18 @@
     const capURL = {{ "js/vendor/cap-widget-0.1.58.min.js" | relURL }};
     const capWasmURL = {{ "js/vendor/cap-wasm-0.0.8.wasm" | relURL }};
     let loadTimer;
+
+    {{ if eq .Layout "guestbook" }}
+    function labelGuestbookInputs() {
+      const labels = { nick: '昵称', mail: '邮箱', link: '网址' };
+      container.querySelectorAll('.tk-submit input[name]').forEach((input) => {
+        if (labels[input.name]) input.setAttribute('aria-label', labels[input.name]);
+      });
+      container.querySelectorAll('.tk-submit textarea').forEach((input) => {
+        input.setAttribute('aria-label', '留言内容');
+      });
+    }
+    {{ end }}
 
     function showFailure(message) {
       clearTimeout(loadTimer);
@@ -43,6 +66,7 @@
 
     // Twikoo reports list/request errors inside the widget after init has returned.
     new MutationObserver(() => {
+      {{ if eq .Layout "guestbook" }}labelGuestbookInputs();{{ end }}
       if (container.querySelector('.tk-error')) {
         showFailure('评论请求失败，请查看下方错误信息后重试。');
       }

@@ -1,0 +1,669 @@
+/* Twikoo 2.0.12: guestbook-only presentation; admin dialogs keep vendor styles. */
+body.page-guestbook #blog-comments {
+  --comment-surface: #ffffff;
+  --comment-soft: #f5f7fa;
+  --comment-border: #e3e8ef;
+  --comment-text: #263244;
+  --comment-muted: #667389;
+  --comment-accent: #2463d4;
+  --comment-accent-hover: #194da9;
+  --comment-accent-soft: #edf3ff;
+  --comment-focus: #8db4f5;
+  --comment-error: #b42332;
+  --comment-error-soft: #fff3f3;
+  color: var(--comment-text);
+}
+
+body.page-guestbook.dark #blog-comments {
+  --comment-surface: #19222f;
+  --comment-soft: #202c3b;
+  --comment-border: #344256;
+  --comment-text: #e5ecf5;
+  --comment-muted: #a7b4c6;
+  --comment-accent: #8db9ff;
+  --comment-accent-hover: #b1ceff;
+  --comment-accent-soft: #263e61;
+  --comment-focus: #8db9ff;
+  --comment-error: #ffadb7;
+  --comment-error-soft: #39242e;
+}
+
+body.page-guestbook #tcomment {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+body.page-guestbook #tcomment .tk-submit {
+  margin-top: 0;
+  padding: 24px;
+  border: 1px solid var(--comment-border);
+  border-radius: 16px;
+  background: var(--comment-surface);
+}
+
+body.page-guestbook #tcomment .tk-submit > .tk-row > .tk-avatar {
+  display: none;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-col {
+  min-width: 0;
+}
+
+body.page-guestbook #tcomment .tk-meta-input {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+body.page-guestbook #tcomment .tk-meta-input .tk-input {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+}
+
+body.page-guestbook #tcomment .tk-meta-input .tk-input-group__prepend {
+  height: auto;
+  padding: 0 0 7px;
+  border: 0;
+  background: transparent;
+  color: var(--comment-text);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-input__inner,
+body.page-guestbook #tcomment .tk-comments-search .tk-input__inner {
+  min-width: 0;
+  height: 46px;
+  padding: 0 13px;
+  border: 1px solid var(--comment-border);
+  border-radius: 9px;
+  background: var(--comment-soft);
+  color: var(--comment-text);
+  font: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-input__inner::placeholder,
+body.page-guestbook #tcomment .tk-comments-search .tk-input__inner::placeholder {
+  color: var(--comment-muted);
+  opacity: 1;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-textarea__inner {
+  height: auto;
+  min-height: 152px;
+  padding: 15px 16px 32px;
+  background: var(--comment-surface);
+  line-height: 1.75;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-input__inner:hover,
+body.page-guestbook #tcomment .tk-comments-search .tk-input__inner:hover {
+  border-color: var(--comment-muted);
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-input__inner:focus,
+body.page-guestbook #tcomment .tk-comments-search .tk-input__inner:focus {
+  border-color: var(--comment-accent);
+  background: var(--comment-surface);
+  box-shadow: 0 0 0 3px var(--comment-accent-soft);
+}
+
+body.page-guestbook #tcomment .tk-submit input:invalid {
+  border-color: var(--comment-error);
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-input.is-disabled .tk-input__inner {
+  background: var(--comment-soft);
+  color: var(--comment-muted);
+  cursor: not-allowed;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-input__count {
+  right: 14px;
+  bottom: 9px;
+  color: var(--comment-muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-row.actions {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 0;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-row-actions-start {
+  min-width: 0;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-submit-action-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-height: 44px;
+  margin-right: 0;
+  border-radius: 8px;
+  color: var(--comment-muted);
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-submit-action-icon > .tk-icon,
+body.page-guestbook #tcomment .tk-submit .tk-submit-action-icon > svg {
+  width: 21px;
+  height: 21px;
+}
+
+body.page-guestbook #tcomment .tk-submit .OwO-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+body.page-guestbook #tcomment .tk-submit .OwO-logo svg {
+  width: 21px;
+  height: 21px;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-submit-action-icon:hover {
+  background: var(--comment-soft);
+  color: var(--comment-accent);
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-button,
+body.page-guestbook #tcomment .tk-comments-search .tk-button {
+  min-height: 44px;
+  margin-left: 0;
+  padding: 11px 19px;
+  border: 1px solid var(--comment-border);
+  border-radius: 9px;
+  background: var(--comment-surface);
+  color: var(--comment-muted);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-button:not(.tk-send):not(.is-disabled):hover {
+  border-color: var(--comment-accent);
+  background: var(--comment-accent-soft);
+  color: var(--comment-accent);
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-send,
+body.page-guestbook #tcomment .tk-comments-search .tk-button--primary {
+  min-width: 94px;
+  border-color: #2463d4;
+  background: #2463d4;
+  color: #ffffff;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-send:not(.is-disabled):hover,
+body.page-guestbook #tcomment .tk-comments-search .tk-button--primary:not(.is-disabled):hover {
+  border-color: #194da9;
+  background: #194da9;
+  color: #ffffff;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-send:not(.is-disabled):active {
+  border-color: #153f8a;
+  background: #153f8a;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-send.is-disabled {
+  border-color: var(--comment-border);
+  background: var(--comment-soft);
+  color: var(--comment-muted);
+  opacity: 1;
+  cursor: not-allowed;
+}
+
+/* Keep a displayed challenge in document flow, including narrow reply forms. */
+body.page-guestbook #tcomment .tk-submit .tk-turnstile-container,
+body.page-guestbook #tcomment .tk-submit .tk-geetest-container,
+body.page-guestbook #tcomment .tk-submit .tk-cap-container {
+  position: static;
+  flex-basis: 100%;
+  max-width: 100%;
+  margin-top: 4px;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-cap-container:empty {
+  display: none;
+}
+
+body.page-guestbook #tcomment .tk-submit cap-widget {
+  --cap-background: var(--comment-surface);
+  --cap-color: var(--comment-text);
+  --cap-border-color: var(--comment-border);
+  --cap-border-radius: 9px;
+  --cap-widget-width: 100%;
+  display: block;
+  max-width: 320px;
+  margin-left: auto;
+}
+
+body.page-guestbook #tcomment .tk-submit .tk-preview-container {
+  margin: 18px 0 0;
+  padding: 16px;
+  border-color: var(--comment-border);
+  border-radius: 9px;
+  background: var(--comment-soft);
+  line-height: 1.75;
+}
+
+body.page-guestbook #tcomment .tk-comments-container {
+  margin-top: 38px;
+}
+
+body.page-guestbook #tcomment .tk-comments-title {
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 6px;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+body.page-guestbook #tcomment .tk-comments-count {
+  display: inline-flex;
+  gap: 6px;
+  font-weight: 650;
+}
+
+body.page-guestbook #tcomment .tk-comments-actions {
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+body.page-guestbook #tcomment .tk-comments-sort {
+  gap: 2px;
+  margin-right: 8px;
+  padding: 3px;
+  border-radius: 12px;
+  background: var(--comment-soft);
+}
+
+body.page-guestbook #tcomment .tk-sort-item {
+  justify-content: center;
+  min-width: 50px;
+  min-height: 44px;
+  padding: 0 13px;
+  border-radius: 9px;
+  color: var(--comment-muted);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+body.page-guestbook #tcomment .tk-sort-item.__active {
+  background: var(--comment-surface);
+  color: var(--comment-accent);
+  box-shadow: 0 1px 3px rgb(20 38 67 / 8%);
+  font-weight: 650;
+}
+
+body.page-guestbook #tcomment .tk-sort-item:not(.__active):hover {
+  color: var(--comment-text);
+}
+
+body.page-guestbook #tcomment .tk-comments-actions > .tk-icon.__comments {
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  padding: 13px;
+  border-radius: 9px;
+  color: var(--comment-muted);
+}
+
+body.page-guestbook #tcomment .tk-comments-actions > .tk-icon.__comments:hover,
+body.page-guestbook #tcomment .tk-comments-actions > .tk-icon.__comments.__active {
+  background: var(--comment-accent-soft);
+  color: var(--comment-accent);
+  box-shadow: none;
+}
+
+body.page-guestbook #tcomment .tk-comments-search {
+  margin-top: 12px;
+}
+
+body.page-guestbook #tcomment .tk-comments-container > .tk-comment {
+  margin-top: 0;
+  padding: 25px 0;
+  border-bottom: 1px solid var(--comment-border);
+}
+
+body.page-guestbook #tcomment .tk-comment {
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+body.page-guestbook #tcomment .tk-comment > .tk-avatar {
+  width: 40px;
+  height: 40px;
+  margin-right: 14px;
+  border-radius: 50%;
+  background: var(--comment-soft);
+}
+
+body.page-guestbook #tcomment .tk-main > .tk-row {
+  align-items: flex-start;
+  gap: 12px;
+}
+
+body.page-guestbook #tcomment .tk-meta {
+  gap: 5px 8px;
+  min-width: 0;
+}
+
+body.page-guestbook #tcomment .tk-nick,
+body.page-guestbook #tcomment .tk-replies .tk-nick-link {
+  color: var(--comment-text);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+body.page-guestbook #tcomment .tk-nick-link:hover {
+  color: var(--comment-accent);
+}
+
+body.page-guestbook #tcomment .tk-time {
+  flex-basis: 100%;
+  color: var(--comment-muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+body.page-guestbook #tcomment .tk-content,
+body.page-guestbook #tcomment .tk-replies .tk-content {
+  margin-top: 12px;
+  color: var(--comment-text);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+}
+
+body.page-guestbook #tcomment .tk-content p {
+  margin: 0 0 0.7em;
+}
+
+body.page-guestbook #tcomment .tk-content p:last-child {
+  margin-bottom: 0;
+}
+
+body.page-guestbook #tcomment .tk-content a {
+  color: var(--comment-accent);
+  text-underline-offset: 3px;
+}
+
+body.page-guestbook #tcomment .tk-action {
+  flex-shrink: 0;
+  gap: 2px;
+  margin-top: -6px;
+}
+
+body.page-guestbook #tcomment .tk-action-link {
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin-left: 0;
+  padding: 0 8px;
+  border-radius: 9px;
+  color: var(--comment-muted);
+}
+
+body.page-guestbook #tcomment .tk-action-icon {
+  color: inherit;
+  font-size: 0.875rem;
+}
+
+body.page-guestbook #tcomment .tk-action-link:hover,
+body.page-guestbook #tcomment .tk-action-link.tk-liked,
+body.page-guestbook #tcomment .tk-action-link.tk-disliked {
+  background: var(--comment-accent-soft);
+  color: var(--comment-accent);
+}
+
+body.page-guestbook #tcomment .tk-action-count:empty {
+  margin-left: 0;
+}
+
+body.page-guestbook #tcomment .tk-tag {
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+}
+
+body.page-guestbook #tcomment .tk-tag-green {
+  border-color: transparent;
+  background: var(--comment-accent-soft);
+  color: var(--comment-accent);
+}
+
+body.page-guestbook #tcomment .tk-replies:not(:empty) {
+  margin-top: 18px;
+  padding: 0 16px;
+  border-left: 2px solid var(--comment-border);
+  border-radius: 0 10px 10px 0;
+  background: var(--comment-soft);
+}
+
+body.page-guestbook #tcomment .tk-replies > .tk-comment {
+  margin-top: 0;
+  padding: 17px 0;
+}
+
+body.page-guestbook #tcomment .tk-replies > .tk-comment + .tk-comment {
+  border-top: 1px solid var(--comment-border);
+}
+
+body.page-guestbook #tcomment .tk-replies .tk-comment > .tk-avatar {
+  width: 30px;
+  height: 30px;
+  margin-right: 11px;
+}
+
+body.page-guestbook #tcomment .tk-replies .tk-avatar .tk-avatar-img {
+  height: 30px;
+  line-height: 30px;
+}
+
+body.page-guestbook #tcomment .tk-comment .tk-submit {
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 12px;
+}
+
+body.page-guestbook #tcomment .tk-comments-container .tk-expand {
+  min-height: 44px;
+  margin-top: 8px;
+  border-radius: 9px;
+  color: var(--comment-accent);
+  font-size: 0.8125rem;
+  transition: background-color 150ms ease;
+}
+
+body.page-guestbook #tcomment .tk-comments-container .tk-expand:hover {
+  background: var(--comment-accent-soft);
+}
+
+body.page-guestbook #tcomment .tk-comments-no {
+  min-height: 160px;
+  color: var(--comment-muted);
+  font-size: 0.9375rem;
+}
+
+body.page-guestbook #tcomment .tk-comments-container > .tk-error {
+  margin-top: 16px;
+  padding: 16px;
+  border-color: var(--comment-error);
+  border-radius: 12px;
+  background: var(--comment-error-soft);
+  color: var(--comment-error);
+  font-size: 0.875rem;
+}
+
+body.page-guestbook #tcomment .tk-comments-container .tk-error__toggle {
+  min-height: 44px;
+  padding: 6px 0;
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+body.page-guestbook #tcomment .tk-comments button:focus-visible,
+body.page-guestbook #tcomment .tk-comments a:focus-visible {
+  outline: 2px solid var(--comment-focus);
+  outline-offset: 3px;
+}
+
+body.page-guestbook #tcomment .tk-footer {
+  margin-top: 24px;
+  color: var(--comment-muted);
+  font-size: 0.6875rem;
+}
+
+body.page-guestbook #tcomment .tk-footer a {
+  color: inherit;
+}
+
+@media (max-width: 767px) {
+  body.page-guestbook #tcomment .tk-meta-input {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 12px;
+  }
+
+  body.page-guestbook #tcomment .tk-meta-input .tk-input:last-child {
+    grid-column: 1 / -1;
+  }
+
+  body.page-guestbook #tcomment .tk-meta-input .tk-input + .tk-input {
+    margin-top: 0;
+  }
+
+  body.page-guestbook #tcomment .tk-submit .tk-input__inner {
+    font-size: 1rem;
+  }
+
+  body.page-guestbook #tcomment .tk-comments-title {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  body.page-guestbook #tcomment .tk-submit {
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  body.page-guestbook #tcomment .tk-meta-input {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body.page-guestbook #tcomment .tk-submit .tk-textarea__inner {
+    min-height: 144px;
+  }
+
+  body.page-guestbook #tcomment .tk-submit .tk-button {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  body.page-guestbook #tcomment .tk-submit .tk-send {
+    min-width: 78px;
+  }
+
+  body.page-guestbook #tcomment .tk-comments-title {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  body.page-guestbook #tcomment .tk-comments-actions {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  body.page-guestbook #tcomment .tk-comments-sort {
+    gap: 0;
+    margin-right: auto;
+  }
+
+  body.page-guestbook #tcomment .tk-sort-item {
+    min-width: 44px;
+    padding-right: 9px;
+    padding-left: 9px;
+  }
+
+  body.page-guestbook #tcomment .tk-comment > .tk-avatar {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+  }
+
+  body.page-guestbook #tcomment .tk-comment > .tk-avatar .tk-avatar-img {
+    height: 32px;
+    line-height: 32px;
+  }
+
+  body.page-guestbook #tcomment .tk-main > .tk-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  body.page-guestbook #tcomment .tk-action {
+    margin-top: 0;
+    margin-left: auto;
+  }
+
+  body.page-guestbook #tcomment .tk-replies:not(:empty) {
+    padding: 0 10px;
+  }
+
+  body.page-guestbook #tcomment .tk-replies .tk-comment > .tk-avatar {
+    width: 26px;
+    height: 26px;
+    margin-right: 8px;
+  }
+
+  body.page-guestbook #tcomment .tk-replies .tk-avatar .tk-avatar-img {
+    height: 26px;
+    line-height: 26px;
+  }
+
+  body.page-guestbook #tcomment .tk-comment .tk-submit {
+    margin-left: -42px;
+    padding: 14px;
+  }
+
+  body.page-guestbook #tcomment .tk-replies .tk-comment .tk-submit {
+    margin-left: -34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.page-guestbook #tcomment .tk-comments .tk-fade-in {
+    animation: none;
+  }
+
+  body.page-guestbook #tcomment .tk-comments .tk-button,
+  body.page-guestbook #tcomment .tk-comments .tk-input__inner,
+  body.page-guestbook #tcomment .tk-comments .tk-expand {
+    transition: none;
+  }
+}

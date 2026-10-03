@@ -10,7 +10,7 @@
     {{ block "head" . }}{{ end }}
 
 </head>
-<body>
+<body{{ if eq .Layout "guestbook" }} class="page-guestbook"{{ end }}>
     <header>
         {{ partial "header.html" . }}
     </header>

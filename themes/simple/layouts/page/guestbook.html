@@ -1,0 +1,17 @@
+{{ define "head" }}
+<meta name="description" content="分享关于文章的想法、交流遇到的问题，或留下一个问候。">
+<link rel="stylesheet" href="{{ "css/guestbook.css" | relURL }}?v={{ readFile "static/css/guestbook.css" | md5 }}">
+<link rel="stylesheet" href="{{ "css/guestbook-comments.css" | relURL }}?v={{ readFile "static/css/guestbook-comments.css" | md5 }}">
+{{ end }}
+
+{{ define "main" }}
+<div class="guestbook-page">
+  <div class="guestbook-intro">
+    <a class="guestbook-home" href="{{ .Site.Home.RelPermalink }}">← 返回首页</a>
+    <h1>{{ .Title }}</h1>
+    <p>关于文章的想法、遇到的问题，或只是打个招呼，都欢迎。</p>
+  </div>
+  {{ with .Content }}<div class="guestbook-content">{{ . }}</div>{{ end }}
+  {{ partial "comments.html" . }}
+</div>
+{{ end }}
