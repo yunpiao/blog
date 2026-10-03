@@ -1,340 +1,124 @@
-<head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/waline/3.1.3/waline.css"
-  />
-</head>
-<body>
-  <div id="waline"></div>
-  <script type="module">
-    import { init } from 'https://cdnjs.cloudflare.com/ajax/libs/waline/3.1.3/waline.js';
-    init({
-      el: '#waline',
-      comment: true,
-      reaction: false,
-      serverURL: 'https://vercel-two-lemon.yunpiao.site',
-      lang: 'zh-CN',
-      dark: "body.dark",
-      requiredMeta: ['nick'],
-      wordLimit: 500,
-    });
+<section id="blog-comments" aria-label="评论" aria-busy="true">
+  <p id="comments-status" role="status" aria-live="polite">正在加载评论…</p>
+  <button id="comments-retry" type="button">重新加载页面</button>
+  <div id="tcomment"></div>
+  <noscript>请启用 JavaScript 后查看和发布评论。</noscript>
+</section>
+<script>
+  (() => {
+    const region = document.getElementById('blog-comments');
+    const container = document.getElementById('tcomment');
+    const status = document.getElementById('comments-status');
+    const retry = document.getElementById('comments-retry');
+    const serverURL = {{ .Site.Params.comments.serverURL }};
+    const clientURL = {{ "js/vendor/twikoo-2.0.12.min.js" | relURL }};
+    const capURL = {{ "js/vendor/cap-widget-0.1.58.min.js" | relURL }};
+    const capWasmURL = {{ "js/vendor/cap-wasm-0.0.8.wasm" | relURL }};
+    let loadTimer;
 
-    // 客户端脚本：强制替换默认头像为 DiceBear Notionists (Notion 风格)
-    // 服务端配置说明 (Vercel):
-    // 1. 进入 Vercel 项目 Dashboard -> Settings -> Environment Variables
-    // 2. 添加环境变量:
-    //    Key: GRAVATAR_STR
-    //    Value: https://api.dicebear.com/9.x/notionists/svg?seed=
-    // 3. 重新部署 (Redeploy) 项目
-    const diceBearBase = 'https://api.dicebear.com/9.x/lorelei/svg?seed=';
+    function showFailure(message) {
+      clearTimeout(loadTimer);
+      region.setAttribute('aria-busy', 'false');
+      status.textContent = message;
+      status.hidden = false;
+    }
 
-    const createSeed = (srcHash, card) => {
-      const parts = [];
-
-      if (card) {
-        // 收集 Waline 提供的元信息（地点、浏览器、系统等）
-        const metaSelectors = [
-          '.wl-user',
-          '.wl-user-nick',
-          '.wl-nick',
-          '.wl-meta',
-          '.wl-meta-item',
-          '.wl-user-agent',
-          '.wl-browser',
-          '.wl-os',
-          '.wl-device',
-          '.wl-userAgent',
-          '.wl-content',
-          '.wl-time',
-        ];
-
-        metaSelectors.forEach((selector) => {
-          card.querySelectorAll(selector).forEach((el) => {
-            const text = el.textContent?.trim();
-            if (text) {
-              parts.push(text);
-            }
-          });
-        });
-
-        if (card.dataset) {
-          Object.entries(card.dataset).forEach(([key, value]) => {
-            if (value) {
-              parts.push(`${key}:${String(value)}`);
-            }
-          });
-        }
-      }
-
-      if (srcHash) {
-        parts.push(srcHash);
-      }
-
-      if (parts.length === 0) {
-        return srcHash || 'anonymous';
-      }
-
-      const seedSource = parts.join('|').toLowerCase();
-      let hash = 0;
-      for (let i = 0; i < seedSource.length; i += 1) {
-        hash = Math.imul(31, hash) + seedSource.charCodeAt(i);
-        hash |= 0; // 转为 32 位整数
-      }
-
-      return `anon-${Math.abs(hash)}`;
-    };
-
-    const replaceAvatar = (img) => {
-      if (!img || img.dataset.dicebearApplied === '1') {
-        return;
-      }
-
-      // 头像在 .wl-user 里，而评论内容在同级的 .wl-card 里
-      // 所以这里先找到这条评论的整体容器 (.wl-card-item)，再从里面拿 .wl-card
-      const item = img.closest('.wl-card-item, .wl-comment');
-      const card = item ? item.querySelector('.wl-card') || item : null;
-
-      // 只对匿名用户应用随机头像，保留 admin / 登录用户自己的头像
-      let nick = '';
-      if (card) {
-        const nickEl = card.querySelector('.wl-nick');
-        if (nickEl && nickEl.textContent) {
-          nick = nickEl.textContent.trim();
-        }
-      }
-      const nickLower = nick.toLowerCase();
-      if (nick && nickLower !== '匿名' && nickLower !== 'anonymous' && nickLower !== 'anon') {
-        return;
-      }
-
-      const seed = createSeed(undefined, card);
-
-      img.src = `${diceBearBase}${encodeURIComponent(seed)}`;
-      img.dataset.dicebearApplied = '1';
-    };
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          mutation.addedNodes.forEach((node) => {
-            if (node.nodeType !== 1) {
-              return;
-            }
-
-            const imgs = node.querySelectorAll ? node.querySelectorAll('img.wl-user-avatar') : [];
-            imgs.forEach(replaceAvatar);
-          });
-        });
+    function loadScript(url, available) {
+      if (available()) return Promise.resolve();
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = url;
+        script.async = true;
+        script.onload = () => {
+          if (available()) resolve();
+          else reject(new Error('Comment dependency unavailable'));
+        };
+        script.onerror = () => {
+          script.remove();
+          reject(new Error('Comment dependency failed to load'));
+        };
+        document.head.appendChild(script);
       });
+    }
 
-      const waline = document.getElementById('waline');
-      if (waline) {
-        observer.observe(waline, {
-          childList: true,
-          subtree: true,
-        });
-        waline.querySelectorAll('img.wl-user-avatar').forEach(replaceAvatar);
+    // Twikoo reports list/request errors inside the widget after init has returned.
+    new MutationObserver(() => {
+      if (container.querySelector('.tk-error')) {
+        showFailure('评论请求失败，请查看下方错误信息后重试。');
       }
-    });
-  </script>
+    }).observe(container, { childList: true, subtree: true });
 
+    async function loadComments() {
+      clearTimeout(loadTimer);
+      region.setAttribute('aria-busy', 'true');
+      status.textContent = '正在加载评论…';
+      status.hidden = false;
+      loadTimer = setTimeout(() => {
+        showFailure('评论加载超时，请检查网络后重新加载页面。');
+      }, 20000);
+      try {
+        window.CAP_CUSTOM_WASM_URL = new URL(capWasmURL, window.location.origin).href;
+        await loadScript(capURL, () => Boolean(window.Cap));
+        await loadScript(clientURL, () => Boolean(window.twikoo));
+        await window.twikoo.init({
+          envId: serverURL,
+          el: '#tcomment',
+          path: window.location.pathname,
+          lang: 'zh-CN',
+          onSubmit(payload) {
+            if (!payload.capToken) {
+              showFailure('评论验证配置未加载，请重新加载页面后发送。');
+              throw new Error('评论验证配置未加载，请重新加载页面后发送。');
+            }
+          },
+          onCommentLoaded() {
+            clearTimeout(loadTimer);
+            region.setAttribute('aria-busy', 'false');
+            status.hidden = true;
+          },
+        });
+      } catch (error) {
+        console.error('评论加载失败', error);
+        showFailure('评论加载失败，请检查网络后重试。');
+      }
+    }
 
+    retry.addEventListener('click', () => window.location.reload());
+    loadComments();
+  })();
+</script>
 <style>
-  /* 基础变量设置 */
-  :root {
-    /* 字体大小 */
-    --waline-font-size: 16px;
-
-    /* 颜色系统 */
-    --waline-white: #fff;
-    --waline-light-grey: #999;
-    --waline-dark-grey: #666;
-
-    /* 主题色 */
-    --waline-theme-color: #3b82f6;
-    --waline-active-color: #2ecc71;
-
-    /* 文本颜色 */
-    --waline-color: #444;
-    --waline-bgcolor: #fff;
-    --waline-bgcolor-light: #f8f9fa;
-    --waline-bgcolor-hover: #f0f2f5;
-    
-    /* 边框与阴影 */
-    --waline-border-color: #e5e7eb;
-    --waline-disable-bgcolor: rgba(248, 248, 248, 0.4);
-    --waline-disable-color: #bbb;
-    --waline-code-bgcolor: #282c34;
-
-    /* 引用块 */
-    --waline-bq-color: #f0f0f0;
-
-    /* 头像 */
-    --waline-avatar-size: 3.25rem;
-    --waline-m-avatar-size: calc(var(--waline-avatar-size) * 9 / 13);
-    --waline-avatar-radius: 50%;
-
-    /* 徽章 */
-    --waline-badge-color: #3b82f6;
-    --waline-badge-font-size: 12px;
-
-    /* 信息块 */
-    --waline-info-border: 1px solid #999;
-    --waline-info-color: #999;
-    --waline-info-font-size: 16px;
-    --waline-info-bgcolor: rgba(235, 235, 235, 0.4);
-
-    /* 自定义 - 圆角与阴影 */
-    --waline-border-radius: 12px;
-    --waline-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --waline-input-padding: 0.75rem 1rem;
+  #blog-comments {
+    margin-top: 2rem;
+    color: inherit;
   }
-
-  /* 暗黑模式 */
-  html.dark, body.dark {
-    --waline-white: #000;
-    --waline-light-grey: #999;
-    --waline-dark-grey: #999;
-
-    --waline-color: #e2e8f0;
-    --waline-bgcolor: #1e293b;
-    --waline-bgcolor-light: #334155;
-    --waline-border-color: #475569;
-
-    --waline-disable-bgcolor: rgba(68, 68, 68, 0.8);
-    --waline-disable-color: #888;
-
-    --waline-bq-color: #1e293b;
-    --waline-info-bgcolor: rgba(31, 45, 75, 0.8);
-    --waline-info-color: #888;
-    --waline-info-border: 1px solid #475569;
-    
-    --waline-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  #comments-status {
+    font-size: 0.95rem;
   }
-
-  /* 容器样式 */
-  #waline {
-    max-width: 100%;
-    margin: 0 auto;
-    padding-top: 2rem;
-  }
-
-  /* 输入框区域优化 */
-  .wl-panel {
-    border: 1px solid var(--waline-border-color);
-    border-radius: var(--waline-border-radius);
-    box-shadow: var(--waline-box-shadow);
-    padding: 1rem;
-    background: var(--waline-bgcolor);
-    transition: all 0.3s ease;
-    margin-bottom: 1.5rem;
-  }
-
-  .wl-panel:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    border-color: var(--waline-theme-color);
-  }
-
-  /* 头部输入框 (昵称/邮箱/网址) */
-  .wl-header {
-    border-bottom: 1px dashed var(--waline-border-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .wl-header input {
-    padding: 0.5rem 0.75rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .wl-header input:focus {
-    background: var(--waline-bgcolor-light);
-  }
-
-  /* 文本域优化 */
-  .wl-editor {
-    padding: var(--waline-input-padding);
-    min-height: 120px;
-    font-size: 1rem;
-    line-height: 1.75;
+  #comments-retry {
+    margin-bottom: 1rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid currentColor;
+    border-radius: 6px;
     background: transparent;
-    transition: all 0.3s ease;
-    width: 100%;
-    box-sizing: border-box;
-    resize: vertical;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
   }
-
-  .wl-editor:focus {
-    background: var(--waline-bgcolor-light);
+  #comments-retry:focus-visible,
+  #tcomment button:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 3px;
   }
-
-  /* 按钮优化 */
-  .wl-btn {
-    border-radius: 20px;
-    padding: 0.5rem 1.5rem;
-    font-weight: 600;
-    border: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .wl-btn.primary {
-    background: var(--waline-theme-color);
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-  }
-
-  .wl-btn.primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-  }
-
-  /* 评论列表优化 */
-  .wl-card {
-    border-bottom: 1px dashed var(--waline-border-color);
-    padding: 1.5rem 0;
-  }
-  
-  .wl-card:last-child {
-    border-bottom: none;
-  }
-
-  .wl-user {
-    font-weight: 600;
-  }
-  
-  .wl-content {
+  #tcomment {
     font-size: 1rem;
-    color: var(--waline-color);
-    line-height: 1.8;
   }
-
-  /* 控制评论内容中的图片 / GIF 尺寸（不影响内联小表情 wl-emoji / vemoji） */
-  #waline .wl-content img:not(.wl-emoji):not(.vemoji) {
-    display: block;
-    margin: 0.25rem 0;
-    max-width: 96px;
-    max-height: 96px;
-    width: auto;
+  #tcomment .tk-content img:not(.tk-owo-emotion) {
+    max-width: min(300px, 100%);
     height: auto;
-    object-fit: contain;
   }
-
-  /* 修正表情选择面板的行高与间距，避免被全局 .post-content img 样式影响 */
-  #waline .wl-emoji-popup img.wl-emoji {
-    display: inline-block;
-    margin: 0;
-    box-shadow: none;
-    border-radius: 0;
-  }
-
-  #waline .wl-emoji-popup button {
-    line-height: 1.4;
-  }
-
-  /* 针对暗黑模式的微调 */
-  html.dark .wl-panel:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  body.dark #blog-comments {
+    color-scheme: dark;
+    color: #e2e8f0;
   }
 </style>
-</body>

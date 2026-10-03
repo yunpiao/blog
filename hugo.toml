@@ -83,6 +83,9 @@ backToTop = true
 [params.aiSearch]
 publicEndpoint = "https://256fd4a7-30a0-4e79-b5f9-dde3f546b928.search.ai.cloudflare.com/"
 
+[params.comments]
+serverURL = "https://comments.yunpiao.site"
+
 [menu]
 # Shown in the side menu.
 [[menu.main]]
