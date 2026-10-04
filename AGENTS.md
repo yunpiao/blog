@@ -112,3 +112,11 @@ hugo                        # 构建生产版本
 node resume-tool.js decrypt # 解密简历
 node resume-tool.js encrypt # 加密简历
 ```
+
+## 页面布局与评论样式
+
+- 留言板复用 `themes/simple/layouts/_default/single.html`，与友链页使用相同的导航、字体、页面宽度、面包屑和内容外框。优化评论区时保持这些全站布局约定。
+- `content/gestbook.md` 的 `commentStyle: "guestbook"` 只启用评论区域样式，不设置独立页面 `type/layout`。评论入口统一由 `themes/simple/layouts/partials/comments.html` 维护。
+- 留言板样式位于 `static/css/guestbook-comments.css`，限定在 `#blog-comments.guestbook-comments` 内并继承主题字体。唯一外层规则是 768px 以下对包含该评论区的 `.post-content` 设置 `box-sizing: border-box`，用于防止横向溢出。
+- 修改后对照友链页检查共同布局，验证手机端、Markdown 预览和回复表单。Hugo 构建及 Git 推送成功后，还须核对线上页面和 CSS 内容版本，才能确认发布完成。
+- 评论服务、部署方式及验收记录见 [部署与恢复说明](services/comments/2026-10-04-部署与恢复说明.md)。

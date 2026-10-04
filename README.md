@@ -23,6 +23,14 @@ hugo server -D
 
 MIT
 
+## 评论与留言板
+
+评论由 Twikoo 2.0.12、Cloudflare Workers 和 D1 提供。留言板复用全站页面布局，局部优化仅作用于评论区域。
+
+- [迁移决策与数据边界](docs/adr/2026-10-04-博客评论迁移到Cloudflare.md)
+- [部署、布局维护、验收与恢复说明](services/comments/2026-10-04-部署与恢复说明.md)
+- [页面布局维护约定](AGENTS.md#页面布局与评论样式)
+
 ## 博客 AI 搜索
 
 导航栏的「AI 搜索」进入 `/ai-search/`，使用 Cloudflare 官方聊天组件，根据已索引的公开文章回答问题并引用原文。组件固定为 `@cloudflare/ai-search-snippet` 0.0.43，按需从 Cloudflare 搜索端点加载。
