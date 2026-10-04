@@ -28,11 +28,14 @@ const cloudflareReplacements = [
     '  setCustomLibs({\n    DOMPurify,\n    // 保留 HTTP 邮件通道；常规 SMTP 使用请求内创建和关闭的真实 Nodemailer 连接。'],
 ];
 
-function applyExactPatch(source, replacements) {
+export function applyExactPatch(source, replacements) {
   const states = replacements.map(([before, after]) => {
-    // Some insertions retain the anchor text, so exclude complete patched spans first.
-    const originalCount = source.split(after).join('').split(before).length - 1;
-    const patchedCount = source.split(after).length - 1;
+    // Insertions retain old anchors; deletions retain part of the old statement.
+    // Count only spans that are not contained in the opposite complete form.
+    const originalSource = after.includes(before) ? source.split(after).join('') : source;
+    const patchedSource = before.includes(after) ? source.split(before).join('') : source;
+    const originalCount = originalSource.split(before).length - 1;
+    const patchedCount = patchedSource.split(after).length - 1;
     if (originalCount === 1 && patchedCount === 0) return 'original';
     if (originalCount === 0 && patchedCount === 1) return 'patched';
     throw new Error(`Unexpected upstream statement: ${before}`);

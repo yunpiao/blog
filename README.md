@@ -28,6 +28,7 @@ MIT
 评论由 Twikoo 2.0.12、Cloudflare Workers 和 D1 提供。留言板复用全站页面布局，局部优化仅作用于评论区域。
 
 - [迁移决策与数据边界](docs/adr/2026-10-04-博客评论迁移到Cloudflare.md)
+- [邮件通知方案与收件限制](docs/adr/2026-10-04-评论邮件通过Cloudflare绑定发送.md)
 - [部署、布局维护、验收与恢复说明](services/comments/2026-10-04-部署与恢复说明.md)
 - [页面布局维护约定](AGENTS.md#页面布局与评论样式)
 

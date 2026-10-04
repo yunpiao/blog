@@ -12,6 +12,10 @@ export default defineConfig({
     previewUrls: false,
     env: {
       DB: bindings.d1({ name: 'blog-comments-twikoo', id: '7862e74a-e4e5-4352-a9fc-a47efae9a200' }),
+      EMAIL: bindings.sendEmail({
+        allowedDestinationAddresses: ['yunpiao111@gmail.com'],
+        allowedSenderAddresses: ['comments@yunpiao.site'],
+      }),
     },
     observability: { enabled: true, redactQueryString: true, logs: { enabled: true, invocationLogs: true } },
   },
