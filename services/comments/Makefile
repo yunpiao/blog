@@ -13,6 +13,7 @@ test:
 	npm test
 
 test-upstream:
+	node --test test/comment-guards.integration.mjs
 	cd .upstream && node ../node_modules/pnpm/bin/pnpm.mjs --filter @twikoojs/cloudflare test
 	cd .upstream && node ../node_modules/pnpm/bin/pnpm.mjs --filter @twikoojs/cloudflare typecheck
 

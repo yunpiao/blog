@@ -21,6 +21,7 @@ if [[ "$version_state" == '0.0.0' ]]; then
   node scripts/release-set-version.mjs 2.0.12
 fi
 node "$service_dir/scripts/patch-upstream.mjs" "$upstream_dir"
+node "$service_dir/scripts/patch-comment-guards.mjs" "$upstream_dir"
 node "$service_dir/scripts/patch-email.mjs" "$upstream_dir"
 cp "$service_dir/scripts/templates/cloudflare-email.ts" packages/server-cloudflare/src/mail/cloudflare-email.ts
 cp "$service_dir/scripts/templates/mail-runtime.ts" packages/server-common/src/services/mail-runtime.ts
